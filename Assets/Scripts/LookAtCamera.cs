@@ -9,6 +9,7 @@ public class LookAtCamera : MonoBehaviour {
   void Start() {
         
   }
+  
   void Update() {
     Vector3 targetPosition = new Vector3(transform.position.x, target.position.y, target.position.z);
     transform.LookAt(targetPosition);

@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour {
 
   [SerializeField] private float speed = 12f;
   [SerializeField] private Dictionary<string, float> bounds = new Dictionary<string, float> () {
-    {"minimumX", -8.75f}, {"maximumX", 8.75f},
-    {"minimumZ", 0f},     {"maximumZ", 2.25f}
+    {"minimumX", -8.5f}, {"maximumX", 8.5f},
+    {"minimumZ", -1f},     {"maximumZ", 2.5f}
   };
 
   void Start() {
