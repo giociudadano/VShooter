@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277cff497122ef4ebf8920185472e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  followObject: {fileID: 7221063818556243797, guid: 742174277ccd57145a86e40a45e16bb0, type: 3}
+  speed: 4.5
+  player: {fileID: 0}
 --- !u!114 &9046524210767816791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +167,8 @@ MonoBehaviour:
   canvas: {fileID: 5537528055420916333}
   healthbar: {fileID: 5290077633409521238}
   maxHealth: 3
+  XPReward: 20
+  XPManager: {fileID: 0}
 --- !u!1 &4998296447184009602
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,4 +435,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031a29ab24de3714fbf1bbf3f78baec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 3072038656961872443, guid: 0d297c2fe5b767546855d0986422cc5a, type: 3}
+  mainCamera: {fileID: 0}
