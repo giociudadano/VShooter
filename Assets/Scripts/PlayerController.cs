@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
   // Manages player input and movement.
 
   [SerializeField] private float speed = 12f;
-  [SerializeField] private Dictionary<string, float> bounds = new Dictionary<string, float> () {
+  private Dictionary<string, float> bounds = new Dictionary<string, float> () {
     {"minimumX", -8.5f}, {"maximumX", 8.5f},
     {"minimumZ", -1f},     {"maximumZ", 2.5f}
   };

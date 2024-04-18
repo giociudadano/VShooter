@@ -6,10 +6,10 @@ public class MovementFollow : MonoBehaviour {
   // Follows towards the target object.
   
   [SerializeField] private float speed = 8f;
-  [SerializeField] public GameObject followObject;
+  [SerializeField] public GameObject player;
 
   void Start() {
-        
+    player = GameObject.Find("Player");
   }
 
   void Update() {
@@ -17,6 +17,6 @@ public class MovementFollow : MonoBehaviour {
   }
 
   void MoveObject() {
-    transform.position = Vector3.MoveTowards(transform.position, followObject.transform.position, speed * Time.deltaTime);
+    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
   }
 }
