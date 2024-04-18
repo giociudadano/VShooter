@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class XPManager : MonoBehaviour {
+public class PlayerXPManager : MonoBehaviour {
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private int level = 1;
 
@@ -26,7 +26,7 @@ public class XPManager : MonoBehaviour {
 
     public void GainXP(float value) {
       currentXP += value;
-      if (currentXP > maximumXP) {
+      if (currentXP >= maximumXP) {
         LevelUp();
       }
       XPBar.transform.localScale = new Vector3(currentXP/maximumXP, 1f, 1f); 

@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float spawnPositionZ = 40f;
 
     void Start() {
-      InvokeRepeating("SpawnEnemy", 1f, 3f);
+      InvokeRepeating("SpawnEnemy", 1f, 1.5f);
     }
 
     void Update() {

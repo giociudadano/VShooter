@@ -9,12 +9,12 @@ public class HealthManager : MonoBehaviour {
   [SerializeField] private float maxHealth = 3f;
   private float currentHealth;
   [SerializeField] private float XPReward = 5f;
-  [SerializeField] private GameObject XPManager;
+  [SerializeField] private GameObject player;
 
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
-    XPManager = GameObject.Find("XPManager");
+    player = GameObject.Find("Player");
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -38,7 +38,7 @@ public class HealthManager : MonoBehaviour {
   }
 
   private void Kill() {
-    XPManager.GetComponent<XPManager>().GainXP(XPReward);
+    player.GetComponent<PlayerXPManager>().GainXP(XPReward);
     Destroy(gameObject);
   }
 }
