@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour {
+public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
   [SerializeField] private GameObject canvas;
   [SerializeField] private GameObject healthbar;
@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour {
   void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.CompareTag("AllyProjectile")){
       Destroy(collision.gameObject);
-      Damage(collision.gameObject, 1f);
+      Hurt(collision.gameObject, 1f);
     }
   }
 
@@ -28,7 +28,7 @@ public class HealthManager : MonoBehaviour {
         
   }
 
-  private void Damage(GameObject projectile, float value) {
+  private void Hurt(GameObject projectile, float value) {
     canvas.SetActive(true);
     currentHealth -= value;
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);

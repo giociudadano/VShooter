@@ -6,18 +6,28 @@ using TMPro;
 public class PlayerHealthManager : MonoBehaviour {
 
     [SerializeField] private TMP_Text healthText;
-    [SerializeField] public float maxHealth = 50;
     [SerializeField] public float currentHealth;
+    [SerializeField] public float maximumHealth = 50;
     [SerializeField] private GameObject healthBar;
 
-
     void Start() {
-      currentHealth = maxHealth;
-      healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
-      healthBar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
+      currentHealth = maximumHealth;
+      UpdateHealthbar();
     }
 
     void Update() {
         
     }
+
+    private void UpdateHealthbar() {
+      healthText.text = currentHealth.ToString() + " / " + maximumHealth.ToString();
+      healthBar.transform.localScale = new Vector3(currentHealth/maximumHealth, 1f, 1f);
+    }
+
+    public void Hurt(float damage) {
+      currentHealth -= damage;
+      if (currentHealth < 0) currentHealth = 0;
+      UpdateHealthbar();
+    }
+    
 }

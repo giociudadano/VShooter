@@ -2,26 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
-{
+public class EnemyManager : MonoBehaviour {
 
-    [SerializeField] private GameObject[] enemies;
-    [SerializeField] private float spawnPositionXRange = 8.5f;
-    [SerializeField] private float spawnPositionY = 1.25f;
+    private GameObject player;
 
-    [SerializeField] private float spawnPositionZ = 40f;
+    [SerializeField] private float collisionDamage = 3f;
+    private bool collisionDamageInvulnerability = false;
+    [SerializeField] private float collisionDamageInvulnerabilityTime = 1f;
 
     void Start() {
-      InvokeRepeating("SpawnEnemy", 1f, 1.5f);
+      player = GameObject.Find("Player");
+    }
+
+    void OnCollisionStay(Collision collision) {
+      if (collision.gameObject.CompareTag("Player")){
+        if (!collisionDamageInvulnerability){
+          collisionDamageInvulnerability = true;
+          Invoke("DisableCollisionDamageInvulnerability", collisionDamageInvulnerabilityTime);
+          player.GetComponent<PlayerHealthManager>().Hurt(collisionDamage);
+        }
+      }
+    }
+
+    private void DisableCollisionDamageInvulnerability() {
+      collisionDamageInvulnerability = false;
     }
 
     void Update() {
-        
-    }
-
-    void SpawnEnemy() {
-      float spawnPositionX = Random.Range(-spawnPositionXRange, spawnPositionXRange);
-      Vector3 spawnPosition = new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ);
-      Instantiate(enemies[0], spawnPosition, enemies[0].transform.rotation);
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7703857179187566495}
   - component: {fileID: 8659512099511098431}
   - component: {fileID: 9046524210767816791}
+  - component: {fileID: -3008362957915229775}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -167,8 +168,21 @@ MonoBehaviour:
   canvas: {fileID: 5537528055420916333}
   healthbar: {fileID: 5290077633409521238}
   maxHealth: 3
-  XPReward: 20
-  XPManager: {fileID: 0}
+  XPReward: 15
+  player: {fileID: 0}
+--- !u!114 &-3008362957915229775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227382784576204834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4360c2e752c8ae40aae3d6f5c2c6cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &4998296447184009602
 GameObject:
   m_ObjectHideFlags: 0
