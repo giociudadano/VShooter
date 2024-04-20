@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 
 public class PlayerXPManager : MonoBehaviour {
+
+    [SerializeField] private GameObject gameManager;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private int level = 1;
 
@@ -37,5 +39,6 @@ public class PlayerXPManager : MonoBehaviour {
       level += 1;
       levelText.text = "LV " + level.ToString();
       maximumXP = (growthFactor[0] * (level+1f)) + (growthFactor[1] * (level+1f));
+      gameManager.GetComponent<GameManager>().ShowUpgradeUI();
     }
 }
