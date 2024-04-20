@@ -4,11 +4,13 @@ using UnityEngine;
 using TMPro;
 
 public class PlayerHealthManager : MonoBehaviour {
-
+  
+    [SerializeField] private GameObject gameManager;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] public float currentHealth;
     [SerializeField] public float maximumHealth = 50;
     [SerializeField] private GameObject healthBar;
+
 
     void Start() {
       currentHealth = maximumHealth;
@@ -26,7 +28,10 @@ public class PlayerHealthManager : MonoBehaviour {
 
     public void Hurt(float damage) {
       currentHealth -= damage;
-      if (currentHealth < 0) currentHealth = 0;
+      if (currentHealth <= 0) {
+        currentHealth = 0;
+        gameManager.GetComponent<GameManager>().GameOver();
+      }
       UpdateHealthbar();
     }
     

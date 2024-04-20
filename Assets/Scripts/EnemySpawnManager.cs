@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private float spawnPositionXRange = 8.5f;
     [SerializeField] private float spawnPositionY = 1.25f;
@@ -16,7 +15,7 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     void Update() {
-        
+      
     }
 
     void SpawnEnemy() {

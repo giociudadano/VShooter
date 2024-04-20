@@ -13,11 +13,11 @@ public class PlayerXPManager : MonoBehaviour {
 
     [SerializeField] private float maximumXP;
 
-    [SerializeField] private float[] growthFactor = new float[2] {2.5f, 37.5f};
+    [SerializeField] private float[] growthFactor = new float[3] {2.5f, 37.5f, 40f};
 
     void Start() {
        levelText.text = "LV " + level.ToString();
-       maximumXP = (growthFactor[0] * (level+1f)) + (growthFactor[1] * (level+1f));
+       maximumXP = (growthFactor[0] * (level+1f)) + (growthFactor[1] * (level+1f) + growthFactor[2]);
     }
 
     void Update() {

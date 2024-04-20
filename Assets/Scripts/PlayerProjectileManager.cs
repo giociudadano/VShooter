@@ -14,7 +14,7 @@ public class PlayerProjectileManager : MonoBehaviour
   }
 
   void Update(){
-        
+
   }
 
   void FireProjectile(){

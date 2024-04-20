@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-  // Manages player input and movement.
-
   [SerializeField] private float speed = 12f;
   private Dictionary<string, float> bounds = new Dictionary<string, float> () {
     {"minimumX", -8.5f}, {"maximumX", 8.5f},
