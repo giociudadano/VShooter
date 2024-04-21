@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] private GameObject upgradeUI;
 
+    [SerializeField] private GameObject gameManager;
+
     void Start() {
         
     }
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour {
     }
     public void ShowUpgradeUI() {
       Time.timeScale = 0;
+      gameManager.GetComponent<UpgradeManager>().GetUpgradePool();
       upgradeUI.SetActive(true);
     }
     
