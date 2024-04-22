@@ -12,8 +12,6 @@ public class PlayerSkillManager : MonoBehaviour
     private bool skillTwoFire = false;
     [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
 
-    private float time;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,22 +40,22 @@ public class PlayerSkillManager : MonoBehaviour
     {
         skillOneFire = true;
         Instantiate(skillOne, transform.position + shootOffset, skillOne.transform.rotation);
-        Invoke("skillOneDelayActivation", skillOneCooldown);
+        Invoke("SkillOneDelayActivation", skillOneCooldown);
     }
 
     private void SkillTwo()
     {
         skillTwoFire = true;
         Instantiate(skillTwo, transform.position + shootOffset, skillTwo.transform.rotation);
-        Invoke("skillTwoDelayActivation", skillTwoCooldown);
+        Invoke("SkillTwoDelayActivation", skillTwoCooldown);
     }
 
-    private void skillOneDelayActivation()
+    private void SkillOneDelayActivation()
     {
         skillOneFire = false;
     }
 
-    private void skillTwoDelayActivation()
+    private void SkillTwoDelayActivation()
     {
         skillTwoFire = false;
     }
