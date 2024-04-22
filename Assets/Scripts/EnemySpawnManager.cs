@@ -19,8 +19,9 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     void SpawnEnemy() {
+      int randomEnemy = Random.Range(0, enemies.Length);
       float spawnPositionX = Random.Range(-spawnPositionXRange, spawnPositionXRange);
       Vector3 spawnPosition = new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ);
-      Instantiate(enemies[0], spawnPosition, enemies[0].transform.rotation);
+      Instantiate(enemies[randomEnemy], spawnPosition, enemies[randomEnemy].transform.rotation);
     }
 }

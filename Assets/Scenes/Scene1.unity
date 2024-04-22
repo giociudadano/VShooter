@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 24383490}
   - component: {fileID: 24383491}
   - component: {fileID: 24383492}
+  - component: {fileID: 24383493}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -462,6 +463,23 @@ MonoBehaviour:
   currentHealth: 0
   maximumHealth: 50
   healthBar: {fileID: 130397619}
+--- !u!114 &24383493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24383483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1838aaa1b8efafc439b57096c6cc2194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillOne: {fileID: 5693102480118733946, guid: 81302efd4c7a5c44fa25d5930dfc5a21, type: 3}
+  skillOneCooldown: 1
+  skillTwo: {fileID: 5693102480118733946, guid: 81302efd4c7a5c44fa25d5930dfc5a21, type: 3}
+  skillTwoCooldown: 3
+  shootOffset: {x: 0, y: 0, z: 1}
 --- !u!1 &65262243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 2227382784576204834, guid: de42ab51450b12744af53d9e8873c494, type: 3}
+  - {fileID: 6244245786016324294, guid: ed6b191164539764485c046b71f69414, type: 3}
   spawnPositionXRange: 8.5
   spawnPositionY: 1.25
   spawnPositionZ: 60

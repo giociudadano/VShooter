@@ -22,6 +22,10 @@ public class EnemyHealthManager : MonoBehaviour {
       Destroy(collision.gameObject);
       Hurt(collision.gameObject, 1f);
     }
+    if (collision.gameObject.CompareTag("AllyProjectile2")){
+      Destroy(collision.gameObject);
+      Hurt(collision.gameObject, 10f);
+    }
   }
 
   void Update() {
