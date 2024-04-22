@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     }
     public void ShowUpgradeUI() {
       Time.timeScale = 0;
-      gameManager.GetComponent<UpgradeManager>().GetUpgradePool();
+      gameManager.GetComponent<UpgradeManager>().DrawUpgrades();
       upgradeUI.SetActive(true);
     }
     

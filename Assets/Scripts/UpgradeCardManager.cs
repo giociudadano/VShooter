@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,6 +20,8 @@ public class UpgradeCardManager : MonoBehaviour, IPointerEnterHandler, IPointerE
     }
     
     public void OnPointerDown(PointerEventData eventData) {
+      GameObject name = this.transform.Find("Name").gameObject;
+      gameManager.GetComponent<UpgradeManager>().GetUpgrade(name.GetComponent<TMP_Text>().text);
       gameManager.GetComponent<GameManager>().HideUpgradeUI();
     }
      
