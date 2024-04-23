@@ -9,8 +9,6 @@ public class UpgradeCardManager : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private GameObject gameManager;
     [SerializeField] private GameObject card;
 
-    private float lastTimeClicked;
-
     public void OnPointerEnter(PointerEventData eventData) {
         card.GetComponent<UnityEngine.UI.Outline>().enabled = true;
     }
@@ -22,7 +20,7 @@ public class UpgradeCardManager : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerDown(PointerEventData eventData) {
       GameObject name = this.transform.Find("Name").gameObject;
       gameManager.GetComponent<UpgradeManager>().GetUpgrade(name.GetComponent<TMP_Text>().text);
-      gameManager.GetComponent<GameManager>().HideUpgradeUI();
+      gameManager.GetComponent<GameManager>().ShowUpgradeUI(false);
     }
      
 }

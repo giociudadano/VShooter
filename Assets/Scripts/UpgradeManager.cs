@@ -59,9 +59,9 @@ public class UpgradeManager : MonoBehaviour {
 		GameObject upgradeNameUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Name").gameObject;
 		upgradeNameUI.GetComponent<TMP_Text>().text = name;
 		GameObject upgradeTitleUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Title").gameObject;
-		upgradeTitleUI.GetComponent<TMP_Text>().text = $"{upgrade["title"]} <color=#FFA>LV {GetUpgradeLevel(name)}</color>";
+		upgradeTitleUI.GetComponent<TMP_Text>().text = $"{upgrade["title"]} <color=#FFA>LV {GetCurrentUpgradeLevel(name)+1}</color>";
 		GameObject upgradeDescriptionUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Description").gameObject;
-		upgradeDescriptionUI.GetComponent<TMP_Text>().text = ParseAbilityDescription(name, $"{upgrade["description"]}", upgrade["parameters"]);
+		upgradeDescriptionUI.GetComponent<TMP_Text>().text = ParseAbilityDescription(name, $"{upgrade["description"]}", upgrade["parameters"], 1);
 		GameObject upgradeTypeUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Type").gameObject;
 		upgradeTypeUI.GetComponent<TMP_Text>().text = ParseAbilityType(upgrade["type"]);
 		if (upgrade.ContainsKey("icon")){
@@ -70,7 +70,7 @@ public class UpgradeManager : MonoBehaviour {
 		}
 	}
 
-	private string ParseAbilityType(string type) {
+	public string ParseAbilityType(string type) {
 		switch (type) {
 			case "Character Passive":
 				return "<color=#FFA>" + type + "</color>";
@@ -79,10 +79,13 @@ public class UpgradeManager : MonoBehaviour {
 		}
 	}
 
-	private string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters) {
+	public string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters) {
+	  return ParseAbilityDescription(name, description, parameters, 0);
+	}
+	public string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters, int offset) {
 	  foreach (var parameter in parameters) {
 			string query = "{" + parameter.Key + "}";
-			string result = $"{parameter.Value["level"][$"{GetUpgradeLevel(name)}"]}";
+			string result = $"{parameter.Value["level"][$"{GetCurrentUpgradeLevel(name)+offset}"]}";
 			if (parameter.Value.ContainsKey("format")) {
 				result = String.Format("{" + parameter.Value["format"] + "}", float.Parse(result));
 			}
@@ -96,11 +99,11 @@ public class UpgradeManager : MonoBehaviour {
 	  }
 	  return description;
 	}
-	private int GetUpgradeLevel(String name) {
+	public int GetCurrentUpgradeLevel(String name) {
 		if (upgradesActive.ContainsKey(name)) {
-			return upgradesActive[name]["level"] + 1;
+			return upgradesActive[name]["level"];
 		}
-		return 1;
+		return 0;
 	}
 
 	public void GetUpgrade(String name) {
@@ -119,7 +122,8 @@ public class UpgradeManager : MonoBehaviour {
       DestroyImmediate(child.gameObject);
     }
 		foreach (string name in upgradesActive.Keys) {
-			GameObject upgradeItem = Instantiate(upgradesListItem, upgradesListUI.transform);	
+			GameObject upgradeItem = Instantiate(upgradesListItem, upgradesListUI.transform);
+			upgradeItem.name = name;
 			GameObject upgradeItemImage = upgradeItem.transform.Find("Image").gameObject;
 			upgradeItemImage.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Abilities/{upgrades[name]["icon"]}");
 			GameObject upgradeItemLevel = upgradeItem.transform.Find("Level").gameObject;

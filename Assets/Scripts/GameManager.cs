@@ -4,34 +4,57 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public bool isGameOver = false;
+  public bool isGameOver = false;
 
-    [SerializeField] public GameObject gameOverUI;
-    [SerializeField] private GameObject upgradeUI;
+  [SerializeField] public GameObject gameOverUI;
+  [SerializeField] private GameObject upgradeUI;
+  [SerializeField] private GameObject gameManager;
+	[SerializeField] private GameObject cheatsActivatedDisplayUI;
+  [SerializeField] private bool isCheats = false;
+	[SerializeField] private GameObject player;
 
-    [SerializeField] private GameObject gameManager;
-
-    void Start() {
+  void Start() {
         
-    }
+  }
 
-    void Update() {
-        
-    }
+  void Update() {
+    if (Input.GetKeyDown(KeyCode.C) && !isGameOver) {
+			ActivateCheats(!isCheats);
+		}
+		if (isCheats && !isGameOver){
+			GetKeyDownCheats();
+		}
+  }
 
-    public void GameOver() {
-      isGameOver = true;
-      Time.timeScale = 0;
-      gameOverUI.SetActive(true);
-    }
-    public void ShowUpgradeUI() {
-      Time.timeScale = 0;
-      gameManager.GetComponent<UpgradeManager>().DrawUpgrades();
-      upgradeUI.SetActive(true);
-    }
-    
-    public void HideUpgradeUI() {
-      Time.timeScale = 1;
-      upgradeUI.SetActive(false);
-    }
+	void GetKeyDownCheats() {
+		if (Input.GetKeyDown(KeyCode.L)) {
+			player.GetComponent<PlayerXPManager>().LevelUp();
+		}
+	}
+
+  public void GameOver() {
+    isGameOver = true;
+    Time.timeScale = 0;
+    gameOverUI.SetActive(true);
+  }
+  public void ShowUpgradeUI(bool value) {
+		if (value) {
+			Time.timeScale = 0;
+			gameManager.GetComponent<UpgradeManager>().DrawUpgrades();
+			upgradeUI.SetActive(true);
+		} else {
+			Time.timeScale = 1;
+    	upgradeUI.SetActive(false);
+		}
+  }
+
+	public void ActivateCheats(bool value) {
+		if (value) {
+			cheatsActivatedDisplayUI.SetActive(true);
+			isCheats = true;
+		} else {
+			cheatsActivatedDisplayUI.SetActive(false);
+			isCheats = false;
+		}
+	}
 }

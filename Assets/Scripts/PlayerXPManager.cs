@@ -39,6 +39,6 @@ public class PlayerXPManager : MonoBehaviour {
       level += 1;
       levelText.text = "LV " + level.ToString();
       maximumXP = (growthFactor[0] * (level+1f)) + (growthFactor[1] * (level+1f));
-      gameManager.GetComponent<GameManager>().ShowUpgradeUI();
+      gameManager.GetComponent<GameManager>().ShowUpgradeUI(true);
     }
 }
