@@ -309,7 +309,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24383483}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3045,6 +3045,8 @@ MonoBehaviour:
   spawnPositionXRange: 8.5
   spawnPositionY: 1.25
   spawnPositionZ: 60
+  spawnInterval: 1.5
+  firstSpawnDelay: 1
 --- !u!114 &1005037246
 MonoBehaviour:
   m_ObjectHideFlags: 0

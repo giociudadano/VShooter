@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour {
 
     private GameObject player;
     [SerializeField] private float collisionDamage = 3f;
-    [SerializeField] private float collisionDamageInvulnerabilityTime = 1f;
+    //[SerializeField] private float collisionDamageInvulnerabilityTime = 1f;
 
     void Start() {
       //player = GameObject.Find("Player");
