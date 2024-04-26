@@ -1,22 +1,45 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementFollow : MonoBehaviour {
-  // Follows towards the target object.
-  
-  [SerializeField] private float speed = 8f;
-  [SerializeField] public GameObject player;
+public class MovementFollow : MonoBehaviour
+{
+    [SerializeField] private float speed = 20f;
+    [SerializeField] public GameObject player;
 
-  void Start() {
-    player = GameObject.Find("Player");
-  }
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(FollowPlayer());
+    }
 
-  void Update() {
-    MoveObject();
-  }
+    //  Ren's notes: Refactored into coroutine to get more performance, since updating dozens of objects per frame with Update() doesn't seem good
+    //  This also has the side-effect of emulating how the zombies move in the ads --- gradually in a straight line then swerving towards the player near the end
+    private IEnumerator FollowPlayer()
+    {
+        while (true)
+        {
+            Vector3 targetPosition = player.transform.position;
+            float distance = Vector3.Distance(transform.position, targetPosition);
+            float duration = distance / speed;
 
-  void MoveObject() {
-    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-  }
+            float startTime = Time.time;
+            Vector3 startPosition = transform.position;
+
+            while (Time.time - startTime < duration)
+            {
+                //  Calculate the current position based on time and speed
+                float journeyLength = Vector3.Distance(startPosition, targetPosition);
+                float coveredDistance = (Time.time - startTime) * speed;
+                float fractionOfJourney = coveredDistance / journeyLength;
+                transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfJourney);
+
+                yield return null;
+            }
+
+            transform.position = targetPosition;
+
+            //  Wait for the next frame before recalculating the position
+            yield return new WaitForEndOfFrame();
+        }
+    }
 }

@@ -5,27 +5,19 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     private GameObject player;
-
     [SerializeField] private float collisionDamage = 3f;
-    private bool collisionDamageInvulnerability = false;
     [SerializeField] private float collisionDamageInvulnerabilityTime = 1f;
 
     void Start() {
-      player = GameObject.Find("Player");
+      //player = GameObject.Find("Player");
+      player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnCollisionStay(Collision collision) {
       if (collision.gameObject.CompareTag("Player")){
-        if (!collisionDamageInvulnerability){
-          collisionDamageInvulnerability = true;
-          Invoke("DisableCollisionDamageInvulnerability", collisionDamageInvulnerabilityTime);
           player.GetComponent<PlayerHealthManager>().Hurt(collisionDamage);
-        }
+          Destroy(gameObject);
       }
-    }
-
-    private void DisableCollisionDamageInvulnerability() {
-      collisionDamageInvulnerability = false;
     }
 
     void Update() {
