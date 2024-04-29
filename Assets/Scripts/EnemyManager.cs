@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour {
     //[SerializeField] private float collisionDamageInvulnerabilityTime = 1f;
 
     void Start() {
-      player = GameObject.Find("Player");
+      player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnCollisionStay(Collision collision) {
