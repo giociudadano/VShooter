@@ -14,8 +14,7 @@ public class EnemyHealthManager : MonoBehaviour {
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
-    //player = GameObject.Find("Player");
-    player = GameObject.FindGameObjectWithTag("Player");
+    player = GameObject.Find("Player");
   }
 
   void OnCollisionEnter(Collision collision) {
