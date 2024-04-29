@@ -6,8 +6,8 @@ public class PlayerSkillManager : MonoBehaviour
 {
     public GameObject skillOne;
     public GameObject skillTwo;
-    private bool fire1On = true;
-    private bool fire2On = true;
+    private bool fire1Pressed = false;
+    private bool fire2Pressed = false;
     private float skillOneCooldown = 7f;
     private float skillOneLastTime;
     private float skillTwoCooldown = 15f;
@@ -23,36 +23,36 @@ public class PlayerSkillManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && fire1On)
+        if(Input.GetButtonDown("Fire1") && !fire1Pressed)
         {  
             DoSkillOne();
             skillOneLastTime = Time.time;
         }
-        if(Input.GetButtonDown("Fire2") && fire2On)
+        if(Input.GetButtonDown("Fire2") && !fire2Pressed)
         {
             DoSkillTwo();
             skillTwoLastTime = Time.time;
         }
         if(Time.time > skillOneCooldown + skillOneLastTime)
         {
-            fire1On = true;
+            fire1Pressed = false;
         }
         if(Time.time > skillTwoCooldown + skillTwoLastTime)
         {
-            fire2On = true;
+            fire2Pressed = false;
         }
     }
 
     private void DoSkillOne()
     {
-        fire1On = false;
+        fire1Pressed = true;
         Debug.Log("Skill One");
         Instantiate(skillOne,skillOne.transform.position + shootOffset,skillOne.transform.rotation);
     }
 
     private void DoSkillTwo()
     {
-        fire2On = false;
+        fire2Pressed = true;
         Debug.Log("Skill Two");
         Instantiate(skillTwo,skillTwo.transform.position + shootOffset,skillTwo.transform.rotation);
     }
