@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
+
+  [SerializeField] private GameObject gameManager;
   [SerializeField] private GameObject canvas;
   [SerializeField] private GameObject healthbar;
   [SerializeField] private float maxHealth = 3f;
@@ -15,6 +17,7 @@ public class EnemyHealthManager : MonoBehaviour {
     currentHealth = maxHealth;
     canvas.SetActive(false);
     player = GameObject.FindGameObjectWithTag("Player");
+    gameManager = GameObject.Find("GameManager");
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -38,6 +41,7 @@ public class EnemyHealthManager : MonoBehaviour {
   }
 
   private void Kill() {
+    gameManager.GetComponent<UpgradeManager>().ApplyPassive("MORICALLIOPE_SOULHARVESTER");
     player.GetComponent<PlayerXPManager>().GainXP(XPReward);
     Destroy(gameObject);
   }

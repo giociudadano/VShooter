@@ -22,7 +22,7 @@ public class PlayerHealthManager : MonoBehaviour {
     }
 
     private void UpdateHealthbar() {
-      healthText.text = currentHealth.ToString() + " / " + maximumHealth.ToString();
+      healthText.text = Mathf.FloorToInt(currentHealth).ToString() + " / " + maximumHealth.ToString();
       healthBar.transform.localScale = new Vector3(currentHealth/maximumHealth, 1f, 1f);
     }
 
@@ -35,4 +35,12 @@ public class PlayerHealthManager : MonoBehaviour {
       UpdateHealthbar();
     }
     
+    public void Heal(float healAmount) {
+      currentHealth += healAmount;
+      if (currentHealth > maximumHealth) {
+        currentHealth = maximumHealth;
+      }
+      UpdateHealthbar();
+    }
+
 }
