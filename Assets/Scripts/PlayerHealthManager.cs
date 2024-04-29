@@ -22,7 +22,7 @@ public class PlayerHealthManager : MonoBehaviour {
     }
 
     private void UpdateHealthbar() {
-      healthText.text = Mathf.FloorToInt(currentHealth).ToString() + " / " + maximumHealth.ToString();
+      healthText.text = Mathf.CeilToInt(currentHealth).ToString() + " / " + maximumHealth.ToString();
       healthBar.transform.localScale = new Vector3(currentHealth/maximumHealth, 1f, 1f);
     }
 

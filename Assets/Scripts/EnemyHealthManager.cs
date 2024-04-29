@@ -16,7 +16,7 @@ public class EnemyHealthManager : MonoBehaviour {
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
-    player = GameObject.FindGameObjectWithTag("Player");
+    player = GameObject.Find("Player");
     gameManager = GameObject.Find("GameManager");
   }
 

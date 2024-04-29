@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using System;
-using System.Security.Cryptography;
-using System.Drawing;
 
 public class UpgradeManager : MonoBehaviour {
 	[SerializeField] private GameObject upgradeUI;
@@ -38,6 +36,34 @@ public class UpgradeManager : MonoBehaviour {
 				}}
 			}}
 		}},
+		{"MORICALLIOPE_DEATH", new Dictionary<string, dynamic>() {
+			{"title", "Death"},
+			{"description", "Defeating an enemy has a {EXPLOSION_CHANCE} chance to create an explosion, dealing {EXPLOSION_DAMAGE} damage. Non-boss enemies caught in the explosion have a {INSTANTKILL_CHANCE} chance of immediately dying."},
+			{"type", "Character Passive"},
+			{"icon", "Calliope_Death"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"EXPLOSION_CHANCE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.15f},{"2", 0.19f},{"3", 0.22f},{"4", 0.26f},{"5", 0.3f}
+					}}
+				}},
+				{"EXPLOSION_DAMAGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 2f},{"2", 2.5f},{"3", 3f},{"4", 3.5f},{"5", 4f}
+					}}
+				}},
+				{"INSTANTKILL_CHANCE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.05f},{"2", 0.65f},{"3", 0.75f},{"4", 0.85f},{"5", 0.95f}
+					}}
+				}}
+			}}
+		}},
 	};
 
 	public Dictionary<string, Dictionary<string, dynamic>> upgradesActive = new Dictionary<string, Dictionary<string, dynamic>>();
@@ -51,7 +77,7 @@ public class UpgradeManager : MonoBehaviour {
   }
 
 	public void DrawUpgrades() {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			int upgradeIndex = UnityEngine.Random.Range(0, upgrades.Count);
 			RenderUpgrade(i+1, upgrades.ElementAt(upgradeIndex).Key, upgrades.ElementAt(upgradeIndex).Value);
 		}      
@@ -123,9 +149,10 @@ public class UpgradeManager : MonoBehaviour {
 		foreach (Transform child in upgradesListUI.transform) {
       		DestroyImmediate(child.gameObject);
     	}
-		foreach (string name in upgradesActive.Keys) {
+		foreach (var (name, index) in upgradesActive.Keys.Select((value, i) => (value, i))) {
 			GameObject upgradeItem = Instantiate(upgradesListItem, upgradesListUI.transform);
 			upgradeItem.name = name;
+			upgradeItem.transform.localPosition = new Vector3(index * 25, 0, 0);
 			GameObject upgradeItemImage = upgradeItem.transform.Find("Image").gameObject;
 			upgradeItemImage.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Abilities/{upgrades[name]["icon"]}");
 			GameObject upgradeItemLevel = upgradeItem.transform.Find("Level").gameObject;
