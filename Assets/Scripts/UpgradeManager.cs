@@ -12,6 +12,8 @@ public class UpgradeManager : MonoBehaviour {
 
 	[SerializeField] private GameObject upgradesListUI;
 	[SerializeField] private GameObject upgradesListItem;
+
+	[SerializeField] private GameObject upgradeScripts;
     
   public Dictionary<string, Dictionary<string, dynamic>> upgrades = new Dictionary<string, Dictionary<string, dynamic>>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
@@ -119,8 +121,8 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void RenderUpgradesListUI() {
 		foreach (Transform child in upgradesListUI.transform) {
-      DestroyImmediate(child.gameObject);
-    }
+      		DestroyImmediate(child.gameObject);
+    	}
 		foreach (string name in upgradesActive.Keys) {
 			GameObject upgradeItem = Instantiate(upgradesListItem, upgradesListUI.transform);
 			upgradeItem.name = name;
@@ -128,6 +130,20 @@ public class UpgradeManager : MonoBehaviour {
 			upgradeItemImage.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Abilities/{upgrades[name]["icon"]}");
 			GameObject upgradeItemLevel = upgradeItem.transform.Find("Level").gameObject;
 			upgradeItemLevel.GetComponent<TMP_Text>().text = upgradesActive[name]["level"].ToString();
+		}
+	}
+
+	public void ApplyPassive(string passiveName) {
+		if (!upgradesActive.ContainsKey(passiveName)){
+			return;
+		}
+		string level = upgradesActive[passiveName]["level"].ToString();
+		switch (passiveName) {
+			case "MORICALLIOPE_SOULHARVESTER":
+				float chance = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_CHANCE"]["level"][level];
+				float amount = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_AMOUNT"]["level"][level];
+				upgradeScripts.GetComponent<MoriCalliope_SoulHarvester>().ApplyPassive(chance, amount);
+				break;
 		}
 	}
 
