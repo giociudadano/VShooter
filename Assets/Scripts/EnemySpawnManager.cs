@@ -26,9 +26,10 @@ public class EnemySpawnManager : MonoBehaviour
     private IEnumerator SpawnEnemy() {
       yield return new WaitForSeconds(firstSpawnDelay);
       while (true) {
+        int enemyType = Random.Range(0, enemies.Length);
         float spawnPositionX = Random.Range(-spawnPositionXRange, spawnPositionXRange);
         Vector3 spawnPosition = new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ);
-        Instantiate(enemies[0], spawnPosition, enemies[0].transform.rotation);
+        Instantiate(enemies[enemyType], spawnPosition, enemies[enemyType].transform.rotation);
         yield return new WaitForSeconds(spawnInterval);
       }
     }

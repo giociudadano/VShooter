@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerSkillManager : MonoBehaviour
 {
-    public GameObject skillOne;
-    public GameObject skillTwo;
+    [Header ("Skill Set")]
+    public GameObject skillOneObject;
+    public GameObject skillTwoObject;
     private bool fire1Pressed = false;
     private bool fire2Pressed = false;
     private float skillOneCooldown = 7f;
     private float skillOneLastTime;
     private float skillTwoCooldown = 15f;
     private float skillTwoLastTime;
-    [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
+    private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +48,13 @@ public class PlayerSkillManager : MonoBehaviour
     {
         fire1Pressed = true;
         Debug.Log("Skill One");
-        Instantiate(skillOne,skillOne.transform.position + shootOffset,skillOne.transform.rotation);
+        Instantiate(skillOneObject,skillOneObject.transform.position + shootOffset,skillOneObject.transform.rotation);
     }
 
     private void DoSkillTwo()
     {
         fire2Pressed = true;
         Debug.Log("Skill Two");
-        Instantiate(skillTwo,skillTwo.transform.position + shootOffset,skillTwo.transform.rotation);
+        Instantiate(skillTwoObject,skillTwoObject.transform.position + shootOffset,skillTwoObject.transform.rotation);
     }
 }
