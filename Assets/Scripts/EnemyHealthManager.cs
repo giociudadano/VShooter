@@ -18,16 +18,16 @@ public class EnemyHealthManager : MonoBehaviour {
   private GameObject player;
 
   [Header("Managers")]
-  private UpgradeManager um;
-  private PlayerXPManager pxp;
-  private GameObject gm;
+  private UpgradeManager upgradeManager;
+  private PlayerXPManager playerXPManager;
+  private GameObject gameManager;
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
     player = GameObject.FindGameObjectWithTag("Player");
-    gm = GameObject.FindGameObjectWithTag("GameManager");
-    um = gm.GetComponent<UpgradeManager>();
-    pxp = player.GetComponent<PlayerXPManager>();
+    gameManager = GameObject.FindGameObjectWithTag("GameManager");
+    upgradeManager = gameManager.GetComponent<UpgradeManager>();
+    playerXPManager = player.GetComponent<PlayerXPManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -75,9 +75,9 @@ public class EnemyHealthManager : MonoBehaviour {
           {"source", gameObject}
         }}
       };
-      um.ApplyPassive(onKillPassives);
+      upgradeManager.ApplyPassive(onKillPassives);
     }
-    pxp.GainXP(XPReward);
+    playerXPManager.GainXP(XPReward);
     Destroy(gameObject);
   }
 }

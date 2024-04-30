@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - AllyProjectile
+  - GameManager
   layers:
   - Default
   - TransparentFX
