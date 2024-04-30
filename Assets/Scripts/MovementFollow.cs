@@ -4,7 +4,7 @@ using UnityEngine;
 public class MovementFollow : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
-    [SerializeField] public GameObject player;
+    private GameObject player;
 
     private void Start()
     {

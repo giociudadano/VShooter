@@ -8,14 +8,19 @@ public class PlayerProjectileManager : MonoBehaviour
   public GameObject projectile;
 
   [SerializeField] public float projectileDamage = 20f;
-  [SerializeField] private float fireRate = 0.35f;
+  [SerializeField] private float fireRate = 0.15f;
   [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
+
+  //  Ren's notes: Experimenting with bullet-based powerups here
+  //[SerializeField] private int bulletCount = 3;
+
   private bool isFiring = false;
 
   void Start(){
     isFiring = true;
     //InvokeRepeating("FireProjectile", 0f, fireRate);
     StartCoroutine(FireProjectile());
+  
   }
 
   void Update(){
@@ -25,7 +30,8 @@ public class PlayerProjectileManager : MonoBehaviour
   //  TODO: Calibrate fireRate and enemy speed so it feels fair
   private IEnumerator FireProjectile(){
     while (isFiring) {
-      Instantiate(projectile, transform.position + shootOffset, transform.rotation);
+        Instantiate(projectile, transform.position + shootOffset, transform.rotation);
+
       yield return new WaitForSeconds(fireRate);
     }
   }

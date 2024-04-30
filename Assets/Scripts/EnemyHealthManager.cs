@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
 
-  [SerializeField] private GameObject gameManager;
+  
   [SerializeField] private GameObject canvas;
   [SerializeField] private GameObject healthbar;
 
@@ -15,13 +15,19 @@ public class EnemyHealthManager : MonoBehaviour {
   [SerializeField] private float maxHealth = 3f;
   private float currentHealth;
   [SerializeField] private float XPReward = 5f;
-  [SerializeField] private GameObject player;
+  private GameObject player;
 
+  [Header("Managers")]
+  private UpgradeManager um;
+  private PlayerXPManager pxp;
+  private GameObject gm;
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
-    player = GameObject.Find("Player");
-    gameManager = GameObject.Find("GameManager");
+    player = GameObject.FindGameObjectWithTag("Player");
+    gm = GameObject.FindGameObjectWithTag("GameManager");
+    um = gm.GetComponent<UpgradeManager>();
+    pxp = player.GetComponent<PlayerXPManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -69,9 +75,9 @@ public class EnemyHealthManager : MonoBehaviour {
           {"source", gameObject}
         }}
       };
-      gameManager.GetComponent<UpgradeManager>().ApplyPassive(onKillPassives);
+      um.ApplyPassive(onKillPassives);
     }
-    player.GetComponent<PlayerXPManager>().GainXP(XPReward);
+    pxp.GainXP(XPReward);
     Destroy(gameObject);
   }
 }
