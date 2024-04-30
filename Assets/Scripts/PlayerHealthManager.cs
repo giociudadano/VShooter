@@ -7,6 +7,7 @@ public class PlayerHealthManager : MonoBehaviour {
   
     [SerializeField] private GameObject gameManager;
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private GameObject healText;
     [SerializeField] public float currentHealth;
     [SerializeField] public float maximumHealth = 50;
     [SerializeField] private GameObject healthBar;
@@ -40,6 +41,8 @@ public class PlayerHealthManager : MonoBehaviour {
       if (currentHealth > maximumHealth) {
         currentHealth = maximumHealth;
       }
+      GameObject healPopup = Instantiate(healText, new Vector3(gameObject.transform.position.x + 0.2f, 1.5f, gameObject.transform.position.z), Quaternion.identity);
+      healPopup.transform.Find("HealText").GetComponent<TMP_Text>().text = healAmount.ToString("0");
       UpdateHealthbar();
     }
 

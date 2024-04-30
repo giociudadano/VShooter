@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4998793737229208630}
   - component: {fileID: 5686107003631119699}
   m_Layer: 0
-  m_Name: DamageText
+  m_Name: HealText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xOffset: 0.75
-  yOffset: 0.75
   textDuration: 1.25
 --- !u!1 &5556795862895186459
 GameObject:
@@ -130,7 +129,7 @@ GameObject:
   - component: {fileID: 6248962956917865717}
   - component: {fileID: 8193905261988380638}
   m_Layer: 5
-  m_Name: DamageText
+  m_Name: HealText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,8 +191,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290183019
+  m_fontColor: {r: 0.42075467, g: 1, b: 0.7129726, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -210,8 +209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.65
-  m_fontSizeBase: 0.65
+  m_fontSize: 0.45
+  m_fontSizeBase: 0.45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
