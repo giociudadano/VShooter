@@ -46,20 +46,20 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.2f},{"2", 0.25f},{"3", 0.25f},{"4", 0.3f},{"5", 0.3f}
+						{"1", 0.15f},{"2", 0.2f},{"3", 0.25f}
 					}}
 				}},
 				{"EXPLOSION_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 3f},{"2", 3f},{"3", 4f},{"4", 4f},{"5", 5f}
+						{"1", 60f},{"2", 80f},{"3", 100f}
 					}}
 				}},
 				{"INSTANTKILL_CHANCE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.08f},{"2", 0.09f},{"3", 0.1f},{"4", 0.11f},{"5", 0.12f}
+						{"1", 0.08f},{"2", 0.1f},{"3", 0.12f}
 					}}
 				}}
 			}}

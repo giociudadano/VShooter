@@ -6,6 +6,8 @@ public class PlayerProjectileManager : MonoBehaviour
 {
   //  Should probably fetch this dynamically when we have varied characters
   public GameObject projectile;
+
+  [SerializeField] public float projectileDamage = 20f;
   [SerializeField] private float fireRate = 0.35f;
   [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
   private bool isFiring = false;

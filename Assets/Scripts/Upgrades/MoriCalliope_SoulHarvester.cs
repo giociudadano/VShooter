@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoriCalliope_SoulHarvester : MonoBehaviour {
+	/*
+		[CHARACTER PASSIVE]
+		Character: Mori Calliope
+		Name: Soul Harvester
+
+		Defeating an enemy has an X% chance to restore X HP.
+	*/
 
 	[SerializeField] private GameObject player;
 

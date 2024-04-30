@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8736640144481901265}
   - component: {fileID: 5915519232646463567}
   - component: {fileID: 5875093690740892126}
+  - component: {fileID: 4367755258790465187}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: AllyProjectile
+  m_Name: BasicProjectile
+  m_TagString: BasicProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,3 +150,16 @@ MonoBehaviour:
   speed: 12
   viewLimitDown: -5
   viewLimitUp: 50
+--- !u!114 &4367755258790465187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019113029584780768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b86d601aa521e479362aac0af08dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileDamage: 20
