@@ -36,11 +36,11 @@ public class UpgradeManager : MonoBehaviour {
 				}}
 			}}
 		}},
-		{"MORICALLIOPE_DEATH", new Dictionary<string, dynamic>() {
-			{"title", "Death"},
-			{"description", "Defeating an enemy has a {EXPLOSION_CHANCE} chance to create an explosion, dealing {EXPLOSION_DAMAGE} damage. Non-boss enemies caught in the explosion have a {INSTANTKILL_CHANCE} chance of immediately dying."},
+		{"MORICALLIOPE_TASTEOFDEATH", new Dictionary<string, dynamic>() {
+			{"title", "Taste of Death"},
+			{"description", "Defeating an enemy has a {EXPLOSION_CHANCE} chance to create an explosion, dealing {EXPLOSION_DAMAGE} damage. Non-boss enemies caught in the explosion have a {INSTANTKILL_CHANCE} chance of being immediately executed."},
 			{"type", "Character Passive"},
-			{"icon", "Calliope_Death"},
+			{"icon", "Calliope_TasteOfDeath"},
 			{"parameters", new Dictionary<string, dynamic> () {
 				{"EXPLOSION_CHANCE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
@@ -62,6 +62,31 @@ public class UpgradeManager : MonoBehaviour {
 						{"1", 0.08f},{"2", 0.1f},{"3", 0.12f}
 					}}
 				}}
+			}}
+		}},
+		{"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
+			{"title", "End of a Life"},
+			{"description", "Attacks apply a {EFFECT_BURN} that deals {BURN_DAMAGE} damage over 2 seconds. While under the effects of {EFFECT_BURN}, targets that fall below {EXECUTE_THRESHOLD} of their maximum health are immediately executed."},
+			{"type", "Character Passive"},
+			{"icon", "Calliope_EndOfALife"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"EFFECT_BURN", new Dictionary<string, dynamic> () {
+					{"color", "#FDA"},
+					{"text", "Burn"}
+				}},
+				{"BURN_DAMAGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 20f},{"2", 30f},{"3", 40f}
+					}}
+				}},
+				{"EXECUTE_THRESHOLD", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0.0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.05f},{"2", 0.075f},{"3", 0.010f}
+					}}
+				}},
 			}}
 		}},
 	};
@@ -113,15 +138,25 @@ public class UpgradeManager : MonoBehaviour {
 	public string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters, int offset) {
 	  foreach (var parameter in parameters) {
 			string query = "{" + parameter.Key + "}";
-			string result = $"{parameter.Value["level"][$"{GetCurrentUpgradeLevel(name)+offset}"]}";
-			if (parameter.Value.ContainsKey("format")) {
-				result = String.Format("{" + parameter.Value["format"] + "}", float.Parse(result));
-			}
-			if (parameter.Value.ContainsKey("suffix")) {
-				result += parameter.Value["suffix"];
-			}
-			if (parameter.Value.ContainsKey("color")) {
-				result = $"<color={parameter.Value["color"]}>" + result + "</color>";
+			string result;
+			// For text parameters
+			if (parameter.Value.ContainsKey("text")) {
+				result = parameter.Value["text"];
+				if (parameter.Value.ContainsKey("color")) {
+					result = $"<color={parameter.Value["color"]}>" + result + "</color>";
+				}
+			} else {
+			// For variable parameters
+				result = $"{parameter.Value["level"][$"{GetCurrentUpgradeLevel(name)+offset}"]}";
+				if (parameter.Value.ContainsKey("format")) {
+					result = String.Format("{" + parameter.Value["format"] + "}", float.Parse(result));
+				}
+				if (parameter.Value.ContainsKey("suffix")) {
+					result += parameter.Value["suffix"];
+				}
+				if (parameter.Value.ContainsKey("color")) {
+					result = $"<color={parameter.Value["color"]}>" + result + "</color>";
+				}
 			}
 			description = description.Replace(query, result);
 	  }
@@ -177,11 +212,16 @@ public class UpgradeManager : MonoBehaviour {
 				float amount = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_AMOUNT"]["level"][level];
 				upgradeScripts.GetComponent<MoriCalliope_SoulHarvester>().ApplyPassive(chance, amount);
 				break;
-			case "MORICALLIOPE_DEATH":
-				float explosionChance = upgrades["MORICALLIOPE_DEATH"]["parameters"]["EXPLOSION_CHANCE"]["level"][level];
-				float explosionDamage = upgrades["MORICALLIOPE_DEATH"]["parameters"]["EXPLOSION_DAMAGE"]["level"][level];
-				float instantkillChance = upgrades["MORICALLIOPE_DEATH"]["parameters"]["INSTANTKILL_CHANCE"]["level"][level];
-				upgradeScripts.GetComponent<MoriCalliope_Death>().ApplyPassive(parameters["source"], explosionChance, explosionDamage, instantkillChance);
+			case "MORICALLIOPE_TASTEOFDEATH":
+				float explosionChance = upgrades["MORICALLIOPE_TASTEOFDEATH"]["parameters"]["EXPLOSION_CHANCE"]["level"][level];
+				float explosionDamage = upgrades["MORICALLIOPE_TASTEOFDEATH"]["parameters"]["EXPLOSION_DAMAGE"]["level"][level];
+				float instantkillChance = upgrades["MORICALLIOPE_TASTEOFDEATH"]["parameters"]["INSTANTKILL_CHANCE"]["level"][level];
+				upgradeScripts.GetComponent<MoriCalliope_TasteOfDeath>().ApplyPassive(parameters["source"], explosionChance, explosionDamage, instantkillChance);
+				break;
+			case "MORICALLIOPE_ENDOFALIFE":
+				float burnDamage = upgrades["MORICALLIOPE_ENDOFALIFE"]["parameters"]["BURN_DAMAGE"]["level"][level];
+				float executeThreshold = upgrades["MORICALLIOPE_ENDOFALIFE"]["parameters"]["EXECUTE_THRESHOLD"]["level"][level];
+				upgradeScripts.GetComponent<MoriCalliope_EndOfALife>().ApplyPassive(parameters["source"], burnDamage, executeThreshold);
 				break;
 		}
 	}

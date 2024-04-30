@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoriCalliope_Death : MonoBehaviour {
+public class MoriCalliope_TasteOfDeath : MonoBehaviour {
 	/*
 		[CHARACTER PASSIVE]
 		Character: Mori Calliope
-		Name: Death
+		Name: Taste of Death
 
 		Defeating an enemy has an X% chance to create an explosion, dealing X damage. Non-boss enemies caught in the explosion
 		have an X% chance of instantly dying.

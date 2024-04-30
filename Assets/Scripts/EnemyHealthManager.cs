@@ -59,6 +59,16 @@ public class EnemyHealthManager : MonoBehaviour {
       Kill(source);
     }
 
+    // Upgrade effects
+    if (source.CompareTag("AllyProjectile")){
+      Dictionary<string, dynamic> onHitPassives = new Dictionary<string, dynamic>() {
+        {"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
+          {"source", gameObject}
+        }}
+      };
+      upgradeManager.ApplyPassive(onHitPassives);
+    }
+
     // Health bar and damage text display
     canvas.SetActive(true);
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
@@ -71,7 +81,7 @@ public class EnemyHealthManager : MonoBehaviour {
     if (source.CompareTag("AllyProjectile")){
       Dictionary<string, dynamic> onKillPassives = new Dictionary<string, dynamic>() {
         {"MORICALLIOPE_SOULHARVESTER", null},
-        {"MORICALLIOPE_DEATH", new Dictionary<string, dynamic>() {
+        {"MORICALLIOPE_TASTEOFDEATH", new Dictionary<string, dynamic>() {
           {"source", gameObject}
         }}
       };
