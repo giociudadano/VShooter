@@ -31,6 +31,7 @@ public class EnemyHealthManager : MonoBehaviour {
     gameManager = GameObject.FindGameObjectWithTag("GameManager");
     upgradeManager = gameManager.GetComponent<UpgradeManager>();
     playerXPManager = player.GetComponent<PlayerXPManager>();
+    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
