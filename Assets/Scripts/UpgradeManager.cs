@@ -24,14 +24,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.2f},{"2", 0.2f},{"3", 0.3f},{"4", 0.3f},{"5", 0.4f}
+						{"1", 0.3f},{"2", 0.3f},{"3", 0.4f},{"4", 0.4f},{"5", 0.5f}
 					}}
 				}},
 				{"HEAL_AMOUNT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"suffix", "HP"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 1.5f},{"2", 2.5f},{"3", 2.5f},{"4", 3.5f},{"5", 3.5f}
+						{"1", 2f},{"2", 3f},{"3", 3f},{"4", 4f},{"5", 4f}
 					}}
 				}}
 			}}
@@ -46,20 +46,20 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.15f},{"2", 0.19f},{"3", 0.22f},{"4", 0.26f},{"5", 0.3f}
+						{"1", 0.2f},{"2", 0.25f},{"3", 0.25f},{"4", 0.3f},{"5", 0.3f}
 					}}
 				}},
 				{"EXPLOSION_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 2f},{"2", 2.5f},{"3", 3f},{"4", 3.5f},{"5", 4f}
+						{"1", 3f},{"2", 3f},{"3", 4f},{"4", 4f},{"5", 5f}
 					}}
 				}},
 				{"INSTANTKILL_CHANCE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.05f},{"2", 0.65f},{"3", 0.75f},{"4", 0.85f},{"5", 0.95f}
+						{"1", 0.08f},{"2", 0.09f},{"3", 0.1f},{"4", 0.11f},{"5", 0.12f}
 					}}
 				}}
 			}}
@@ -160,7 +160,13 @@ public class UpgradeManager : MonoBehaviour {
 		}
 	}
 
-	public void ApplyPassive(string passiveName) {
+	public void ApplyPassive(Dictionary<string, dynamic> passives){
+		foreach (string passiveName in passives.Keys){
+			ApplyPassive(passiveName, passives[passiveName]);
+		}
+	}
+
+	public void ApplyPassive(string passiveName, Dictionary<string, dynamic> parameters) {
 		if (!upgradesActive.ContainsKey(passiveName)){
 			return;
 		}
@@ -171,7 +177,12 @@ public class UpgradeManager : MonoBehaviour {
 				float amount = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_AMOUNT"]["level"][level];
 				upgradeScripts.GetComponent<MoriCalliope_SoulHarvester>().ApplyPassive(chance, amount);
 				break;
+			case "MORICALLIOPE_DEATH":
+				float explosionChance = upgrades["MORICALLIOPE_DEATH"]["parameters"]["EXPLOSION_CHANCE"]["level"][level];
+				float explosionDamage = upgrades["MORICALLIOPE_DEATH"]["parameters"]["EXPLOSION_DAMAGE"]["level"][level];
+				float instantkillChance = upgrades["MORICALLIOPE_DEATH"]["parameters"]["INSTANTKILL_CHANCE"]["level"][level];
+				upgradeScripts.GetComponent<MoriCalliope_Death>().ApplyPassive(parameters["source"], explosionChance, explosionDamage, instantkillChance);
+				break;
 		}
 	}
-
 }

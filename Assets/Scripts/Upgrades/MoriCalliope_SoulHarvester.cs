@@ -8,7 +8,6 @@ public class MoriCalliope_SoulHarvester : MonoBehaviour {
 
 	public void ApplyPassive(float chance, float amount) {
 		float roll = Random.Range(0f, 1f);
-		print(roll);
 		if (chance < roll) {
 			player.GetComponent<PlayerHealthManager>().Heal(amount);
 		}
