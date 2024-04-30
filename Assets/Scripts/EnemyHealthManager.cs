@@ -21,6 +21,9 @@ public class EnemyHealthManager : MonoBehaviour {
   private UpgradeManager um;
   private PlayerXPManager pxp;
   private GameObject gm;
+  private SfxManager sfx;
+
+
   void Start() {
     currentHealth = maxHealth;
     canvas.SetActive(false);
@@ -28,6 +31,7 @@ public class EnemyHealthManager : MonoBehaviour {
     gm = GameObject.FindGameObjectWithTag("GameManager");
     um = gm.GetComponent<UpgradeManager>();
     pxp = player.GetComponent<PlayerXPManager>();
+    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -47,6 +51,7 @@ public class EnemyHealthManager : MonoBehaviour {
   }
 
   public void Hurt(GameObject source, float rawDamage) {
+    sfx.PlayImpactSfx();
     // Net Damage Calculation
     float netDamage;
     if (source.CompareTag("AllyProjectile")){
@@ -78,6 +83,7 @@ public class EnemyHealthManager : MonoBehaviour {
       um.ApplyPassive(onKillPassives);
     }
     pxp.GainXP(XPReward);
+    sfx.PlayKillSfx();
     Destroy(gameObject);
   }
 }
