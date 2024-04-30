@@ -2,24 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementFollow2 : MonoBehaviour
+public class HomingMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f;
-    [SerializeField] private float duration = 1f;
+    // Manages objects moving up and down the screen.
+
+    [SerializeField] private float speed = 8f;
+    [SerializeField] private float viewLimitDown = -5f;
+
+    [SerializeField] private float viewLimitUp = 50f;
     [SerializeField] public GameObject player;
 
-    private void Start()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        // Under Construction
-        StartCoroutine(TowardsNearCenter(duration));
+        StartCoroutine(MoveObject());
     }
 
-    private IEnumerator TowardsNearCenter(float duration)
+    void Update()
     {
-        float startTime = Time.time;
 
-        while (Time.time - startTime < duration)
+        //DeleteObject();
+    }
+
+    //  We don't use Vecto3.Lerp() here since we don't need fancy swerving/acceration/retargetting
+    private IEnumerator MoveObject()
+    {
+
+        while (true)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.up = player.transform.position - transform.position;
