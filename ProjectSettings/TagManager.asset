@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Enemy
   - AllyProjectile
+  - Enemy
+  - BasicProjectile
   - GameManager
+  - SfxPlayer
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX
