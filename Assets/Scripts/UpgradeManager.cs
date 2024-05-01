@@ -102,8 +102,16 @@ public class UpgradeManager : MonoBehaviour {
   }
 
 	public void DrawUpgrades() {
-		for (int i = 0; i < 2; i++) {
-			int upgradeIndex = UnityEngine.Random.Range(0, upgrades.Count);
+		List<int> upgradeIndices = new List<int>();
+		for (int i = 0; i < 3; i++) {
+			int upgradeIndex;
+			while (true){
+				upgradeIndex = UnityEngine.Random.Range(0, upgrades.Count);
+				if (!upgradeIndices.Contains(upgradeIndex)){
+					upgradeIndices.Add(upgradeIndex);
+					break;
+				}
+			}
 			RenderUpgrade(i+1, upgrades.ElementAt(upgradeIndex).Key, upgrades.ElementAt(upgradeIndex).Value);
 		}      
 	}
