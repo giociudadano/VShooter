@@ -322,8 +322,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2677,11 +2676,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2227382784576204834, guid: de42ab51450b12744af53d9e8873c494, type: 3}
+  - {fileID: 2077429283666885925, guid: edb67d08509f0a941adb3f907adf3d03, type: 3}
   spawnPositionXRange: 8.5
-  spawnPositionY: 1.25
-  spawnPositionZ: 60
-  spawnInterval: 1.5
+  spawnPositionY: 2.85
+  spawnPositionZ: 40
+  spawnInterval: 2
   firstSpawnDelay: 1
 --- !u!114 &1005037246
 MonoBehaviour:
