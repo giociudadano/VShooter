@@ -8,7 +8,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] enemies;
 
     [Header("Spawn Properties")]
-    [SerializeField] private float spawnPositionXRange = 8.5f;
+    [SerializeField] private float spawnPositionXRange = 7f;
     [SerializeField] private float spawnPositionY = 1.25f;
     [SerializeField] private float spawnPositionZ = 40f;
     [SerializeField] private float spawnInterval = 2.0f;

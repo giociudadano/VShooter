@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
   [SerializeField] private float speed = 12f;
   private Dictionary<string, float> bounds = new Dictionary<string, float> () {
-    {"minimumX", -8.5f}, {"maximumX", 8.5f},
+    {"minimumX", -7f}, {"maximumX", 7f},
     {"minimumZ", -1f},     {"maximumZ", 2.5f}
   };
 
