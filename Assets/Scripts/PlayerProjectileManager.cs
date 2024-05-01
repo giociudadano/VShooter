@@ -21,7 +21,7 @@ public class PlayerProjectileManager : MonoBehaviour
 
   void Start(){
     isFiring = true;
-    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+    //sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
     //InvokeRepeating("FireProjectile", 0f, fireRate);
     StartCoroutine(FireProjectile());
   
@@ -36,7 +36,7 @@ public class PlayerProjectileManager : MonoBehaviour
     yield return new WaitForSeconds(shootingStartDelay);
     while (isFiring) {
         Instantiate(projectile, transform.position + shootOffset, transform.rotation);
-        sfx.PlayShootingSfx();
+        //sfx.PlayShootingSfx();
         yield return new WaitForSeconds(fireRate);
     }
   }

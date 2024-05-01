@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4998793737229208630}
   - component: {fileID: 5686107003631119699}
   m_Layer: 0
-  m_Name: DamageText
+  m_Name: DamageBurnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286764031
+  m_fontColor: {r: 1, g: 0.8292713, b: 0.5113207, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

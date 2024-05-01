@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  player: {fileID: 0}
 --- !u!114 &9046524210767816791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,13 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53884d0255fb7a44b6c8e16ba86cc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   canvas: {fileID: 5537528055420916333}
   healthbar: {fileID: 5290077633409521238}
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
+  damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   maxHealth: 50
+  currentHealth: 0
   XPReward: 15
-  player: {fileID: 0}
 --- !u!114 &-3008362957915229775
 MonoBehaviour:
   m_ObjectHideFlags: 0

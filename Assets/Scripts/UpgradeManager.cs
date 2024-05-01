@@ -66,7 +66,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
 			{"title", "End of a Life"},
-			{"description", "Attacks apply a {EFFECT_BURN} that deals {BURN_DAMAGE} damage over 2 seconds. While under the effects of {EFFECT_BURN}, targets that fall below {EXECUTE_THRESHOLD} of their maximum health are immediately executed."},
+			{"description", "Attacks apply a {EFFECT_BURN} that deals {BURN_DAMAGE} damage over 3 seconds. While under the effects of {EFFECT_BURN}, targets that fall below {EXECUTE_THRESHOLD} of their maximum health are immediately executed."},
 			{"type", "Character Passive"},
 			{"icon", "Calliope_EndOfALife"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -77,7 +77,7 @@ public class UpgradeManager : MonoBehaviour {
 				{"BURN_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 20f},{"2", 30f},{"3", 40f}
+						{"1", 15f},{"2", 25f},{"3", 35f}
 					}}
 				}},
 				{"EXECUTE_THRESHOLD", new Dictionary<string, dynamic> () {

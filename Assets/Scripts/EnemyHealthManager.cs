@@ -12,8 +12,9 @@ public class EnemyHealthManager : MonoBehaviour {
   [SerializeField] private GameObject healthbar;
 
   [SerializeField] private GameObject damageText;
+  [SerializeField] private GameObject damageBurnText;
   [SerializeField] private float maxHealth = 3f;
-  private float currentHealth;
+  [SerializeField] private float currentHealth;
   [SerializeField] private float XPReward = 5f;
   private GameObject player;
 
@@ -23,6 +24,9 @@ public class EnemyHealthManager : MonoBehaviour {
   private GameObject gameManager;
   private SfxManager sfx;
 
+  [Header("Effects")]
+  private bool isBurning = false;
+
 
   void Start() {
     currentHealth = maxHealth;
@@ -31,7 +35,7 @@ public class EnemyHealthManager : MonoBehaviour {
     gameManager = GameObject.FindGameObjectWithTag("GameManager");
     upgradeManager = gameManager.GetComponent<UpgradeManager>();
     playerXPManager = player.GetComponent<PlayerXPManager>();
-    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+    //sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -49,12 +53,25 @@ public class EnemyHealthManager : MonoBehaviour {
   void Update() {
         
   }
+  
+  public void Hurt(float rawDamage) {
+    currentHealth -= rawDamage;
+    if (currentHealth <= 0f){
+      Kill();
+    }
+
+    // Health bar and damage text display
+    canvas.SetActive(true);
+    healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
+    GameObject damagePopup = Instantiate(damageBurnText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+    damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
+  }
 
   public void Hurt(GameObject source, float rawDamage) {
-    sfx.PlayImpactSfx();
+    //sfx.PlayImpactSfx();
     // Net Damage Calculation
     float netDamage;
-    if (source.CompareTag("AllyProjectile")){
+    if (source != null || source.CompareTag("AllyProjectile")){
       netDamage = Random.Range(rawDamage * 0.9f, rawDamage * 1.1f);
     } else {
       netDamage = rawDamage;
@@ -65,20 +82,23 @@ public class EnemyHealthManager : MonoBehaviour {
     }
 
     // Upgrade effects
-    if (source.CompareTag("AllyProjectile")){
-      Dictionary<string, dynamic> onHitPassives = new Dictionary<string, dynamic>() {
+    Dictionary<string, dynamic> onHitPassives = new Dictionary<string, dynamic>() {
         {"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
           {"source", gameObject}
         }}
-      };
-      upgradeManager.ApplyPassive(onHitPassives);
-    }
+    };
+    upgradeManager.ApplyPassive(onHitPassives);
 
     // Health bar and damage text display
     canvas.SetActive(true);
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
     GameObject damagePopup = Instantiate(damageText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
     damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = netDamage.ToString("0");
+  }
+
+  public void Kill() {
+    playerXPManager.GainXP(XPReward);
+    Destroy(gameObject);
   }
 
   public void Kill(GameObject source) {
@@ -94,6 +114,32 @@ public class EnemyHealthManager : MonoBehaviour {
     }
     playerXPManager.GainXP(XPReward);
     Destroy(gameObject);
+  }
+
+
+  public void ApplyBurn(float burnDamage, float effectDuration) {
+    if (!isBurning){
+      isBurning = true;
+      StartCoroutine(BurnTick(burnDamage, effectDuration));
+      isBurning = false;
+      StopCoroutine("BurnTick");
+    } else {
+      isBurning = false;
+      StopCoroutine("BurnTick");
+      isBurning = true;
+      StartCoroutine(BurnTick(burnDamage, effectDuration));
+      isBurning = false;
+      StopCoroutine("BurnTick");
+    }
+  }
+
+  private IEnumerator BurnTick(float burnDamage, float effectDuration) {
+    yield return new WaitForSeconds(0.5f);
+    for (int i = 0; i < 3; i++){
+      print("Applied tick");
+      Hurt(burnDamage / 3);
+      yield return new WaitForSeconds(effectDuration / 3);
+    }
   }
 }
 
