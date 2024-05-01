@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelectManager : MonoBehaviour {
 
@@ -12,10 +13,17 @@ public class CharacterSelectManager : MonoBehaviour {
     [SerializeField] private GameObject characterSplash;
 
     [SerializeField] private GameObject characterNameObject;
+    [SerializeField] private GameObject characterDescriptionObject;
+
+    [SerializeField] private GameObject playButton;
+
+    public bool isCharacterSelected = false;
 
     void Start() {
       header.gameObject.transform.localPosition = new Vector3(1200, 210, 0);
       characterSplash.gameObject.transform.localPosition = new Vector3(-700, -160, 0);
+      characterNameObject.GetComponent<TMP_Text>().text = "";
+      characterDescriptionObject.GetComponent<TMP_Text>().text = "";
       StartCoroutine(SceneStart());
     }
 
@@ -75,6 +83,7 @@ public class CharacterSelectManager : MonoBehaviour {
         case "MoriCalliope":
           characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().color = new Color((float)195/255, (float)67/255, (float) 91/255, 1);
           characterNameObject.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
+          characterDescriptionObject.GetComponent<TMP_Text>().text = GetCharacterDescription(characterName);
           break;
       }
       characterSplash.transform.Find("Foreground").gameObject.SetActive(true);
@@ -82,6 +91,16 @@ public class CharacterSelectManager : MonoBehaviour {
       StopAllCoroutines();
       StartCoroutine(HoverCharacter());
     }
+
+    private string GetCharacterDescription(string characterName){
+      switch (characterName) {
+        case "MoriCalliope":
+          return "As the Grim Reaper's first apprentice, Mori Calliope specializes in using <color=#FFA>lifesteal</color> and <color=#FFA>post-death effects</color> to gain an advantage in the battlefield.";
+        default:
+          return "";
+      }
+    }
+
     private IEnumerator HoverCharacter() {
       characterSplash.gameObject.transform.localPosition = new Vector3(-700, -160, 0);
       StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-180, -160, 0), 0.3f));
@@ -93,10 +112,23 @@ public class CharacterSelectManager : MonoBehaviour {
     public void OnIconHoverOut() {
       Sprite splashArt = Resources.Load<Sprite>($"SplashArts/HoshimachiSuisei");
       characterNameObject.GetComponent<TMP_Text>().text = "";
+      characterDescriptionObject.GetComponent<TMP_Text>().text = "";
       characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().sprite = splashArt;
       characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 1);
       characterSplash.transform.Find("Foreground").gameObject.SetActive(false);
       StopAllCoroutines();
       StartCoroutine(HoverCharacter());
+    }
+
+    public void SelectCharacter(String characterName) {
+      if (characterName != null) {
+        isCharacterSelected = true;
+        playButton.transform.Find("Background").GetComponent<Outline>().effectColor = new Color((float)71/255, (float)194/255, 255, 0.5f);
+        playButton.transform.Find("Text").GetComponent<TMP_Text>().color = new Color(1f, 1f, 1f);
+      } else {
+        isCharacterSelected = false;
+        playButton.transform.Find("Background").GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
+        playButton.transform.Find("Text").GetComponent<TMP_Text>().color = new Color((float)149/255, (float)149/255, (float)149/255, 0.5f);
+      }
     }
 }

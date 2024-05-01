@@ -25,7 +25,14 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
     }
     
     public void OnPointerDown(PointerEventData eventData) {
-			isSelected = true;
-			selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, (float) 73/255, (float) 138/255);
+      if (!isSelected){
+        isSelected = true;
+        selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, (float) 73/255, (float) 138/255);
+        characterSelectManager.GetComponent<CharacterSelectManager>().SelectCharacter(selectIcon.name);
+      } else {
+        isSelected = false;
+        selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, 1, (float) 138/255);
+        characterSelectManager.GetComponent<CharacterSelectManager>().SelectCharacter(null);
+      }
     }
 }
