@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.47, y: 1.55, z: 27.64}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5015530168346279209}
@@ -144,7 +144,9 @@ MonoBehaviour:
   canvas: {fileID: 5537528055420916333}
   healthbar: {fileID: 5290077633409521238}
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
+  damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   maxHealth: 99999
+  currentHealth: 0
   XPReward: 15
 --- !u!114 &-3008362957915229775
 MonoBehaviour:
@@ -214,8 +216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: 2, y: 0.2}
+  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4701229688231185714
 CanvasRenderer:
@@ -289,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: 2, y: 0.2}
+  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2718516992135954826
 CanvasRenderer:

@@ -16,7 +16,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Start() {
       //InvokeRepeating("SpawnEnemy", 1f, 1.5f);
-        StartCoroutine(SpawnEnemy());
+      StartCoroutine(SpawnEnemy());
     }
 
     void Update() {

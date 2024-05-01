@@ -116,30 +116,36 @@ public class EnemyHealthManager : MonoBehaviour {
     Destroy(gameObject);
   }
 
-
   public void ApplyBurn(float burnDamage, float effectDuration) {
-    if (!isBurning){
-      isBurning = true;
-      StartCoroutine(BurnTick(burnDamage, effectDuration));
-      isBurning = false;
-      StopCoroutine("BurnTick");
-    } else {
-      isBurning = false;
-      StopCoroutine("BurnTick");
-      isBurning = true;
-      StartCoroutine(BurnTick(burnDamage, effectDuration));
-      isBurning = false;
+    if (isBurning) {
       StopCoroutine("BurnTick");
     }
+    StartCoroutine(BurnTick(burnDamage, effectDuration));
   }
 
-  private IEnumerator BurnTick(float burnDamage, float effectDuration) {
+  public IEnumerator BurnTick(float burnDamage, float effectDuration) {
+    isBurning = true;
     yield return new WaitForSeconds(0.5f);
     for (int i = 0; i < 3; i++){
-      print("Applied tick");
       Hurt(burnDamage / 3);
       yield return new WaitForSeconds(effectDuration / 3);
     }
+    isBurning = false;
+  }
+
+
+  public void ApplyExecuteThreshold(float executionThreshold) {
+    StartCoroutine(ExecuteThreshold(executionThreshold));
+  }
+
+  private IEnumerator ExecuteThreshold(float executionThreshold) {
+    while (isBurning) {
+      print($"Checking for execute: {currentHealth / maxHealth}, {executionThreshold}");
+      if ((currentHealth / maxHealth) < executionThreshold) {
+        Kill();
+      }
+      yield return new WaitForSeconds(0.5f);
+    };
   }
 }
 

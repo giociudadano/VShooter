@@ -16,5 +16,6 @@ public class MoriCalliope_EndOfALife : MonoBehaviour {
 
 	public void ApplyPassive(GameObject source, float burnDamage, float executionThreshold) {
 		source.gameObject.GetComponent<EnemyHealthManager>().ApplyBurn(burnDamage, effectDuration);
+		source.gameObject.GetComponent<EnemyHealthManager>().ApplyExecuteThreshold(executionThreshold);
 	}
 }

@@ -84,12 +84,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0.0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.05f},{"2", 0.075f},{"3", 0.010f}
+						{"1", 0.08f},{"2", 0.12f},{"3", 0.15f}
 					}}
 				}},
 			}}
 		}},
 	};
+
+
 
 	public Dictionary<string, Dictionary<string, dynamic>> upgradesActive = new Dictionary<string, Dictionary<string, dynamic>>();
 
