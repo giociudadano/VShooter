@@ -22,7 +22,7 @@ public class MovementFollow2 : MonoBehaviour
         while (Time.time - startTime < duration)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.up = player.transform.position - transform.position;
+            transform.LookAt(player.transform);
 
             //  Wait for the next frame before recalculating the position
             yield return new WaitForEndOfFrame();
