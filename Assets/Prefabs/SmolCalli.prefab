@@ -391,6 +391,7 @@ MonoBehaviour:
   healthbar: {fileID: 8525550273687470214}
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
+  damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
   maxHealth: 3
   currentHealth: 0
   XPReward: 5
