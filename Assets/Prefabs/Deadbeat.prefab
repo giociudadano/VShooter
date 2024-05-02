@@ -723,6 +723,7 @@ MonoBehaviour:
   healthbar: {fileID: 5939314425480342921}
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
+  damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
   maxHealth: 50
   currentHealth: 0
   XPReward: 15
@@ -764,7 +765,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &4773895401239875004
 BoxCollider:

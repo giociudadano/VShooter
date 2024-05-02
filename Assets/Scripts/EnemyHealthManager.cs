@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
@@ -13,6 +14,7 @@ public class EnemyHealthManager : MonoBehaviour {
 
   [SerializeField] private GameObject damageText;
   [SerializeField] private GameObject damageBurnText;
+  [SerializeField] private GameObject damageTextCritical;
   [SerializeField] private float maxHealth = 3f;
   [SerializeField] private float currentHealth;
   [SerializeField] private float XPReward = 5f;
@@ -41,12 +43,14 @@ public class EnemyHealthManager : MonoBehaviour {
   void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.CompareTag("AllyProjectile")){
       Destroy(collision.gameObject);
-      Hurt(collision.gameObject, GetDamage(collision.gameObject.GetComponent<BasicProjectile>().projectileDamage));
+      float projectileDamage = GetProjectileDamage(collision.gameObject.GetComponent<BasicProjectile>().projectileDamage, upgradeManager.GetComponent<UpgradeManager>().bonusAttackPercent);
+      Hurt(collision.gameObject, projectileDamage, 0.1f);
     }
   }
 
-  private float GetDamage(float basicDamage){
+  private float GetProjectileDamage(float basicDamage, float bonusAttackPercent = 0){
     float totalDamage = Random.Range(basicDamage * 0.9f, basicDamage * 1.1f);
+    totalDamage *= 1 + bonusAttackPercent;
     return totalDamage;
   }
 
@@ -67,16 +71,19 @@ public class EnemyHealthManager : MonoBehaviour {
     damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
   }
 
-  public void Hurt(GameObject source, float rawDamage) {
+  public void Hurt(GameObject source, float rawDamage, float critChance) {
     //sfx.PlayImpactSfx();
     // Net Damage Calculation
-    float netDamage;
-    if (source != null || source.CompareTag("AllyProjectile")){
-      netDamage = Random.Range(rawDamage * 0.9f, rawDamage * 1.1f);
+    float critRoll = Random.Range(0f, 1f);
+    if (critRoll < critChance){
+      rawDamage *= 1.5f;
+      GameObject damagePopup = Instantiate(damageTextCritical, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+      damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0") + "!";
     } else {
-      netDamage = rawDamage;
+      GameObject damagePopup = Instantiate(damageText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+      damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
     }
-    currentHealth -= netDamage;
+    currentHealth -= rawDamage;
     if (currentHealth <= 0f){
       Kill(source);
     }
@@ -92,8 +99,7 @@ public class EnemyHealthManager : MonoBehaviour {
     // Health bar and damage text display
     canvas.SetActive(true);
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
-    GameObject damagePopup = Instantiate(damageText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
-    damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = netDamage.ToString("0");
+    
   }
 
   public void Kill() {
@@ -140,7 +146,6 @@ public class EnemyHealthManager : MonoBehaviour {
 
   private IEnumerator ExecuteThreshold(float executionThreshold) {
     while (isBurning) {
-      print($"Checking for execute: {currentHealth / maxHealth}, {executionThreshold}");
       if ((currentHealth / maxHealth) < executionThreshold) {
         Kill();
       }
