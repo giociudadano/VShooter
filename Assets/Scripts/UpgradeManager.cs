@@ -17,8 +17,10 @@ public class UpgradeManager : MonoBehaviour {
 
 	[Header("Bonus Stats")]
 	[SerializeField] public float bonusAttackPercent;
-    
-  public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
+	[SerializeField] public float bonusHealthFlat;
+	[SerializeField] public float bonusHealthRegenFlat;
+	
+	public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
 			{"title", "Soul Harvester"},
 			{"description", "Defeating an enemy has a {HEAL_CHANCE} chance to restore {HEAL_AMOUNT}."},
@@ -96,7 +98,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_IRONSWORD", new Dictionary<string, dynamic>() {
 			{"title", "Iron Sword"},
-			{"description", "Increases attack by {ATTACK_PERCENT}."},
+			{"description", "Increases total attack by {ATTACK_PERCENT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronSword"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -109,28 +111,41 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 			}}
 		}},
+		{"GENERIC_HEARTGEM", new Dictionary<string, dynamic>() {
+			{"title", "Heart Gem"},
+			{"description", "Increases base health by {HEALTH_FLAT}. Increases base health regeneration by {HEALTH_REGEN_FLAT}."},
+			{"type", "Common Equipment"},
+			{"icon", "Generic_HeartGem"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"HEALTH_FLAT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"suffix", "HP"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 5f},{"2", 10f},{"3", 15f},{"4", 20f},{"5", 25f}
+					}}
+				}},
+				{"HEALTH_REGEN_FLAT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"suffix", "HP/SEC"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 0.8f},{"5", 1f}
+					}}
+				}},
+			}}
+		}},
 	};
 
 	public List<string> upgradesAvailable;
 
 	public Dictionary<string, dynamic> upgradesActive = new Dictionary<string, dynamic>();
 
-  void Start(){
+	void Start(){
 		GetCharacterUpgrades();
 		GetGenericUpgrades();
-  }
+	}
 		
-  void Update(){
-        
-  }
-
-	public void RenderUpgradeStats() {
-		// Bonus Attack% Calculation
-		float bonusAttackPercent = 0f;
-		bonusAttackPercent += upgradeScripts.GetComponent<Generic_IronSword>().bonusAttackPercent;
-		this.bonusAttackPercent = bonusAttackPercent;
-		string attackText = $"20 <color=#FFA>(+{String.Format("{0:0%}", bonusAttackPercent)})</color>";
-		upgradeUI.transform.Find("Attack/Value").GetComponent<TMP_Text>().text = attackText;
+	void Update(){
+		
 	}
 
 	private void GetCharacterUpgrades() {
@@ -144,7 +159,7 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void GetGenericUpgrades() {
 		List<string> genericUpgrades = new List<string>(){
-			"GENERIC_IRONSWORD"
+			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM"
 		};
 		upgradesAvailable.AddRange(genericUpgrades);
 	}
@@ -166,6 +181,7 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	private void RenderUpgrade(int slotIndex, string name, Dictionary<string, dynamic> upgrade) {
+		print($"{slotIndex}:{name}");
 		GameObject upgradeNameUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Name").gameObject;
 		upgradeNameUI.GetComponent<TMP_Text>().text = name;
 		GameObject upgradeTitleUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Title").gameObject;
@@ -187,15 +203,15 @@ public class UpgradeManager : MonoBehaviour {
 			case "Common Equipment":
 				return "<color=#AAA>" + type + "</color>";
 			default:
-			  return "";
+				return "";
 		}
 	}
 
 	public string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters) {
-	  return ParseAbilityDescription(name, description, parameters, 0);
+		return ParseAbilityDescription(name, description, parameters, 0);
 	}
 	public string ParseAbilityDescription(string name, string description, Dictionary<string, dynamic> parameters, int offset) {
-	  foreach (var parameter in parameters) {
+		foreach (var parameter in parameters) {
 			string query = "{" + parameter.Key + "}";
 			string result;
 			// For text parameters
@@ -218,8 +234,8 @@ public class UpgradeManager : MonoBehaviour {
 				}
 			}
 			description = description.Replace(query, result);
-	  }
-	  return description;
+		}
+		return description;
 	}
 	public int GetCurrentUpgradeLevel(String name) {
 		if (upgradesActive.ContainsKey(name)) {
@@ -229,6 +245,7 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	public void GetUpgrade(String name) {
+		print($"Added upgrade: {name}");
 		if (upgradesActive.ContainsKey(name)) {
 			upgradesActive[name]["level"] += 1;
 		} else {
@@ -244,8 +261,8 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void RenderUpgradesListUI() {
 		foreach (Transform child in upgradesListUI.transform) {
-      		DestroyImmediate(child.gameObject);
-    	}
+				DestroyImmediate(child.gameObject);
+		}
 		foreach (var (name, index) in upgradesActive.Keys.Select((value, i) => (value, i))) {
 			GameObject upgradeItem = Instantiate(upgradesListItem, upgradesListUI.transform);
 			upgradeItem.name = name;
@@ -286,10 +303,38 @@ public class UpgradeManager : MonoBehaviour {
 				upgradeScripts.GetComponent<MoriCalliope_EndOfALife>().ApplyPassive(parameters["source"], burnDamage, executeThreshold);
 				break;
 			case "GENERIC_IRONSWORD":
-			  float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
+				float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_IronSword>().ApplyPassive(bonusAttackPercent);
+				break;
+			case "GENERIC_HEARTGEM":
+				float bonusHealthFlat = upgrades["GENERIC_HEARTGEM"]["parameters"]["HEALTH_FLAT"]["level"][level];
+				float bonusHealthRegenFlat = upgrades["GENERIC_HEARTGEM"]["parameters"]["HEALTH_REGEN_FLAT"]["level"][level];
+				upgradeScripts.GetComponent<Generic_HeartGem>().ApplyPassive(bonusHealthFlat, bonusHealthRegenFlat);
 				break;
 		}
 		RenderUpgradeStats();
+	}
+
+	public void RenderUpgradeStats() {
+
+		// Bonus Attack% Calculation
+		float bonusAttackPercent = 0f;
+		bonusAttackPercent += upgradeScripts.GetComponent<Generic_IronSword>().bonusAttackPercent;
+		this.bonusAttackPercent = bonusAttackPercent;
+		string attackText = $"{(int) 20 * (1+bonusAttackPercent)} <color=#FFA>(+{String.Format("{0:0%}", bonusAttackPercent)})</color>";
+		upgradeUI.transform.Find("Attack/Value").GetComponent<TMP_Text>().text = attackText;
+
+		// Bonus Health Calculation
+		float bonusHealthFlat = 0f;
+		bonusHealthFlat += upgradeScripts.GetComponent<Generic_HeartGem>().bonusHealthFlat;
+		this.bonusHealthFlat = bonusHealthFlat;
+		player.GetComponent<PlayerHealthManager>().SetBonusHealth(bonusHealthFlat);
+
+		// Bonus Health Regen Calculation
+		float bonusHealthRegenFlat = 0f;
+		bonusHealthRegenFlat += upgradeScripts.GetComponent<Generic_HeartGem>().bonusHealthRegenFlat;
+		this.bonusHealthRegenFlat = bonusHealthRegenFlat;
+		player.GetComponent<PlayerHealthManager>().SetBonusHealthRegen(bonusHealthRegenFlat);
+
 	}
 }
