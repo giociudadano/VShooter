@@ -415,7 +415,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24383483}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 619b351ecfc149448a0e8165c257c404, type: 3}
   m_Name: 
@@ -482,8 +482,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dbe1d941c68fd4f9869164ecba34a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillOneObject: {fileID: 0}
-  skillTwoObject: {fileID: 0}
+  skillOneObject: {fileID: 3896502697465948771, guid: 4b893fdb5f0322847a423b5940659fa3, type: 3}
+  skillTwoObject: {fileID: 1583007723088930304, guid: 3810c336a85d3a94d8e895fd2dd1c917, type: 3}
+  skillOneCooldown: 7
+  skillTwoCooldown: 15
   player: {fileID: 0}
 --- !u!1 &25078940
 GameObject:
@@ -2236,7 +2238,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 2077429283666885925, guid: edb67d08509f0a941adb3f907adf3d03, type: 3}
   spawnPositionXRange: 8.5
-  spawnPositionY: 0.59
+  spawnPositionY: 2.53
   spawnPositionZ: 40
   spawnInterval: 4
   firstSpawnDelay: 1.5
@@ -2258,7 +2260,7 @@ MonoBehaviour:
   spawnPositionY: 0.59
   spawnPositionZ: 40
   spawnInterval: 10
-  firstSpawnDelay: 10
+  firstSpawnDelay: 1
 --- !u!4 &599618613
 Transform:
   m_ObjectHideFlags: 0

@@ -319,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmolCalli
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ad593b57572b914eb2275d6e23cc7b4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1187684245659131687, guid: 1ad593b57572b914eb2275d6e23cc7b4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -465,7 +469,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &4991131779669239021
 BoxCollider:

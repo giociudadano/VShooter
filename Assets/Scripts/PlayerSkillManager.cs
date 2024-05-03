@@ -7,16 +7,18 @@ public class PlayerSkillManager : MonoBehaviour
     [Header ("Skill Set")]
     [SerializeField] private GameObject skillOneObject;
     [SerializeField] private GameObject skillTwoObject;
+
+    [Header ("Skill Set Cooldown")]
+    [SerializeField] private float skillOneCooldown = 7f;
+    [SerializeField] private float skillTwoCooldown = 15f;
+
+    private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
+    private float skillOneLastTime;
+    private float skillTwoLastTime;
     private bool fire1Pressed = false;
     private bool fire2Pressed = false;
-    private float skillOneCooldown = 7f;
-    private float skillOneLastTime;
-    private float skillTwoCooldown = 15f;
-    private float skillTwoLastTime;
-    private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
 
     [Header ("Objects")]
-
     [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
@@ -51,14 +53,12 @@ public class PlayerSkillManager : MonoBehaviour
     private void DoSkillOne()
     {
         fire1Pressed = true;
-        Debug.Log("Skill One");
         Instantiate(skillOneObject,player.transform.position + shootOffset,player.transform.rotation);
     }
 
     private void DoSkillTwo()
     {
         fire2Pressed = true;
-        Debug.Log("Skill Two");
         Instantiate(skillTwoObject,player.transform.position + shootOffset,player.transform.rotation);
     }
 }
