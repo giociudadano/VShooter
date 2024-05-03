@@ -15,6 +15,7 @@ public class EnemyProjectileCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealthManager>().Hurt(damage);
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("AllyProjectile"))
         {

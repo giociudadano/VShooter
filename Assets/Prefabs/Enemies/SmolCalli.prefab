@@ -392,7 +392,7 @@ MonoBehaviour:
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
-  maxHealth: 3
+  maxHealth: 50
   currentHealth: 0
   XPReward: 5
 --- !u!114 &407155415006113103
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4360c2e752c8ae40aae3d6f5c2c6cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionDamage: 3
+  collisionDamage: 30
 --- !u!114 &6465887344702915285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7028593740872172549, guid: 4bcf92b842622034190d7c1dbd0e29fc, type: 3}
-  projectileDamage: 10
+  projectileDamage: 50
   fireRate: 5
   shootOffset: {x: 0, y: 1, z: -1}
   shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

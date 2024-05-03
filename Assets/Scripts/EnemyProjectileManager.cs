@@ -33,7 +33,6 @@ public class EnemyProjectileManager : MonoBehaviour
   private IEnumerator FireProjectile(){
     while (isFiring) {
         Instantiate(projectile, transform.position + shootOffset, transform.rotation);
-
       yield return new WaitForSeconds(fireRate);
     }
   }

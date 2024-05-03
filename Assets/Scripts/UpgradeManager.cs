@@ -38,7 +38,7 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"suffix", "HP"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 2f},{"2", 3f},{"3", 3f},{"4", 4f},{"5", 4f}
+						{"1", 20f},{"2", 30f},{"3", 30f},{"4", 40f},{"5", 40f}
 					}}
 				}}
 			}}
@@ -121,14 +121,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"suffix", "HP"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 5f},{"2", 10f},{"3", 15f},{"4", 20f},{"5", 25f}
+						{"1", 50f},{"2", 100f},{"3", 150f},{"4", 200f},{"5", 250f}
 					}}
 				}},
 				{"HEALTH_REGEN_FLAT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"suffix", "HP/SEC"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 0.8f},{"5", 1f}
+						{"1", 2f},{"2", 4f},{"3", 6f},{"4", 8f},{"5", 10f}
 					}}
 				}},
 			}}
@@ -312,10 +312,13 @@ public class UpgradeManager : MonoBehaviour {
 				upgradeScripts.GetComponent<Generic_HeartGem>().ApplyPassive(bonusHealthFlat, bonusHealthRegenFlat);
 				break;
 		}
-		RenderUpgradeStats();
+		UpdatePlayerStats();
 	}
 
-	public void RenderUpgradeStats() {
+	public void UpdatePlayerStats() {
+		/*
+			Recalculates player stats. Called when obtaining an upgrade which would change player stats.
+		*/
 
 		// Bonus Attack% Calculation
 		float bonusAttackPercent = 0f;
@@ -329,6 +332,8 @@ public class UpgradeManager : MonoBehaviour {
 		bonusHealthFlat += upgradeScripts.GetComponent<Generic_HeartGem>().bonusHealthFlat;
 		this.bonusHealthFlat = bonusHealthFlat;
 		player.GetComponent<PlayerHealthManager>().SetBonusHealth(bonusHealthFlat);
+		string healthText = $"{(int) 500 + bonusHealthFlat} <color=#FFA>(+0%)</color>";
+		upgradeUI.transform.Find("Health/Value").GetComponent<TMP_Text>().text = healthText;
 
 		// Bonus Health Regen Calculation
 		float bonusHealthRegenFlat = 0f;

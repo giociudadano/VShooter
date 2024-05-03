@@ -13,11 +13,11 @@ public class PlayerHealthManager : MonoBehaviour {
 
     [Header("Health")]
     [SerializeField] public float currentHealth;
-    [SerializeField] private float baseHealth = 50;
+    [SerializeField] private float baseHealth = 500;
     [SerializeField] public float maximumHealth;
 
     [Header("Health Regen")]
-    [SerializeField] private float healthRegen = 1f;
+    [SerializeField] private float healthRegen = 0f;
 
     void Start() {
       maximumHealth = baseHealth;
