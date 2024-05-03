@@ -21,6 +21,7 @@ public class MovementFollow : MonoBehaviour
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             float distance = Vector3.Distance(transform.position, targetPosition);
             float duration = distance / speed;
+            transform.LookAt(player.transform);
 
             float startTime = Time.time;
             Vector3 startPosition = transform.position;

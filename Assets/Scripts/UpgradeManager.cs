@@ -4,16 +4,21 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using System;
+using System.Drawing.Text;
 
 public class UpgradeManager : MonoBehaviour {
-	[SerializeField] private GameObject upgradeUI;
 
+	[Header("Scripts")]
+	[SerializeField] private GameObject player;
+	[SerializeField] private GameObject upgradeUI;
 	[SerializeField] private GameObject upgradesListUI;
 	[SerializeField] private GameObject upgradesListItem;
-
 	[SerializeField] private GameObject upgradeScripts;
+
+	[Header("Bonus Stats")]
+	[SerializeField] public float bonusAttackPercent;
     
-  public Dictionary<string, Dictionary<string, dynamic>> upgrades = new Dictionary<string, Dictionary<string, dynamic>>() {
+  public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
 			{"title", "Soul Harvester"},
 			{"description", "Defeating an enemy has a {HEAL_CHANCE} chance to restore {HEAL_AMOUNT}."},
@@ -66,7 +71,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
 			{"title", "End of a Life"},
-			{"description", "Attacks apply a {EFFECT_BURN} that deals {BURN_DAMAGE} damage over 2 seconds. While under the effects of {EFFECT_BURN}, targets that fall below {EXECUTE_THRESHOLD} of their maximum health are immediately executed."},
+			{"description", "Attacks apply a {EFFECT_BURN} that deals {BURN_DAMAGE} damage over 3 seconds. While under the effects of {EFFECT_BURN}, targets that fall below {EXECUTE_THRESHOLD} of their maximum health are immediately executed."},
 			{"type", "Character Passive"},
 			{"icon", "Calliope_EndOfALife"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -77,34 +82,86 @@ public class UpgradeManager : MonoBehaviour {
 				{"BURN_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 20f},{"2", 30f},{"3", 40f}
+						{"1", 15f},{"2", 25f},{"3", 35f}
 					}}
 				}},
 				{"EXECUTE_THRESHOLD", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0.0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.05f},{"2", 0.075f},{"3", 0.010f}
+						{"1", 0.08f},{"2", 0.12f},{"3", 0.15f}
+					}}
+				}},
+			}}
+		}},
+		{"GENERIC_IRONSWORD", new Dictionary<string, dynamic>() {
+			{"title", "Iron Sword"},
+			{"description", "Increases attack by {ATTACK_PERCENT}."},
+			{"type", "Common Equipment"},
+			{"icon", "Generic_IronSword"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"ATTACK_PERCENT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.2f},{"2", 0.3f},{"3", 0.4f},{"4", 0.5f},{"5", 0.6f}
 					}}
 				}},
 			}}
 		}},
 	};
 
-	public Dictionary<string, Dictionary<string, dynamic>> upgradesActive = new Dictionary<string, Dictionary<string, dynamic>>();
+	public List<string> upgradesAvailable;
+
+	public Dictionary<string, dynamic> upgradesActive = new Dictionary<string, dynamic>();
 
   void Start(){
-        
+		GetCharacterUpgrades();
+		GetGenericUpgrades();
   }
 		
   void Update(){
         
   }
 
+	public void RenderUpgradeStats() {
+		// Bonus Attack% Calculation
+		float bonusAttackPercent = 0f;
+		bonusAttackPercent += upgradeScripts.GetComponent<Generic_IronSword>().bonusAttackPercent;
+		this.bonusAttackPercent = bonusAttackPercent;
+		string attackText = $"20 <color=#FFA>(+{String.Format("{0:0%}", bonusAttackPercent)})</color>";
+		upgradeUI.transform.Find("Attack/Value").GetComponent<TMP_Text>().text = attackText;
+	}
+
+	private void GetCharacterUpgrades() {
+		string characterName = player.transform.GetChild(0).name;
+		switch (characterName) {
+			case "MoriCalliope":
+				upgradesAvailable.AddRange(new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"});
+				break;
+		}
+	}
+
+	private void GetGenericUpgrades() {
+		List<string> genericUpgrades = new List<string>(){
+			"GENERIC_IRONSWORD"
+		};
+		upgradesAvailable.AddRange(genericUpgrades);
+	}
+
 	public void DrawUpgrades() {
-		for (int i = 0; i < 2; i++) {
-			int upgradeIndex = UnityEngine.Random.Range(0, upgrades.Count);
-			RenderUpgrade(i+1, upgrades.ElementAt(upgradeIndex).Key, upgrades.ElementAt(upgradeIndex).Value);
+		List<int> upgradeIndices = new List<int>();
+		for (int i = 0; i < 3; i++) {
+			int upgradeIndex;
+			while (true){
+				upgradeIndex = UnityEngine.Random.Range(0, upgradesAvailable.Count);
+				if (!upgradeIndices.Contains(upgradeIndex)){
+					upgradeIndices.Add(upgradeIndex);
+					break;
+				}
+			}
+			RenderUpgrade(i+1, upgradesAvailable[upgradeIndex], upgrades[upgradesAvailable[upgradeIndex]]);
+			//RenderUpgrade(i+1, upgrades.ElementAt(upgradeIndex).Key, upgrades.ElementAt(upgradeIndex).Value);
 		}      
 	}
 
@@ -127,6 +184,8 @@ public class UpgradeManager : MonoBehaviour {
 		switch (type) {
 			case "Character Passive":
 				return "<color=#FFA>" + type + "</color>";
+			case "Common Equipment":
+				return "<color=#AAA>" + type + "</color>";
 			default:
 			  return "";
 		}
@@ -177,6 +236,9 @@ public class UpgradeManager : MonoBehaviour {
 				{"level", 1}
 			});
 		}
+		if (upgrades[name]["type"] == "Common Equipment"){
+			ApplyPassive(name, null);
+		}
 		RenderUpgradesListUI();
 	}
 
@@ -223,6 +285,11 @@ public class UpgradeManager : MonoBehaviour {
 				float executeThreshold = upgrades["MORICALLIOPE_ENDOFALIFE"]["parameters"]["EXECUTE_THRESHOLD"]["level"][level];
 				upgradeScripts.GetComponent<MoriCalliope_EndOfALife>().ApplyPassive(parameters["source"], burnDamage, executeThreshold);
 				break;
+			case "GENERIC_IRONSWORD":
+			  float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
+				upgradeScripts.GetComponent<Generic_IronSword>().ApplyPassive(bonusAttackPercent);
+				break;
 		}
+		RenderUpgradeStats();
 	}
 }

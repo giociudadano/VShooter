@@ -128,7 +128,9 @@ MonoBehaviour:
   canvas: {fileID: 6976521448278371915}
   healthbar: {fileID: 8731525262655497879}
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
+  damageBurnText: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   maxHealth: 30
+  currentHealth: 0
   XPReward: 25
 --- !u!114 &4504749209747071039
 MonoBehaviour:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
@@ -12,8 +13,10 @@ public class EnemyHealthManager : MonoBehaviour {
   [SerializeField] private GameObject healthbar;
 
   [SerializeField] private GameObject damageText;
+  [SerializeField] private GameObject damageBurnText;
+  [SerializeField] private GameObject damageTextCritical;
   [SerializeField] private float maxHealth = 3f;
-  private float currentHealth;
+  [SerializeField] private float currentHealth;
   [SerializeField] private float XPReward = 5f;
   private GameObject player;
 
@@ -23,6 +26,9 @@ public class EnemyHealthManager : MonoBehaviour {
   private GameObject gameManager;
   private SfxManager sfx;
 
+  [Header("Effects")]
+  private bool isBurning = false;
+
 
   void Start() {
     currentHealth = maxHealth;
@@ -31,54 +37,74 @@ public class EnemyHealthManager : MonoBehaviour {
     gameManager = GameObject.FindGameObjectWithTag("GameManager");
     upgradeManager = gameManager.GetComponent<UpgradeManager>();
     playerXPManager = player.GetComponent<PlayerXPManager>();
-    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+    //sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.CompareTag("AllyProjectile")){
       Destroy(collision.gameObject);
-      Hurt(collision.gameObject, GetDamage(collision.gameObject.GetComponent<BasicProjectile>().projectileDamage));
+      float projectileDamage = GetProjectileDamage(collision.gameObject.GetComponent<BasicProjectile>().projectileDamage, upgradeManager.GetComponent<UpgradeManager>().bonusAttackPercent);
+      Hurt(collision.gameObject, projectileDamage, 0.1f);
     }
   }
 
-  private float GetDamage(float basicDamage){
+  private float GetProjectileDamage(float basicDamage, float bonusAttackPercent = 0){
     float totalDamage = Random.Range(basicDamage * 0.9f, basicDamage * 1.1f);
+    totalDamage *= 1 + bonusAttackPercent;
     return totalDamage;
   }
 
   void Update() {
         
   }
-
-  public void Hurt(GameObject source, float rawDamage) {
-    sfx.PlayImpactSfx();
-    // Net Damage Calculation
-    float netDamage;
-    if (source.CompareTag("AllyProjectile")){
-      netDamage = Random.Range(rawDamage * 0.9f, rawDamage * 1.1f);
-    } else {
-      netDamage = rawDamage;
-    }
-    currentHealth -= netDamage;
+  
+  public void Hurt(float rawDamage) {
+    currentHealth -= rawDamage;
     if (currentHealth <= 0f){
-      Kill(source);
-    }
-
-    // Upgrade effects
-    if (source.CompareTag("AllyProjectile")){
-      Dictionary<string, dynamic> onHitPassives = new Dictionary<string, dynamic>() {
-        {"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
-          {"source", gameObject}
-        }}
-      };
-      upgradeManager.ApplyPassive(onHitPassives);
+      Kill();
     }
 
     // Health bar and damage text display
     canvas.SetActive(true);
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
-    GameObject damagePopup = Instantiate(damageText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
-    damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = netDamage.ToString("0");
+    GameObject damagePopup = Instantiate(damageBurnText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+    damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
+  }
+
+  public void Hurt(GameObject source, float rawDamage, float critChance) {
+    //sfx.PlayImpactSfx();
+    // Net Damage Calculation
+    float critRoll = Random.Range(0f, 1f);
+    if (critRoll < critChance){
+      rawDamage *= 1.5f;
+      GameObject damagePopup = Instantiate(damageTextCritical, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+      damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0") + "!";
+    } else {
+      GameObject damagePopup = Instantiate(damageText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+      damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
+    }
+    currentHealth -= rawDamage;
+    if (currentHealth <= 0f){
+      Kill(source);
+    }
+
+    // Upgrade effects
+    Dictionary<string, dynamic> onHitPassives = new Dictionary<string, dynamic>() {
+        {"MORICALLIOPE_ENDOFALIFE", new Dictionary<string, dynamic>() {
+          {"source", gameObject}
+        }}
+    };
+    upgradeManager.ApplyPassive(onHitPassives);
+
+    // Health bar and damage text display
+    canvas.SetActive(true);
+    healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
+    
+  }
+
+  public void Kill() {
+    playerXPManager.GainXP(XPReward);
+    Destroy(gameObject);
   }
 
   public void Kill(GameObject source) {
@@ -94,6 +120,37 @@ public class EnemyHealthManager : MonoBehaviour {
     }
     playerXPManager.GainXP(XPReward);
     Destroy(gameObject);
+  }
+
+  public void ApplyBurn(float burnDamage, float effectDuration) {
+    if (isBurning) {
+      StopCoroutine("BurnTick");
+    }
+    StartCoroutine(BurnTick(burnDamage, effectDuration));
+  }
+
+  public IEnumerator BurnTick(float burnDamage, float effectDuration) {
+    isBurning = true;
+    yield return new WaitForSeconds(0.5f);
+    for (int i = 0; i < 3; i++){
+      Hurt(burnDamage / 3);
+      yield return new WaitForSeconds(effectDuration / 3);
+    }
+    isBurning = false;
+  }
+
+
+  public void ApplyExecuteThreshold(float executionThreshold) {
+    StartCoroutine(ExecuteThreshold(executionThreshold));
+  }
+
+  private IEnumerator ExecuteThreshold(float executionThreshold) {
+    while (isBurning) {
+      if ((currentHealth / maxHealth) < executionThreshold) {
+        Kill();
+      }
+      yield return new WaitForSeconds(0.5f);
+    };
   }
 }
 
