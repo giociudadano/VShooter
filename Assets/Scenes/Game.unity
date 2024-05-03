@@ -462,9 +462,14 @@ MonoBehaviour:
   gameManager: {fileID: 1005037242}
   healthText: {fileID: 1686606062}
   healText: {fileID: 2695241091629641371, guid: 41c941265d715684baa89f9b75b994c3, type: 3}
-  currentHealth: 0
-  maximumHealth: 50
+  hurtText: {fileID: 2695241091629641371, guid: 714e9b119ece059479ca58091630f321, type: 3}
   healthBar: {fileID: 130397619}
+  currentHealth: 0
+  baseHealth: 500
+  maximumHealth: 500
+  defense: 0
+  baseDefense: 50
+  healthRegen: 1
 --- !u!114 &24383493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,6 +2039,7 @@ GameObject:
   - component: {fileID: 565976063}
   - component: {fileID: 565976064}
   - component: {fileID: 565976065}
+  - component: {fileID: 565976066}
   m_Layer: 0
   m_Name: UpgradeScriptsManager
   m_TagString: Untagged
@@ -2108,6 +2114,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusAttackPercent: 0
+--- !u!114 &565976066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565976060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c6b69563a15b3498fcaaaf66db75f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusHealthFlat: 0
+  bonusHealthRegenFlat: 0
 --- !u!1 &580334436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,6 +3228,9 @@ MonoBehaviour:
   upgradesListItem: {fileID: 1997084189054654595, guid: bd559b5ac8196b048bcfd518876c30b7, type: 3}
   upgradeScripts: {fileID: 565976060}
   bonusAttackPercent: 0
+  bonusHealthFlat: 0
+  bonusHealthRegenFlat: 0
+  bonusDefense: 0
   upgradesAvailable: []
 --- !u!1 &1140961178
 GameObject:
@@ -3416,7 +3439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0 <color=#FFA>(+0%)
+  m_text: 35 <color=#FFA>(+0%)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7eeeb0e3f4d7bd43a063b1db763babf, type: 2}
   m_sharedMaterial: {fileID: -6635738203684233990, guid: c7eeeb0e3f4d7bd43a063b1db763babf, type: 2}

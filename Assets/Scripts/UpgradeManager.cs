@@ -19,6 +19,7 @@ public class UpgradeManager : MonoBehaviour {
 	[SerializeField] public float bonusAttackPercent;
 	[SerializeField] public float bonusHealthFlat;
 	[SerializeField] public float bonusHealthRegenFlat;
+	[SerializeField] public float bonusDefense;
 	
 	public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
@@ -31,14 +32,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.3f},{"2", 0.3f},{"3", 0.4f},{"4", 0.4f},{"5", 0.5f}
+						{"1", 0.3f},{"2", 0.4f},{"3", 0.5f}
 					}}
 				}},
 				{"HEAL_AMOUNT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"suffix", "HP"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 20f},{"2", 30f},{"3", 30f},{"4", 40f},{"5", 40f}
+						{"1", 20f},{"2", 30f},{"3", 40f}
 					}}
 				}}
 			}}
@@ -87,7 +88,7 @@ public class UpgradeManager : MonoBehaviour {
 						{"1", 15f},{"2", 25f},{"3", 35f}
 					}}
 				}},
-				{"EXECUTE_THRESHOLD", new Dictionary<string, dynamic> () {
+				{"EXECUTE_THRESHOLD", new Dictionary<string	, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0.0%"},
 					{"level", new Dictionary<string, float> () {
@@ -133,6 +134,42 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 			}}
 		}},
+		{"GENERIC_IRONARMOR", new Dictionary<string, dynamic>() {
+			{"title", "Iron Armor"},
+			{"description", "Increases base defense by {DEFENSE_FLAT}."},
+			{"type", "Common Equipment"},
+			{"icon", "Generic_IronArmor"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"DEFENSE_FLAT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 30f},{"2", 60f},{"3", 90f},{"4", 120f},{"5", 150f}
+					}}
+				}},
+			}}
+		}},
+		{"GENERIC_ETERNALFLAME", new Dictionary<string, dynamic>() {
+			{"title", "Eternal Flame"},
+			{"description", "Increases CRIT Rate by {CRIT_RATE}. Increases CRIT Damage by {CRIT_DAMAGE}."},
+			{"type", "Common Equipment"},
+			{"icon", "Generic_IronArmor"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"CRIT_RATE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.08f},{"2", 0.16f},{"3", 0.24f},{"4", 0.32f},{"5", 0.4f}
+					}}
+				}},
+				{"CRIT_DAMAGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.15f},{"2", 0.3f},{"3", 0.45f},{"4", 0.6f},{"5", 0.75f}
+					}}
+				}},
+			}}
+		}},
 	};
 
 	public List<string> upgradesAvailable;
@@ -159,7 +196,7 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void GetGenericUpgrades() {
 		List<string> genericUpgrades = new List<string>(){
-			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM"
+			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM", "GENERIC_IRONARMOR"
 		};
 		upgradesAvailable.AddRange(genericUpgrades);
 	}
@@ -311,6 +348,10 @@ public class UpgradeManager : MonoBehaviour {
 				float bonusHealthRegenFlat = upgrades["GENERIC_HEARTGEM"]["parameters"]["HEALTH_REGEN_FLAT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_HeartGem>().ApplyPassive(bonusHealthFlat, bonusHealthRegenFlat);
 				break;
+			case "GENERIC_IRONARMOR":
+				float bonusDefense = upgrades["GENERIC_IRONARMOR"]["parameters"]["DEFENSE_FLAT"]["level"][level];
+				upgradeScripts.GetComponent<Generic_IronArmor>().ApplyPassive(bonusDefense);
+				break;
 		}
 		UpdatePlayerStats();
 	}
@@ -340,6 +381,14 @@ public class UpgradeManager : MonoBehaviour {
 		bonusHealthRegenFlat += upgradeScripts.GetComponent<Generic_HeartGem>().bonusHealthRegenFlat;
 		this.bonusHealthRegenFlat = bonusHealthRegenFlat;
 		player.GetComponent<PlayerHealthManager>().SetBonusHealthRegen(bonusHealthRegenFlat);
+
+		// Bonus Defense Calculation
+		float bonusDefense = 0f;
+		bonusDefense += upgradeScripts.GetComponent<Generic_IronArmor>().bonusDefense;
+		this.bonusDefense = bonusDefense;
+		player.GetComponent<PlayerHealthManager>().SetBonusDefense(bonusDefense);
+		string defenseText = $"{(int) 35 + bonusDefense} <color=#FFA>(+0%)</color>";
+		upgradeUI.transform.Find("Defense/Value").GetComponent<TMP_Text>().text = defenseText;
 
 	}
 }

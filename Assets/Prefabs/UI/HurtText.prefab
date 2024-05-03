@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4998793737229208630}
   - component: {fileID: 5686107003631119699}
   m_Layer: 0
-  m_Name: DamageBurnText
+  m_Name: HurtText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 6248962956917865717}
   - component: {fileID: 8193905261988380638}
   m_Layer: 5
-  m_Name: DamageText
+  m_Name: HurtText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286764031
-  m_fontColor: {r: 1, g: 0.8292713, b: 0.5113207, a: 1}
+    rgba: 4286409727
+  m_fontColor: {r: 1, g: 0.41960788, b: 0.49161723, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.65
-  m_fontSizeBase: 0.65
+  m_fontSize: 0.45
+  m_fontSizeBase: 0.45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

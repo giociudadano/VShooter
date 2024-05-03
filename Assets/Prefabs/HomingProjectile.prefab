@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   viewLimitDown: -5
-  viewLimitUp: 50
+  viewLimitUp: 75
   player: {fileID: 0}
 --- !u!114 &-1389823233852296633
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66df782125bd5814d9c49900fda67a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 75
 --- !u!54 &8767983279884466347
 Rigidbody:
   m_ObjectHideFlags: 0

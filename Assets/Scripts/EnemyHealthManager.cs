@@ -8,23 +8,27 @@ using UnityEngine.AI;
 public class EnemyHealthManager : MonoBehaviour {
   // Manages health of the object.
 
-  
-  [SerializeField] private GameObject canvas;
-  [SerializeField] private GameObject healthbar;
-
-  [SerializeField] private GameObject damageText;
-  [SerializeField] private GameObject damageBurnText;
-  [SerializeField] private GameObject damageTextCritical;
-  [SerializeField] private float maxHealth = 3f;
-  [SerializeField] private float currentHealth;
-  [SerializeField] private float XPReward = 5f;
-  private GameObject player;
-
   [Header("Managers")]
   private UpgradeManager upgradeManager;
   private PlayerXPManager playerXPManager;
   private GameObject gameManager;
   private SfxManager sfx;
+
+  [Header("GUI")]
+  [SerializeField] private GameObject canvas;
+  [SerializeField] private GameObject healthbar;
+
+  [Header("Damage Text")]
+  [SerializeField] private GameObject damageText;
+  [SerializeField] private GameObject damageTextBurn;
+  [SerializeField] private GameObject damageTextCritical;
+
+  [Header("Enemy Stats")]
+  [SerializeField] private float maxHealth = 3f;
+  [SerializeField] private float currentHealth;
+  [SerializeField] private float XPReward = 5f;
+  private GameObject player;
+
 
   [Header("Effects")]
   private bool isBurning = false;
@@ -53,10 +57,6 @@ public class EnemyHealthManager : MonoBehaviour {
     totalDamage *= 1 + bonusAttackPercent;
     return totalDamage;
   }
-
-  void Update() {
-        
-  }
   
   public void Hurt(float rawDamage) {
     currentHealth -= rawDamage;
@@ -67,7 +67,7 @@ public class EnemyHealthManager : MonoBehaviour {
     // Health bar and damage text display
     canvas.SetActive(true);
     healthbar.transform.localScale = new Vector3(currentHealth/maxHealth, 1f, 1f);
-    GameObject damagePopup = Instantiate(damageBurnText, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
+    GameObject damagePopup = Instantiate(damageTextBurn, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
     damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0");
   }
 
