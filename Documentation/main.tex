@@ -26,15 +26,17 @@
   	\section{Gameplay}
 
 	VShooter's gameplay is intuitive. Players select from a pool of VTubers at the start of the game. With their VTuber of choice, players shoot at enemies on a stage. Enemies behave in a variety of ways. They may rush at the player. They may also shoot at the player or exhibit other behaviors. Enemies become progressively more challenging as the player progresses through stages. To offset the increase in difficulty, the player's VTuber maintains an experience bar and gains levels. Experience is gained when an enemy is detroyed. Levels are gained after sufficient experience. Upon gaining a level, the player may select an upgrade for their VTuber, conferring additional properties to the VTuber. VTuber upgrades carry over across stages, but reset upon defeat. Each stage features a boss that the player has to defeat to progress to the next stage.
+
+	\section{VTuber Selection}
+
+	At the start of the game, the player is taken to the VTuber selection screen. They may select a VTuber that they'll control in the game. The VTuber selection screen displays a description of each VTuber available, allowing the player to make an informed decision according to their preferences.
   	
   	\subsection{VTuber Stats} \label{Player Stats}
   	
-  	All characters have a defined set of base stats.
+  	All VTubers have a defined set of base stats.
   	
   	\subsubsection{Primary Stats}
 
-
-  	
   	\begin{itemize}
   	\item \textbf{Health.} The lose condition of the player controlling the VTuber. All VTubers begin with 500 Health. Health is lost upon collision with enemies or enemy projectiles, or scripted in-game events. If the VTuber's health drops to 0, they lose the game. Lost health may be regained via several types of upgrades (e.g. \textit{lifesteal}, \textit{health regen}, etc.). A VTuber's maximum health may also be increased through upgrades.
 
@@ -73,8 +75,10 @@
   	 where $R(x)$ is the raw damage from the source, $C_R$ is the Crit Rate of the player, $C_D$ is the Crit Damage of the player, and $P_0(x)$ is the (pre-mitigated) damage.
   	 
   	\end{itemize}
-  
-  	\subsection{Characters} \label{Characters}
+	
+	\pagebreak
+
+  	\subsection{VTubers} \label{VTubers}
   	
   	\subsubsection{Mori Calliope}
   	
@@ -92,11 +96,11 @@
   	
   	\subsubsection{Character Passives}
   	
-  	\textit{Character Passives} are a set of three (3) upgrades unique to each VTuber. Character Passives may be upgraded up to three (3) times. For more information on each character's Character Passives, please refer to \ref{Characters}.
+  	\textit{Character Passives} are sets of three (3) upgrades unique to each VTuber. Character Passives may be upgraded up to three (3) times. For more information on each Vtuber's's Character Passives, please refer to section \ref{VTubers}.
   	
   	\subsubsection{Equipment}
   	
-  	\textit{Equipment} are upgrades that are available for all characters. Common Equipment may be upgraded up to five (5) times.
+  	\textit{Equipment} are upgrades that are available for all VTubers. Common Equipment may be upgraded up to five (5) times.
   	
   	\begin{center}
   	\begin{supertabular}{p{2.7cm}p{5.5cm}}
@@ -109,5 +113,16 @@
   	\end{center}
   	
   	\subsection{Enemies} \label{Enemies}
+
+	VShooter features varied enemies for the player to overcome.
+
+	\subsubsection{Deadbeat}
+
+	\textbf{Description.} The most common enemy type in the game. These enemies rush toward the player's VTuber. On collision, they explode and deal a small amount of damage.
+
+	\subsubsection{Smol Calli}
+
+	\textbf{Description.} The first ranged enemy type in the game. These enemies carry a homing missile. They launch the missile toward the player's VTuber and follow after it. If Smol Calli or the homing missile collide with the player's VTuber, they each explode and deal a small amount of damage.
+
   	
 \end{document}
