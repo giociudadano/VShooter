@@ -21,7 +21,7 @@ public class PlayerProjectileManager : MonoBehaviour
 
   void Start(){
     isFiring = true;
-    //sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
     //InvokeRepeating("FireProjectile", 0f, fireRate);
     StartCoroutine(FireProjectile());
   

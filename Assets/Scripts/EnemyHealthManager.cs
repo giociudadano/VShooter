@@ -41,7 +41,7 @@ public class EnemyHealthManager : MonoBehaviour {
     gameManager = GameObject.FindGameObjectWithTag("GameManager");
     upgradeManager = gameManager.GetComponent<UpgradeManager>();
     playerXPManager = player.GetComponent<PlayerXPManager>();
-    //sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+    sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
   }
 
   void OnCollisionEnter(Collision collision) {
@@ -119,6 +119,7 @@ public class EnemyHealthManager : MonoBehaviour {
       upgradeManager.ApplyPassive(onKillPassives);
     }
     playerXPManager.GainXP(XPReward);
+    //sfx.PlayKillSfx();
     Destroy(gameObject);
   }
 
