@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour {
 
-    private string selectedCharacter;
+    public string selectedCharacter;
 
     [Header("GUI")]
     
@@ -17,11 +17,14 @@ public class CharacterManager : MonoBehaviour {
 
     [SerializeField] private GameObject playerObject;
 
-
     void Start()
     {
         CharacterData characterData = FindObjectOfType<CharacterData>();
-        selectedCharacter = characterData.selectedCharacter;
+        if (characterData != null){
+            selectedCharacter = characterData.selectedCharacter;
+        } else {
+            selectedCharacter = "MoriCalliope";
+        }
         InitGUI();
     }
     void Update()
@@ -38,7 +41,8 @@ public class CharacterManager : MonoBehaviour {
         switch (selectedCharacter) {
             case "MoriCalliope":
                 characterNameGUI.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
-                
+                List<string> characterUpgrades = new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"};
+                gameObject.GetComponent<UpgradeManager>().GetCharacterUpgrades(characterUpgrades);
                 break;
             case "NinomaeInanis":
                 characterNameGUI.GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";

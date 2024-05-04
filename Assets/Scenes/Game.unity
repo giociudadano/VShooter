@@ -6126,8 +6126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1005037244}
   - component: {fileID: 1005037243}
-  - component: {fileID: 1005037246}
   - component: {fileID: 1005037247}
+  - component: {fileID: 1005037246}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -6203,6 +6203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123dc8cdfd0cbd843a719ef92dffbd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCharacter: 
   characterNameGUI: {fileID: 1608878361}
   characterImageGUI: {fileID: 1951189942}
   playerObject: {fileID: 24383483}
