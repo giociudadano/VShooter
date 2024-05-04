@@ -595,7 +595,7 @@ MonoBehaviour:
   projectileDamage: 75
   fireRate: 5
   delay: 3
-  shootOffset: {x: 0, y: 1, z: -2}
+  shootOffset: {x: 0, y: 0, z: -2}
   shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
 --- !u!114 &8335221982312700308
 MonoBehaviour:
