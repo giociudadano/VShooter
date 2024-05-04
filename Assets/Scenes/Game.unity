@@ -599,8 +599,8 @@ MonoBehaviour:
   skillEGUI: {fileID: 91549905}
   go_SkillQ: {fileID: 1583007723088930304, guid: 3810c336a85d3a94d8e895fd2dd1c917, type: 3}
   go_SkillE: {fileID: 3896502697465948771, guid: 4b893fdb5f0322847a423b5940659fa3, type: 3}
-  skillQCooldown: 7
-  skillECooldown: 15
+  skillQCooldown: 15
+  skillECooldown: 6
   player: {fileID: 0}
 --- !u!65 &24383494
 BoxCollider:
