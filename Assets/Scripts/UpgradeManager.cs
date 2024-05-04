@@ -158,14 +158,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.08f},{"2", 0.16f},{"3", 0.24f},{"4", 0.32f},{"5", 0.4f}
+						{"1", 0.06f},{"2", 0.12f},{"3", 0.18f},{"4", 0.24f},{"5", 0.3f}
 					}}
 				}},
 				{"CRIT_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.15f},{"2", 0.3f},{"3", 0.45f},{"4", 0.6f},{"5", 0.75f}
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 8f},{"5", 1f}
 					}}
 				}},
 			}}
@@ -177,7 +177,6 @@ public class UpgradeManager : MonoBehaviour {
 	public Dictionary<string, dynamic> upgradesActive = new Dictionary<string, dynamic>();
 
 	void Start(){
-		GetCharacterUpgrades();
 		GetGenericUpgrades();
 	}
 		
@@ -185,18 +184,13 @@ public class UpgradeManager : MonoBehaviour {
 		
 	}
 
-	private void GetCharacterUpgrades() {
-		string characterName = player.transform.GetChild(0).name;
-		switch (characterName) {
-			case "MoriCalliope":
-				upgradesAvailable.AddRange(new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"});
-				break;
-		}
+	public void GetCharacterUpgrades(List<string> characterUpgrades){
+		upgradesAvailable.AddRange(characterUpgrades);
 	}
 
 	private void GetGenericUpgrades() {
 		List<string> genericUpgrades = new List<string>(){
-			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM", "GENERIC_IRONARMOR"
+			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM", "GENERIC_IRONARMOR", "GENERIC_ETERNALFLAME"
 		};
 		upgradesAvailable.AddRange(genericUpgrades);
 	}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForwardAndDodge : MonoBehaviour
+public class ForwardAndDodgeMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
     [SerializeField] public GameObject player;

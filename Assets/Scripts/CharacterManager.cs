@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour {
 
-    private string selectedCharacter;
+    public string selectedCharacter;
 
     [Header("GUI")]
     
@@ -13,10 +13,18 @@ public class CharacterManager : MonoBehaviour {
 
     [SerializeField] private GameObject characterImageGUI;
 
+    [Header("GameObjects")]
+
+    [SerializeField] private GameObject playerObject;
+
     void Start()
     {
         CharacterData characterData = FindObjectOfType<CharacterData>();
-        selectedCharacter = characterData.selectedCharacter;
+        if (characterData != null){
+            selectedCharacter = characterData.selectedCharacter;
+        } else {
+            selectedCharacter = "MoriCalliope";
+        }
         InitGUI();
     }
     void Update()
@@ -26,10 +34,15 @@ public class CharacterManager : MonoBehaviour {
 
     private void InitGUI() {
         Sprite playerIcon = Resources.Load<Sprite>($"PlayerIcons/PI_{selectedCharacter}");
+        GameObject playerModel = Resources.Load($"Characters/{selectedCharacter}") as GameObject;
+        playerModel.name = selectedCharacter;
+        Instantiate(playerModel, playerObject.transform);
         characterImageGUI.GetComponent<UnityEngine.UI.Image>().sprite = playerIcon;  
         switch (selectedCharacter) {
             case "MoriCalliope":
                 characterNameGUI.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
+                List<string> characterUpgrades = new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"};
+                gameObject.GetComponent<UpgradeManager>().GetCharacterUpgrades(characterUpgrades);
                 break;
             case "NinomaeInanis":
                 characterNameGUI.GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";
