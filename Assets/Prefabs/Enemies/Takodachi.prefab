@@ -2053,6 +2053,7 @@ GameObject:
   - component: {fileID: 6720291195576342522}
   - component: {fileID: 676384172115552761}
   - component: {fileID: 6992158054581306856}
+  - component: {fileID: 2659726094203620314}
   m_Layer: 7
   m_Name: Takodachi
   m_TagString: Enemy
@@ -2173,6 +2174,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!114 &2659726094203620314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480895652822211567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDestroyParticle: {fileID: 6531568444870495042, guid: ac10190cf200c4f7e881ca8e41d3d760, type: 3}
 --- !u!1 &7627162238037961903
 GameObject:
   m_ObjectHideFlags: 0
