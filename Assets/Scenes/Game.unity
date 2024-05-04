@@ -6052,6 +6052,7 @@ GameObject:
   - component: {fileID: 1005037244}
   - component: {fileID: 1005037243}
   - component: {fileID: 1005037246}
+  - component: {fileID: 1005037247}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -6115,6 +6116,20 @@ MonoBehaviour:
   bonusHealthRegenFlat: 0
   bonusDefense: 0
   upgradesAvailable: []
+--- !u!114 &1005037247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005037242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123dc8cdfd0cbd843a719ef92dffbd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNameGUI: {fileID: 1608878361}
+  characterImageGUI: {fileID: 1951189942}
 --- !u!1 &1140961178
 GameObject:
   m_ObjectHideFlags: 0
@@ -11103,7 +11118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98c1994f16f7e3c4dac3485ce1b6d05a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ebd3b65dd55d7149812aa70d61b95b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
