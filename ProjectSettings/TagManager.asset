@@ -11,6 +11,8 @@ TagManager:
   - GameManager
   - SfxPlayer
   - MusicPlayer
+  - EnemyProjectile
+  - ParticleManager
   layers:
   - Default
   - TransparentFX
