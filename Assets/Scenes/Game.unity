@@ -5512,6 +5512,11 @@ GameObject:
   m_Layer: 7
   m_Name: HealthBackground
   m_TagString: Untagged
+  - component: {fileID: 939952813}
+  - component: {fileID: 939952812}
+  m_Layer: 0
+  m_Name: ParticleManager
+  m_TagString: ParticleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5784,6 +5789,24 @@ MonoBehaviour:
   collisionDamage: 100
 --- !u!114 &936363103
 MonoBehaviour:
+  m_GameObject: {fileID: 939952811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe000c4950f9a4b84ffa03bdedcc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionGrey: {fileID: 6531568444870495042, guid: ac10190cf200c4f7e881ca8e41d3d760, type: 3}
+  explosionGreen: {fileID: 6299468115359657815, guid: 6cbc21f5e9162483993a2b84b14d5ac8, type: 3}
+  explosionRed: {fileID: 3371569193385938658, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
+  explosionBlack: {fileID: 8088288519815545661, guid: c7ad2532a6eeb40b59033c75e71fa054, type: 3}
+  explosionOrange: {fileID: 1176145624114067509, guid: ec46c8c4a3cbc429382ee48bd9169b45, type: 3}
+  explosionYellow: {fileID: 2184612376268763248, guid: 307229a5540374aae98859caad2128a3, type: 3}
+  explosionBlue: {fileID: 3603594204106460700, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+  explosionBrown: {fileID: 7613984081511077831, guid: 70a1428e5f80a4866a779ef1ab9fe521, type: 3}
+  explosionPink: {fileID: 8413875811817139174, guid: 7b4191607aae74c0ab244a8d6e48adbf, type: 3}
+  explosionPurple: {fileID: 4222606600419231085, guid: ef43e5aef41c142fb85a7658a397dc75, type: 3}
+--- !u!4 &939952813
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5850,6 +5873,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5929773, y: 0.5924582, z: 0.62542546}
   m_Center: {x: 1.9177231, y: 0.17715228, z: -0.000000029802322}
+  m_GameObject: {fileID: 939952811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.14295328, y: 3.3309708, z: 14.391691}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943953516
 GameObject:
   m_ObjectHideFlags: 0
@@ -9324,7 +9356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1579172251
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9337,7 +9369,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9434,8 +9466,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracklist:
-  - {fileID: 8300000, guid: 4af05b0b05eeb74468088fc8790cfd20, type: 3}
+  - {fileID: 8300000, guid: 03c5ee25d0c23234d95d49f7cf4bfedc, type: 3}
   - {fileID: 8300000, guid: ef827585e7e9b5244ab00f3a3752c517, type: 3}
+  - {fileID: 8300000, guid: 8aa9a403ae8bc8b40850511abb737e66, type: 3}
+  - {fileID: 8300000, guid: fd6796de551f9ff40af07e58f7b67c5c, type: 3}
+  - {fileID: 8300000, guid: e11612874ab88254aabdd0097959257f, type: 3}
+  - {fileID: 8300000, guid: ce3a8f43f4eee2c428326a0cf7c580c8, type: 3}
+  - {fileID: 8300000, guid: adc3adbcc35e97b47bea5f3547155277, type: 3}
   cameraReference: {fileID: 963194225}
   music: {fileID: 1579172251}
 --- !u!4 &1579172253
@@ -12844,3 +12881,4 @@ SceneRoots:
   - {fileID: 1579172253}
   - {fileID: 326784930}
   - {fileID: 936363096}
+  - {fileID: 939952813}

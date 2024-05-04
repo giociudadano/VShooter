@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 1000
+  spinSfx: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
 --- !u!1001 &2616635875797488893
 PrefabInstance:
   m_ObjectHideFlags: 0
