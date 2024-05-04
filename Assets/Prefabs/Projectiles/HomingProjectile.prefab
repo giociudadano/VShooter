@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8369529232436705839}
   - component: {fileID: -1389823233852296633}
   - component: {fileID: 8767983279884466347}
+  - component: {fileID: -7885742906295366262}
   m_Layer: 0
   m_Name: HomingProjectile
   m_TagString: EnemyProjectile
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5591e4fef3a1b134aa12ef3efefe9eb0, type: 2}
+  - {fileID: 2100000, guid: e6497f491fee71245a37d5fd4d9490d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,3 +181,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &-7885742906295366262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028593740872172549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDestroyParticle: {fileID: 3371569193385938658, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}

@@ -36,7 +36,7 @@ public class PlayerProjectileManager : MonoBehaviour
     yield return new WaitForSeconds(shootingStartDelay);
     while (isFiring) {
         Instantiate(projectile, transform.position + shootOffset, transform.rotation);
-        //sfx.PlayShootingSfx();
+        sfx.PlayShootingSfx();
         yield return new WaitForSeconds(fireRate);
     }
   }
