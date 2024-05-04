@@ -1,0 +1,97 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[bottom=1cm, right=1cm, left=1cm, top=1cm]{geometry}
+\usepackage{titlesec}
+\usepackage{supertabular}
+\usepackage{listings}
+\usepackage{wrapfig,lipsum,booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{etoolbox}
+\usepackage{amsmath}
+
+\begin{document}
+
+  \twocolumn
+  	\section{Gameplay}
+  	
+  	\subsection{Player Stats} \label{Player Stats}
+  	
+  	All characters have a defined set of stats.
+  	
+  	\subsubsection{Primary Stats}
+  	
+  	\begin{itemize}
+  	\item \textbf{Health.} The lose condition of the player. All players start at 500 Health. If the player's health drops to zero they lose the game. Lost health can be regained through \textit{lifesteal} and \textit{health regen} upgrades. Maximum health can be increased through upgrades.
+
+  	\item \textbf{Experience.} Defeating an enemy grants a certain amount of experience depending on the enemy type. For specific values, please refer to \ref{Enemies}. 
+  	
+  	\item \textbf{Level.} If the player gains a set amount of experience, they gain a level. The experience required for a level up is given by the following formula:
+  	
+  	\[E(L) = 2.5L^2 + 32.5L + 40\]
+  	
+  	where $L$ is the next level of the player and $E(L)$ is the total experience required to reach the next level.
+  	
+  	Each additional level requires more experience for the player to level up. Gaining a level allows the player to select from a list of upgrades. For specific upgrades, please refer to \ref{Upgrades}.
+  	
+  	\item \textbf{Attack.} Increases the damage dealt by the player's projectiles. All players start at 20 Attack. Attack may be increased through upgrades.
+
+  	\item\textbf{Defense.} Reduces the total damage received by the player. Additional defense can be regained through upgrades. All players start at 50 Defense. Defense has reduced effectiveness at higher values. The total damage reduced by defense is given by the following formula:
+  	
+  	\[P_1(x) = P_0(x) \times \frac{100}{100+D}\]
+  	
+  	where $P_0(x)$ is the pre-mitigation damage of the source, $D$ is the defense of the player, and $N(x)$ is the post-mitigation damage.
+  	
+  	\end{itemize}
+  	
+  	\subsubsection{Secondary Stats}
+  	
+  	\begin{itemize}
+  	 \item \textbf{Crit Rate and Crit Damage.} Projectile attacks have a chance to deal increased damage to enemies. The chance for a projectile to crit is determined by the player's \textit{Crit Rate}. The damage increase by a crit is determined by the player's \textit{Crit Damage}. All players start at 10\% Crit Rate and 150\% Crit Damage. Crit Rate and Crit Damage can be increased through upgrades. The total pre-mitigation damage is given by the following formula:
+
+  	 \[
+	  	 P_0(x) = Rand\begin{cases}
+	  	 	R(x) & 1 - C_R\\
+	  	 	R(x) \times C_D & C_R \\
+	  	 \end{cases}
+  	 \]
+  	 
+  	 where $R(x)$ is the raw damage of the source, $C_R$ is the Crit Rate of the player, $C_D$ is the Crit Damage of the player, and $P_0(x)$ is the pre-mitigation damage of the source.
+  	 
+  	\end{itemize}
+  
+  	\subsection{Characters} \label{Characters}
+  	
+  	\subsubsection{Mori Calliope}
+  	
+  	\textbf{Description.} As the Grim Reaper's first apprentice, Mori Calliope specializes in using \textit{lifesteal} and \textit{post-death effects} to gain an advantage in the battlefield.\\
+  	
+  	\noindent\textbf{Character Passives}\\\\
+  	\begin{supertabular}{p{2.7cm} p{6cm}}
+  		\hline
+  		\textbf{Name}                    & \textbf{Description}                                                                                                                                                                           \\ \hline
+  		\textit{\textbf{Soul Harvester}} & Defeating an enemy has a 30/40/50\% chance to restore 20/30/40HP.                                                                                                                              \\
+  		\textit{\textbf{Taste of Death}} & Defeating an enemy has a 15/20/25\% chance to create an explosion, dealing 60/80/100 damage. Non-boss enemies caught in the explosion have a 8/10/12\% chance of being immediately executed.   \\
+  		\textit{\textbf{End of A Life}}  & Attacks apply {[}Burn{]} that deals 15/25/35 damage over 3 seconds. While under the effects of {[}Burn{]}, targets that fall below 8/12/15\% of their maximum health are immediately executed. \\ \hline
+  	\end{supertabular}
+  	\subsection{Upgrades} \label{Upgrades}
+  	
+  	\subsubsection{Character Passives}
+  	
+  	\textit{Character Passives} are a set of three (3) unique passives that can only be obtained through upgrades while playing that specific character. Character Passives can be upgraded up to three (3) times. For more information on each character's passives, please refer to \ref{Characters}.
+  	
+  	\subsubsection{Equipment}
+  	
+  	\textit{Equipment} are upgrades that are available for all characters. Common Equipment can be upgraded up to five (5) times.
+  	
+  	\begin{center}
+  	\begin{supertabular}{p{2.7cm}p{5.5cm}}
+  		\hline
+  		\textbf{Name}                & \textbf{Description}                                                                                 \\ \hline
+  		\textit{\textbf{Iron Sword}} & Increases total attack by 20/30/40/50/60\%.                                                          \\
+  		\textit{\textbf{Heart Gem}}  & Increases base health by 50/100/150/200/250. Increases base health regeneration by 2/4/6/8/10HP per second. \\
+  		\textit{\textbf{Iron Armor}}  & Increases defense by 30/60/90/120/150. \\ \hline
+  	\end{supertabular}
+  	\end{center}
+  	
+  	\subsection{Enemies} \label{Enemies}
+  	
+\end{document}

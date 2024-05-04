@@ -5,60 +5,48 @@ using UnityEngine;
 public class PlayerSkillManager : MonoBehaviour
 {
     [Header ("Skill Set")]
-    [SerializeField] private GameObject skillOneObject;
-    [SerializeField] private GameObject skillTwoObject;
+    [SerializeField] private GameObject go_SkillQ;
+    [SerializeField] private GameObject go_SkillE;
 
     [Header ("Skill Set Cooldown")]
-    [SerializeField] private float skillOneCooldown = 7f;
-    [SerializeField] private float skillTwoCooldown = 15f;
+    [SerializeField] private float skillQCooldown = 7f;
+    [SerializeField] private float skillECooldown = 15f;
 
     private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
-    private float skillOneLastTime;
-    private float skillTwoLastTime;
-    private bool fire1Pressed = false;
-    private bool fire2Pressed = false;
+    private float skillQTimestamp;
+    private float skillETimestamp;
+    private bool skillQOnCooldown = false;
+    private bool skillEOnCooldown = false;
 
     [Header ("Objects")]
     [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetButtonDown("Fire1") && !fire1Pressed)
-        {  
-            DoSkillOne();
-            skillOneLastTime = Time.time;
-        }
-        if(Input.GetButtonDown("Fire2") && !fire2Pressed)
-        {
-            DoSkillTwo();
-            skillTwoLastTime = Time.time;
-        }
-        if(Time.time > skillOneCooldown + skillOneLastTime)
-        {
-            fire1Pressed = false;
-        }
-        if(Time.time > skillTwoCooldown + skillTwoLastTime)
-        {
-            fire2Pressed = false;
-        }
+    void Update(){
+      if(Input.GetButtonDown("Fire1") && !skillQOnCooldown){  
+        StartCoroutine(CastSkillQ());
+      }
+      if(Input.GetButtonDown("Fire2") && !skillEOnCooldown){
+        StartCoroutine(CastSkillE());
+      }
     }
 
-    private void DoSkillOne()
-    {
-        fire1Pressed = true;
-        Instantiate(skillOneObject,player.transform.position + shootOffset,player.transform.rotation);
+    private IEnumerator CastSkillQ() {
+        Instantiate(go_SkillQ,player.transform.position + shootOffset,player.transform.rotation);
+				skillQOnCooldown = true;
+        yield return new WaitForSeconds(skillQCooldown);
+        skillQOnCooldown = false;
     }
 
-    private void DoSkillTwo()
-    {
-        fire2Pressed = true;
-        Instantiate(skillTwoObject,player.transform.position + shootOffset,player.transform.rotation);
+		private IEnumerator CastSkillE() {
+        Instantiate(go_SkillE,player.transform.position + shootOffset,player.transform.rotation);
+				skillEOnCooldown = true;
+        yield return new WaitForSeconds(skillQCooldown);
+        skillEOnCooldown = false;
     }
 }

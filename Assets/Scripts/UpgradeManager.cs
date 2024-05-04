@@ -203,7 +203,7 @@ public class UpgradeManager : MonoBehaviour {
 
 	public void DrawUpgrades() {
 		List<int> upgradeIndices = new List<int>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			int upgradeIndex;
 			while (true){
 				upgradeIndex = UnityEngine.Random.Range(0, upgradesAvailable.Count);
