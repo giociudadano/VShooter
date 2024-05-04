@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5915519232646463567}
   - component: {fileID: 5875093690740892126}
   - component: {fileID: 4367755258790465187}
-  - component: {fileID: -5158664642484305925}
   m_Layer: 0
   m_Name: BasicProjectile
   m_TagString: AllyProjectile
@@ -66,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db4be874bc29472499de832eb240983c, type: 2}
+  - {fileID: 2100000, guid: 5591e4fef3a1b134aa12ef3efefe9eb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -164,16 +163,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 20
---- !u!114 &-5158664642484305925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019113029584780768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDestroyParticle: {fileID: 8413875811817139174, guid: 7b4191607aae74c0ab244a8d6e48adbf, type: 3}

@@ -72,7 +72,7 @@ public class EnemyHealthManager : MonoBehaviour {
   }
 
   public void Hurt(GameObject source, float rawDamage, float critChance) {
-    sfx.PlayImpactSfx();
+    //sfx.PlayImpactSfx();
     // Net Damage Calculation
     float critRoll = Random.Range(0f, 1f);
     if (critRoll < critChance){
@@ -119,7 +119,7 @@ public class EnemyHealthManager : MonoBehaviour {
       upgradeManager.ApplyPassive(onKillPassives);
     }
     playerXPManager.GainXP(XPReward);
-    sfx.PlayKillSfx();
+    //sfx.PlayKillSfx();
     Destroy(gameObject);
   }
 

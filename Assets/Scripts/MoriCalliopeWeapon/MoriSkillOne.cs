@@ -7,17 +7,11 @@ public class MoriSkillOne : MonoBehaviour
     [SerializeField] private float rotateSpeed = 500f;
     private GameObject player;
     private float rotateDegrees = 350f;
-
-    private SfxManager sfx;
-    [SerializeField] AudioClip spinSfx;
-
     // Start is called before the first frame update
 
     void Start()
     {
-        sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
         player = GameObject.FindGameObjectWithTag("Player");
-        sfx.PlayOneShot(spinSfx);
     }
     
     void Update()

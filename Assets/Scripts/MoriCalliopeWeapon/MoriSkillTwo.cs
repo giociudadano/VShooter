@@ -7,17 +7,12 @@ public class MoriSkillTwo : MonoBehaviour
     [SerializeField] private float rotateSpeed = 1000f;
     [SerializeField] private float forwardSpeed = 50f;
     private GameObject player;
-
-    private SfxManager sfx;
-    [SerializeField] AudioClip launchSfx;
     
     // Start is called before the first frame update
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
-        sfx.PlayOneShot(launchSfx);
     }
     
     void Update()
