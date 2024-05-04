@@ -282,7 +282,6 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	public void GetUpgrade(String name) {
-		print($"Added upgrade: {name}");
 		if (upgradesActive.ContainsKey(name)) {
 			upgradesActive[name]["level"] += 1;
 		} else {
