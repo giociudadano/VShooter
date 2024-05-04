@@ -54,5 +54,10 @@ public class SfxManager : MonoBehaviour
         oneShot.PlayOneShot(killSfx);
     }
 
+    public void PlayOneShot(AudioClip sfx)
+    {
+        oneShot.PlayOneShot(sfx);
+    }
+
 
 }

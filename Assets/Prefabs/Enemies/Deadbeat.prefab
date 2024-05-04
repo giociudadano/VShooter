@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 592844347238965375}
   - component: {fileID: 1925377021127799645}
   - component: {fileID: 4773895401239875004}
+  - component: {fileID: 9208049628674303728}
   m_Layer: 7
   m_Name: Deadbeat
   m_TagString: Enemy
@@ -788,6 +789,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8098087, y: 3.062721, z: 2.1153984}
   m_Center: {x: 0.03819847, y: -0.7410513, z: -0.11459541}
+--- !u!114 &9208049628674303728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077429283666885925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDestroyParticle: {fileID: 6531568444870495042, guid: ac10190cf200c4f7e881ca8e41d3d760, type: 3}
 --- !u!1 &2206895793979775388
 GameObject:
   m_ObjectHideFlags: 0
