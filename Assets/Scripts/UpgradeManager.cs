@@ -158,14 +158,14 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.08f},{"2", 0.16f},{"3", 0.24f},{"4", 0.32f},{"5", 0.4f}
+						{"1", 0.06f},{"2", 0.12f},{"3", 0.18f},{"4", 0.24f},{"5", 0.3f}
 					}}
 				}},
 				{"CRIT_DAMAGE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.15f},{"2", 0.3f},{"3", 0.45f},{"4", 0.6f},{"5", 0.75f}
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 8f},{"5", 1f}
 					}}
 				}},
 			}}
