@@ -11,6 +11,7 @@ TagManager:
   - GameManager
   - SfxPlayer
   - MusicPlayer
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Water
   - UI
   - a
-  - 
+  - Enemy
   - 
   - 
   - 

@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9cb8d26d2067e349b0f8f4f6d694638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 500
+  rotateSpeed: 1000
 --- !u!1001 &2616635875797488893
 PrefabInstance:
   m_ObjectHideFlags: 0
