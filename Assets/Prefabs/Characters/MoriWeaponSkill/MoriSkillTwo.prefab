@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 3000
   forwardSpeed: 50
+  launchSfx: {fileID: 8300000, guid: e7ee25a47d63b46cdaf65480d62b405c, type: 3}
 --- !u!54 &9055391081383192504
 Rigidbody:
   m_ObjectHideFlags: 0
