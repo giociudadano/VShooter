@@ -212,7 +212,6 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	private void RenderUpgrade(int slotIndex, string name, Dictionary<string, dynamic> upgrade) {
-		print($"{slotIndex}:{name}");
 		GameObject upgradeNameUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Name").gameObject;
 		upgradeNameUI.GetComponent<TMP_Text>().text = name;
 		GameObject upgradeTitleUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Title").gameObject;
