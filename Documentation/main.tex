@@ -3,6 +3,8 @@
 \usepackage{titlesec}
 \usepackage{supertabular}
 \usepackage{listings}
+\usepackage{multicol}
+\setlength\columnsep{30pt}
 \usepackage{wrapfig,lipsum,booktabs}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{etoolbox}
@@ -21,10 +23,11 @@
 \begin{document}
 \maketitle
 
+	\begin{multicols}{2}
 
 	\section{Overview}
 
-	VShooter is a single player top-down rougelite arcade style shooter inspired by Into the Dead, Soul Knight, and frustrating mobile ads for shooters that don't exist (as far as we know). Vshooter blends modern VTuber craze and classic gameplay, aiming for a PG-13 audience and a Windows platform backed by the Unity engine.
+	VShooter is a singleplayer top-down roguelite arcade-style shooter inspired by games such as Into the Dead and Soul Knight. Vshooter blends modern VTuber craze and classic gameplay, aiming for a PG-13 audience and a Windows platform backed by the Unity engine.
 
   	\section{Gameplay}
 
@@ -34,32 +37,32 @@
 
 	At the start of the game, the player is taken to the VTuber selection screen. They may select a VTuber that they'll control in the game. The VTuber selection screen displays a description of each VTuber available, allowing the player to make an informed decision according to their preferences.
   	
-  	\subsection{VTuber Stats} \label{Player Stats}
+  	\subsection{Stats} \label{Player Stats}
   	
-  	All VTubers have a defined set of base stats.
+  	All VTubers have a defined set of base stats. For more information on the base stats of each VTuber, please refer to section \ref{VTubers}.
   	
   	\subsubsection{Primary Stats}
 
   	\begin{itemize}
-  	\item \textbf{Health.} The lose condition of the player controlling the VTuber. All VTubers begin with 500 Health. Health is lost upon collision with enemies or enemy projectiles, or scripted in-game events. If the VTuber's health drops to 0, they lose the game. Lost health may be regained via several types of upgrades (e.g. \textit{lifesteal}, \textit{health regen}, etc.). A VTuber's maximum health may also be increased through upgrades.
+  	\item \textbf{Health.} The lose condition of the player controlling the VTuber. Health is lost upon collision with enemies or enemy projectiles, or scripted in-game events. If the VTuber's health drops to 0, they lose the game. Lost health may be regained via several types of upgrades (e.g. \textit{lifesteal}, \textit{health regen}, etc.). A VTuber's maximum health may also be increased through upgrades.
 
   	\item \textbf{Experience.} Defeating an enemy grants experience according to its type. For specifics, please refer to section \ref{Enemies}. 
   	
-  	\item \textbf{Level.} If the VTuber gains a set amount of experience, they gain a level. All VTubers begin with 0 experience. The experience required for gaining a level is calculated using the following formula:
+  	\item \textbf{Level.} If the VTuber gains a set amount of experience, they gain a level. The experience required for gaining a level is calculated using the following formula:
   	
   	\[E(L) = 2.5L^2 + 32.5L + 40\]
   	
   	where $L$ is the next level of the VTuber and $E(L)$ is the total experience required to reach the next level.
   	
-  	Each additional level requires more experience to be gained. Gaining a level allows the player to select an upgrade from a randomly selected pool. The pool of upgrades are unique for each VTuber. Upgrades can also be upgraded, increasing their potency. For specifics, please refer to section \ref{Upgrades}.
+  	Each additional level requires more experience to be gained. Gaining a level allows the player to select an upgrade from a randomly selected pool. For more information on upgrades, please refer to section \ref{Upgrades}.
   	
-  	\item \textbf{Attack.} Increases the damage dealt by the VTuber's projectiles. All VTubers begin with 20 Attack. Attack may be increased through upgrades.
+  	\item \textbf{Attack.} Increases the damage dealt by the VTuber's projectiles. Attack may be increased through upgrades.
 
-  	\item\textbf{Defense.} Reduces the total damage received by the VTuber. Additional defense may be gained through upgrades. All VTubers begin with 50 Defense. Defense has reduced effectiveness at higher values. The total damage reduced by defense is calculated using the following formula:
+  	\item\textbf{Defense.} Reduces the total damage received by the VTuber. Additional defense may be gained through upgrades. Defense has reduced effectiveness at higher values. The total damage reduced by defense is calculated using the following formula:
   	
   	\[P_1(x) = P_0(x) \times \frac{100}{100+D}\]
   	
-  	where $P_0(x)$ is the pre-mitigation damage, $D$ is the defense of the VTuber, and $N(x)$ is the post mitigation damage.
+  	where $P_0(x)$ is the pre-mitigation damage, $D$ is the defense of the VTuber, and $P_1(x)$ is the post mitigation damage.
   	
   	\end{itemize}
   	
@@ -80,25 +83,26 @@
   	\end{itemize}
   	
   	\subsection{Upgrades} \label{Upgrades}
+  	
+  	When a VTuber levels up, they are able to select an upgrade drawn from a randomly selected pool of \textit{equipment} and three (3) unique \textit{Character Passives}. \\
+  	
+  	If the player already has the upgrade and draws the same upgrade from the random pool, they instead level up that upgrade to increase its effects. \textit{Equipment} can be upgraded up to five (5) times and \textit{Character Passives} can be upgraded up to three (3) times. For more information on each Vtuber's Character Passives, please refer to section \ref{VTubers}.
 	
-  	\subsubsection{Vtuber Passives}
-  	
-  	\textit{Vtuber Passives} are sets of three (3) upgrades unique to each VTuber. Vtuber Passives may be upgraded up to three (3) times. For more information on each Vtuber's's Vtuber Passives, please refer to section \ref{VTubers}.
-  	
   	\subsubsection{Equipment}
   	
   	\textit{Equipment} are upgrades that are available for all VTubers. Common Equipment may be upgraded up to five (5) times.
   	
   	\begin{center}
-		\begin{supertabular}{|p{2.7cm}|p{6cm}|}
+		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
-			\textit{\textbf{Iron Sword}} & Increases total attack by 20/30/40/50/60\%. \\
-			\textit{\textbf{Heart Gem}} & Increases base health by 50/100/150/200/250. Increases base health regeneration by 2/4/6/8/10HP per second. \\
-			\textit{\textbf{Iron Armor}} & Increases defense by 30/60/90/120/150. \\
+			\textit{\textbf{Iron Sword}} & Increases Total Attack by 20/30/40/50/60\%. \\
+			\textit{\textbf{Heart Gem}} & Increases Base Health by 50/100/150/200/250. IncreasesBase Health Regeneration by 2/4/6/8/10HP per second. \\
+			\textit{\textbf{Iron Armor}} & Increases Defense by 30/60/90/120/150. \\
+			\textit{\textbf{Eternal Flame}} & Increases CRIT Rate by 6/12/18/24/30\%. Increases CRIT Damage by 20/40/60/80/100\%. \\
 			\hline
-		\end{supertabular}
+		\end{tabular}
 	\end{center}
 
 	\subsection{VTubers} \label{VTubers}
@@ -106,46 +110,50 @@
   	\subsubsection{Mori Calliope}
   	
   	\textbf{Description.} As the Grim Reaper's first apprentice, Mori Calliope specializes in using \textit{lifesteal} and \textit{post death effects} to gain an advantage in battle.
-  	
-  	\begin{center}
-		\textbf{VTuber Passives}
-	\end{center}
+
+	\textbf{Passives}
 	
 	\begin{center}
-		\begin{supertabular}{|p{2.7cm}|p{6cm}|}
+		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
 			\textit{\textbf{Soul Harvester}} & Defeating an enemy has a 30/40/50\% chance to restore 20/30/40HP. \\
 			\textit{\textbf{Taste of Death}} & Defeating an enemy has a 15/20/25\% chance to create an explosion, dealing 60/80/100 damage. Non-boss enemies caught in the explosion have a 8/10/12\% chance of being immediately destroyed. \\
-			\textit{\textbf{End of A Life}}  & Attacks apply [Burn] that deals 15/25/35 damage over 3 seconds. While under the effects of [Burn], targets that fall below 8/12/15\% of their maximum health are immediately destroyed. \\
-			\hline
-		\end{supertabular}
+		
+		\end{tabular}
 	\end{center}
 	
 	\begin{center}
-		\textbf{VTuber Actives}
+		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
+				\textit{\textbf{End of A Life}}  & Attacks apply [Burn] that deals 15/25/35 damage over 3 seconds. While under the effects of [Burn], targets that fall below 8/12/15\% of their maximum health are immediately destroyed. \\
+			\hline
+			
+		\end{tabular}
 	\end{center}
+	
 	\begin{center}
-		\begin{supertabular}{|p{2.7cm}|p{6cm}|}
+		\textbf{Actives}
+	\end{center}
+	
+	\begin{center}
+		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
-			\textit{\textbf{Skill 1 (Q)}} & Mori Calliope hurls her scythe forward. Enemies caught in the scythe's path take damage. \\
-			\textit{\textbf{Skill 2 (E)}} & Mori Calliope whirls her scythe. Enemies in a small radius around her take damage. \\
+			\textit{\textbf{Q: Off With Their Heads}} & Mori Calliope hurls her scythe forward. Enemies caught in the scythe's path take 100 damage. (16s Cooldown)\\
+			\textit{\textbf{E: Excuse My Rudeness}} & Mori Calliope whirls her scythe. Enemies in a small radius around her take 100 damage. (6s Cooldown) \\
 			\hline
-		\end{supertabular}
+		\end{tabular}
 	\end{center}
   	
   	\subsection{Enemies} \label{Enemies}
-
-	VShooter features varied enemies for the player to overcome.
 
 	\subsubsection{Deadbeat}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/deadbeat1.png}
+		\includegraphics[width=0.2\textwidth]{images/deadbeat1.png}
 		\caption{Deadbeat}
 		\label{fig:deadbeat}
 	\end{figure}
@@ -158,7 +166,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/smol_calli1.png}
+		\includegraphics[width=0.2\textwidth]{images/smol_calli1.png}
 		\caption{Smol Calli}
 		\label{fig:smolcalli}
 	\end{figure}
@@ -169,7 +177,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/takodachi1.png}
+		\includegraphics[width=0.2\textwidth]{images/takodachi1.png}
 		\caption{Meatshield}
 		\label{fig:meatshield}
 	\end{figure}
@@ -180,7 +188,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/annoying_healer1.png}
+		\includegraphics[width=0.2\textwidth]{images/annoying_healer1.png}
 		\caption{Annoying Healer}
 		\label{fig:annoyinghealer}
 	\end{figure}
@@ -191,11 +199,13 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/annoying_healer1.png}
+		\includegraphics[width=0.2\textwidth]{images/annoying_healer1.png}
 		\caption{Railgun}
 		\label{fig:railgun}
 	\end{figure}
 
 	\textbf{Description.} An enemy that only moves a short distance toward the player's VTuber upon spawning. Once she stops, she lunges at the them, dealing moderate damage on collision.
+	
+	\end{multicols}
 
 \end{document}
