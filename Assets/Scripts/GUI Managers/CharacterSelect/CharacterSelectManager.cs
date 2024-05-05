@@ -33,8 +33,8 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
 		private IEnumerator SceneStart() {
-      StartCoroutine(MoveObject(header.gameObject, header.gameObject.transform.localPosition, new Vector3(50, 270, 0), 0.4f));
-      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -220, 0), 0.4f));
+      StartCoroutine(MoveObject(header.gameObject, header.gameObject.transform.localPosition, new Vector3(50, 270, 0), 0.3f));
+      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -220, 0), 0.3f));
       yield return new WaitForSeconds(0.4f);
       StartCoroutine(SceneIdle());
 		}

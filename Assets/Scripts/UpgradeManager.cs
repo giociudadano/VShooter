@@ -20,6 +20,8 @@ public class UpgradeManager : MonoBehaviour {
 	[SerializeField] public float bonusHealthFlat;
 	[SerializeField] public float bonusHealthRegenFlat;
 	[SerializeField] public float bonusDefense;
+	[SerializeField] public float bonusCritRate;
+	[SerializeField] public float bonusCritDamage;
 	
 	public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
@@ -114,7 +116,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_HEARTGEM", new Dictionary<string, dynamic>() {
 			{"title", "Heart Gem"},
-			{"description", "Increases base health by {HEALTH_FLAT}. Increases base health regeneration by {HEALTH_REGEN_FLAT}."},
+			{"description", "Increases Base Health by {HEALTH_FLAT}. Increases Base Health Regeneration by {HEALTH_REGEN_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_HeartGem"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -136,7 +138,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_IRONARMOR", new Dictionary<string, dynamic>() {
 			{"title", "Iron Armor"},
-			{"description", "Increases base defense by {DEFENSE_FLAT}."},
+			{"description", "Increases Base Defense by {DEFENSE_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronArmor"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -152,7 +154,7 @@ public class UpgradeManager : MonoBehaviour {
 			{"title", "Eternal Flame"},
 			{"description", "Increases CRIT Rate by {CRIT_RATE}. Increases CRIT Damage by {CRIT_DAMAGE}."},
 			{"type", "Common Equipment"},
-			{"icon", "Generic_IronArmor"},
+			{"icon", "Generic_EternalFlame"},
 			{"parameters", new Dictionary<string, dynamic> () {
 				{"CRIT_RATE", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
@@ -165,7 +167,7 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"format", "0:0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 8f},{"5", 1f}
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f},{"4", 0.8f},{"5", 1f}
 					}}
 				}},
 			}}
@@ -344,6 +346,11 @@ public class UpgradeManager : MonoBehaviour {
 				float bonusDefense = upgrades["GENERIC_IRONARMOR"]["parameters"]["DEFENSE_FLAT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_IronArmor>().ApplyPassive(bonusDefense);
 				break;
+			case "GENERIC_ETERNALFLAME":
+				float bonusCritRate = upgrades["GENERIC_ETERNALFLAME"]["parameters"]["CRIT_RATE"]["level"][level];
+				float bonusCritDamage = upgrades["GENERIC_ETERNALFLAME"]["parameters"]["CRIT_DAMAGE"]["level"][level];
+				upgradeScripts.GetComponent<Generic_EternalFlame>().ApplyPassive(bonusCritRate, bonusCritDamage);
+				break;
 		}
 		UpdatePlayerStats();
 	}
@@ -378,9 +385,23 @@ public class UpgradeManager : MonoBehaviour {
 		float bonusDefense = 0f;
 		bonusDefense += upgradeScripts.GetComponent<Generic_IronArmor>().bonusDefense;
 		this.bonusDefense = bonusDefense;
-		player.GetComponent<PlayerHealthManager>().SetBonusDefense(bonusDefense);
 		string defenseText = $"{(int) 35 + bonusDefense} <color=#FFA>(+0%)</color>";
 		upgradeUI.transform.Find("Defense/Value").GetComponent<TMP_Text>().text = defenseText;
+
+		// Bonus Crit Rate Calculation
+		float bonusCritRate = 0f;
+		bonusCritRate += upgradeScripts.GetComponent<Generic_EternalFlame>().bonusCritRate;
+		this.bonusCritRate = bonusCritRate;
+		string critRateText = $"{String.Format("{0:0%}", 0.1f + bonusCritRate)}";
+		upgradeUI.transform.Find("CRIT Rate/Value").GetComponent<TMP_Text>().text = critRateText;
+
+		// Bonus Crit Damage Calculation
+		float bonusCritDamage = 0f;
+		bonusCritDamage += upgradeScripts.GetComponent<Generic_EternalFlame>().bonusCritDamage;
+		this.bonusCritDamage = bonusCritDamage;
+		string critDamageText = $"{String.Format("{0:0%}", 1.5f + bonusCritDamage)}";
+		upgradeUI.transform.Find("CRIT Damage/Value").GetComponent<TMP_Text>().text = critDamageText;
+
 
 	}
 }

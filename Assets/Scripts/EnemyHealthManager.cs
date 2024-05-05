@@ -75,8 +75,10 @@ public class EnemyHealthManager : MonoBehaviour {
     sfx.PlayImpactSfx();
     // Net Damage Calculation
     float critRoll = Random.Range(0f, 1f);
-    if (critRoll < critChance){
-      rawDamage *= 1.5f;
+    float bonusCritRate = upgradeManager.GetComponent<UpgradeManager>().bonusCritRate;
+    if (critRoll < (critChance + bonusCritRate)){
+      float bonusCritDamage = upgradeManager.GetComponent<UpgradeManager>().bonusCritDamage;
+      rawDamage *= (1.5f + bonusCritDamage);
       GameObject damagePopup = Instantiate(damageTextCritical, new Vector3(gameObject.transform.position.x + 0.2f, 2f, gameObject.transform.position.z), Quaternion.identity);
       damagePopup.transform.Find("DamageText").GetComponent<TMP_Text>().text = rawDamage.ToString("0") + "!";
     } else {

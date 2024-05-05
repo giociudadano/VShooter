@@ -2030,7 +2030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1997084189054654595, guid: bd559b5ac8196b048bcfd518876c30b7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2051022115342792971, guid: bd559b5ac8196b048bcfd518876c30b7, type: 3}
       propertyPath: m_Pivot.x
@@ -2736,8 +2736,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 861, y: 964.3}
-  m_Pivot: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 1280, y: 720}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &475528909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3446,6 +3446,7 @@ GameObject:
   - component: {fileID: 565976065}
   - component: {fileID: 565976066}
   - component: {fileID: 565976067}
+  - component: {fileID: 565976068}
   m_Layer: 0
   m_Name: UpgradeScriptsManager
   m_TagString: Untagged
@@ -3547,6 +3548,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusDefense: 0
+--- !u!114 &565976068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565976060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed3e9841d9d5a1479edef028bbd88ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusCritRate: 0
+  bonusCritDamage: 0
 --- !u!1 &580334436
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,7 +5156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &835661610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5923,6 +5938,8 @@ MonoBehaviour:
   bonusHealthFlat: 0
   bonusHealthRegenFlat: 0
   bonusDefense: 0
+  bonusCritRate: 0
+  bonusCritDamage: 0
   upgradesAvailable: []
 --- !u!114 &1005037247
 MonoBehaviour:
@@ -6556,7 +6573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1220010535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9395,7 +9412,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
