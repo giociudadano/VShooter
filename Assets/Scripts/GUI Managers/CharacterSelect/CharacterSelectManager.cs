@@ -20,13 +20,11 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public bool isCharacterSelected = false;
 
-
     void Start() {
       header.gameObject.transform.localPosition = new Vector3(1200, 210, 0);
       characterSplash.gameObject.transform.localPosition = new Vector3(-700, -160, 0);
       characterNameObject.GetComponent<TMP_Text>().text = "";
       characterDescriptionObject.GetComponent<TMP_Text>().text = "";
-
       StartCoroutine(SceneStart());
     }
 
