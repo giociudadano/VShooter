@@ -9,6 +9,8 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] private AudioSource music;
     private static MusicPlayer _instance;
 
+    private bool isTestingMusic = false;
+    
     public static MusicPlayer Instance
     {
         get { return _instance; }
@@ -34,8 +36,9 @@ public class MusicPlayer : MonoBehaviour
     //  Start is called before the first frame update
     void Start()
     {   
-        if (!music.isPlaying) {
-            transform.position = cameraReference.transform.position;
+        cameraReference = GameObject.FindGameObjectWithTag("MainCamera");
+        transform.position = cameraReference.transform.position;
+        if (!music.isPlaying && isTestingMusic) {
             PlayRandomTrack();
         }
     }
@@ -49,6 +52,13 @@ public class MusicPlayer : MonoBehaviour
     {
         music.clip = track;
     }
+
+    public void PlayTrack(int trackIndex)
+    {
+        SetTrack(tracklist[trackIndex]);
+        Play();
+    }
+
 
     public void PlayRandomTrack()
     {

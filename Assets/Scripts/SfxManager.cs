@@ -36,6 +36,7 @@ public class SfxManager : MonoBehaviour
     //  Start is called before the first frame update
     void Start()
     {   
+        cameraReference = GameObject.FindGameObjectWithTag("MainCamera");
         transform.position = cameraReference.transform.position;
     }
 
