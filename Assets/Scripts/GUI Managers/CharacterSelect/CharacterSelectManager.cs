@@ -20,13 +20,11 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public bool isCharacterSelected = false;
 
-
     void Start() {
-      header.gameObject.transform.localPosition = new Vector3(1200, 210, 0);
-      characterSplash.gameObject.transform.localPosition = new Vector3(-700, -160, 0);
+      header.gameObject.transform.localPosition = new Vector3(1800, 270, 0);
+      characterSplash.gameObject.transform.localPosition = new Vector3(-1000, -220, 0);
       characterNameObject.GetComponent<TMP_Text>().text = "";
       characterDescriptionObject.GetComponent<TMP_Text>().text = "";
-
       StartCoroutine(SceneStart());
     }
 
@@ -35,14 +33,14 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
 		private IEnumerator SceneStart() {
-      StartCoroutine(MoveObject(header.gameObject, header.gameObject.transform.localPosition, new Vector3(72, 210, 0), 0.3f));
-      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-180, -160, 0), 0.3f));
-      yield return new WaitForSeconds(0.3f);
+      StartCoroutine(MoveObject(header.gameObject, header.gameObject.transform.localPosition, new Vector3(50, 270, 0), 0.3f));
+      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -220, 0), 0.3f));
+      yield return new WaitForSeconds(0.4f);
       StartCoroutine(SceneIdle());
 		}
 
     private IEnumerator SceneIdle() {
-      StartCoroutine(HoverObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-180, -180, 0), new Vector3(-180, -140, 0), 3f));
+      StartCoroutine(HoverObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -260, 0), new Vector3(-290, -180, 0), 3f));
       yield return null;
     }
 
@@ -113,10 +111,10 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
     private IEnumerator HoverCharacter() {
-      characterSplash.gameObject.transform.localPosition = new Vector3(-700, -160, 0);
-      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-180, -160, 0), 0.3f));
-      yield return new WaitForSeconds(0.3f);
-      StartCoroutine(HoverObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-180, -180, 0), new Vector3(-180, -140, 0), 3f));
+      characterSplash.gameObject.transform.localPosition = new Vector3(-1000, -220, 0);
+      StartCoroutine(MoveObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -220, 0), 0.4f));
+      yield return new WaitForSeconds(0.4f);
+      StartCoroutine(HoverObject(characterSplash.gameObject, characterSplash.gameObject.transform.localPosition, new Vector3(-290, -260, 0), new Vector3(-290, -180, 0), 3f));
       yield return null;
     }
 

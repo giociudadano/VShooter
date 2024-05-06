@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
   [SerializeField] public GameObject gameOverUI;
   [SerializeField] private GameObject upgradeUI;
   [SerializeField] private GameObject gameManager;
-	[SerializeField] private GameObject cheatsActivatedDisplayUI;
   [SerializeField] private bool isCheats = false;
 	[SerializeField] private GameObject player;
 
@@ -51,10 +50,8 @@ public class GameManager : MonoBehaviour {
 
 	public void ActivateCheats(bool value) {
 		if (value) {
-			cheatsActivatedDisplayUI.SetActive(true);
 			isCheats = true;
 		} else {
-			cheatsActivatedDisplayUI.SetActive(false);
 			isCheats = false;
 		}
 	}
