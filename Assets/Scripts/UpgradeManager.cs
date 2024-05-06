@@ -23,6 +23,7 @@ public class UpgradeManager : MonoBehaviour {
 	[SerializeField] public float bonusCritRate;
 	[SerializeField] public float bonusCritDamage;
 	[SerializeField] public float bonusAttackSpeed;
+	[SerializeField] public float bonusAbilityHasteFlat;
 	
 	public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
@@ -102,7 +103,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_IRONSWORD", new Dictionary<string, dynamic>() {
 			{"title", "Iron Sword"},
-			{"description", "Increases total attack by {ATTACK_PERCENT}."},
+			{"description", "Increases attack by {ATTACK_PERCENT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronSword"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -117,7 +118,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_HEARTGEM", new Dictionary<string, dynamic>() {
 			{"title", "Heart Gem"},
-			{"description", "Increases base health by {HEALTH_FLAT}. Increases base health regeneration by {HEALTH_REGEN_FLAT}."},
+			{"description", "Increases health by {HEALTH_FLAT}. Increases health regeneration by {HEALTH_REGEN_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_HeartGem"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -139,7 +140,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_IRONARMOR", new Dictionary<string, dynamic>() {
 			{"title", "Iron Armor"},
-			{"description", "Increases base defense by {DEFENSE_FLAT}."},
+			{"description", "Increases defense by {DEFENSE_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronArmor"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -188,6 +189,20 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 			}}
 		}},
+		{"GENERIC_TOPAZSTAFF", new Dictionary<string, dynamic>() {
+			{"title", "Topaz Staff"},
+			{"description", "Increases ability haste by {ABILITYHASTE_FLAT}."},
+			{"type", "Uncommon Equipment"},
+			{"icon", "Generic_TopazStaff"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"ABILITYHASTE_FLAT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 15f},{"2", 30f},{"3", 45f},{"4", 60f},{"5", 75f}
+					}}
+				}},
+			}}
+		}},
 	};
 
 	public List<string> upgradesAvailable;
@@ -208,7 +223,7 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void GetGenericUpgrades() {
 		List<string> genericUpgrades = new List<string>(){
-			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM", "GENERIC_IRONARMOR", "GENERIC_ETERNALFLAME", "GENERIC_CIVILIZATIONFEATHER"
+			"GENERIC_IRONSWORD", "GENERIC_HEARTGEM", "GENERIC_IRONARMOR", "GENERIC_ETERNALFLAME", "GENERIC_CIVILIZATIONFEATHER", "GENERIC_TOPAZSTAFF"
 		};
 		upgradesAvailable.AddRange(genericUpgrades);
 	}
@@ -250,6 +265,8 @@ public class UpgradeManager : MonoBehaviour {
 				return "<color=#FFA>" + type + "</color>";
 			case "Common Equipment":
 				return "<color=#AAA>" + type + "</color>";
+			case "Uncommon Equipment":
+				return "<color=#AFA>" + type + "</color>";
 			default:
 				return "";
 		}
@@ -300,7 +317,7 @@ public class UpgradeManager : MonoBehaviour {
 				{"level", 1}
 			});
 		}
-		if (upgrades[name]["type"] == "Common Equipment"){
+		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment"){
 			ApplyPassive(name, null);
 		}
 		RenderUpgradesListUI();
@@ -371,6 +388,10 @@ public class UpgradeManager : MonoBehaviour {
 				float bonusAttackSpeed = upgrades["GENERIC_CIVILIZATIONFEATHER"]["parameters"]["ATTACKSPEED_PERCENT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_CivilizationFeather>().ApplyPassive(bonusAttackSpeed);
 				break;
+			case "GENERIC_TOPAZSTAFF":
+				float bonusAbilityHasteFlat = upgrades["GENERIC_TOPAZSTAFF"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
+				upgradeScripts.GetComponent<Generic_TopazStaff>().ApplyPassive(bonusAbilityHasteFlat);
+				break;
 		}
 		UpdatePlayerStats();
 	}
@@ -429,5 +450,13 @@ public class UpgradeManager : MonoBehaviour {
 		player.GetComponent<PlayerProjectileManager>().SetBonusAttackSpeed(bonusAttackSpeed);
 		string attackSpeedText = $"{String.Format("{0:0.00}", 1.5f * (1f + bonusAttackSpeed))} / SEC";
 		upgradeUI.transform.Find("Attack Speed/Value").GetComponent<TMP_Text>().text = attackSpeedText;
+
+		// Bonus Ability Haste Calculation
+		float bonusAbilityHasteFlat = 0f;
+		bonusAbilityHasteFlat += upgradeScripts.GetComponent<Generic_TopazStaff>().bonusAbilityHasteFlat;
+		this.bonusAbilityHasteFlat = bonusAbilityHasteFlat;
+		player.GetComponent<PlayerSkillManager>().SetBonusAbilityHaste(bonusAbilityHasteFlat);
+		string abilityHasteText = $"{bonusAbilityHasteFlat} | {String.Format("{0:0.00%}", bonusAbilityHasteFlat / (bonusAbilityHasteFlat + 100))}";
+		upgradeUI.transform.Find("Ability Haste/Value").GetComponent<TMP_Text>().text = abilityHasteText;
 	}
 }
