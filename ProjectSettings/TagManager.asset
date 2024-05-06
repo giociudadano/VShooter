@@ -13,6 +13,7 @@ TagManager:
   - MusicPlayer
   - EnemyProjectile
   - ParticleManager
+  - Boss
   layers:
   - Default
   - TransparentFX

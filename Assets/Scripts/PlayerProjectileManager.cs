@@ -27,10 +27,6 @@ public class PlayerProjectileManager : MonoBehaviour
   
   }
 
-  void Update(){
-
-  }
-
   //  TODO: Calibrate fireRate and enemy speed so it feels fair
   private IEnumerator FireProjectile(){
     yield return new WaitForSeconds(shootingStartDelay);
