@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditorInternal;
@@ -17,6 +18,8 @@ public class CharacterSelectManager : MonoBehaviour {
     [SerializeField] private GameObject playButton;
 
     [SerializeField] private GameObject characterData;
+
+    [SerializeField] private GameObject[] characterIcons;
 
     public bool isCharacterSelected = false;
 
@@ -131,11 +134,24 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public void SelectCharacter(String characterName) {
       if (characterName != null) {
+        // If no character has been selected, set the 'Play' button to active.
         isCharacterSelected = true;
+        foreach (GameObject characterIcon in characterIcons) {
+          if (characterIcon.name != characterName){
+            characterIcon.transform.GetComponent<CharacterSelectIconManager>().Deselect();
+          }
+        }
+      } else {
+        isCharacterSelected = false;
+      }
+      UpdatePlayButton();
+    }
+
+    private void UpdatePlayButton() {
+      if (isCharacterSelected) {
         playButton.transform.Find("Background").GetComponent<Outline>().effectColor = new Color((float)71/255, (float)194/255, 255, 0.5f);
         playButton.transform.Find("Text").GetComponent<TMP_Text>().color = new Color(1f, 1f, 1f);
       } else {
-        isCharacterSelected = false;
         playButton.transform.Find("Background").GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
         playButton.transform.Find("Text").GetComponent<TMP_Text>().color = new Color((float)149/255, (float)149/255, (float)149/255, 0.5f);
       }

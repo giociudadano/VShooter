@@ -103,7 +103,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_IRONSWORD", new Dictionary<string, dynamic>() {
 			{"title", "Iron Sword"},
-			{"description", "Increases attack by {ATTACK_PERCENT}."},
+			{"description", "Increase attack by {ATTACK_PERCENT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronSword"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -118,7 +118,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_HEARTGEM", new Dictionary<string, dynamic>() {
 			{"title", "Heart Gem"},
-			{"description", "Increases health by {HEALTH_FLAT}. Increases health regeneration by {HEALTH_REGEN_FLAT}."},
+			{"description", "Increase Health by {HEALTH_FLAT} and Health Regen by {HEALTH_REGEN_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_HeartGem"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -131,16 +131,17 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 				{"HEALTH_REGEN_FLAT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
+					{"format", "0:0.#"},
 					{"suffix", "HP/SEC"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 2f},{"2", 4f},{"3", 6f},{"4", 8f},{"5", 10f}
+						{"1", 1.5f},{"2", 3f},{"3", 4.5f},{"4", 6f},{"5", 7.5f}
 					}}
 				}},
 			}}
 		}},
 		{"GENERIC_IRONARMOR", new Dictionary<string, dynamic>() {
 			{"title", "Iron Armor"},
-			{"description", "Increases defense by {DEFENSE_FLAT}."},
+			{"description", "Increase Defense by {DEFENSE_FLAT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_IronArmor"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -154,7 +155,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_ETERNALFLAME", new Dictionary<string, dynamic>() {
 			{"title", "Eternal Flame"},
-			{"description", "Increases CRIT Rate by {CRIT_RATE}. Increases CRIT Damage by {CRIT_DAMAGE}."},
+			{"description", "Increase CRIT Rate by {CRIT_RATE} and CRIT Damage by {CRIT_DAMAGE}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_EternalFlame"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -176,7 +177,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_CIVILIZATIONFEATHER", new Dictionary<string, dynamic>() {
 			{"title", "Civilization Feather"},
-			{"description", "Increases total attack speed by {ATTACKSPEED_PERCENT}."},
+			{"description", "Increase Attack Speed by {ATTACKSPEED_PERCENT}."},
 			{"type", "Common Equipment"},
 			{"icon", "Generic_CivilizationFeather"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -191,8 +192,8 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"GENERIC_TOPAZSTAFF", new Dictionary<string, dynamic>() {
 			{"title", "Topaz Staff"},
-			{"description", "Increases ability haste by {ABILITYHASTE_FLAT}."},
-			{"type", "Uncommon Equipment"},
+			{"description", "Increase Ability Haste by {ABILITYHASTE_FLAT}."},
+			{"type", "Common Equipment"},
 			{"icon", "Generic_TopazStaff"},
 			{"parameters", new Dictionary<string, dynamic> () {
 				{"ABILITYHASTE_FLAT", new Dictionary<string, dynamic> () {

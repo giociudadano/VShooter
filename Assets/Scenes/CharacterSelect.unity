@@ -1926,6 +1926,9 @@ MonoBehaviour:
   characterDescriptionObject: {fileID: 1625096692}
   playButton: {fileID: 815225965}
   characterData: {fileID: 0}
+  characterIcons:
+  - {fileID: 1643679334}
+  - {fileID: 1372119944}
   isCharacterSelected: 0
 --- !u!114 &1377872789
 MonoBehaviour:
