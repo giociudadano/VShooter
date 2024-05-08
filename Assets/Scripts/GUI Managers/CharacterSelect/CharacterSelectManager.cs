@@ -11,23 +11,18 @@ using UnityEngine.UI;
 public class CharacterSelectManager : MonoBehaviour {
     [SerializeField] private GameObject header;
     [SerializeField] private GameObject characterSplash;
-
-    [SerializeField] private GameObject characterNameObject;
-    [SerializeField] private GameObject characterDescriptionObject;
-
     [SerializeField] private GameObject playButton;
 
+    [SerializeField] private GameObject characterInformation;
     [SerializeField] private GameObject characterData;
-
     [SerializeField] private GameObject[] characterIcons;
 
-    public bool isCharacterSelected = false;
+    public string characterSelected;
 
     void Start() {
       header.gameObject.transform.localPosition = new Vector3(1800, 270, 0);
       characterSplash.gameObject.transform.localPosition = new Vector3(-1000, -220, 0);
-      characterNameObject.GetComponent<TMP_Text>().text = "";
-      characterDescriptionObject.GetComponent<TMP_Text>().text = "";
+      characterInformation.SetActive(false);
       StartCoroutine(SceneStart());
     }
 
@@ -81,18 +76,19 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
     public void OnIconHoverIn(string characterName) {
+      characterInformation.SetActive(true);
       Sprite splashArt = Resources.Load<Sprite>($"SplashArts/{characterName}");
       characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().sprite = splashArt;
       switch (characterName) {
         case "MoriCalliope":
           characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().color = new Color((float)195/255, (float)67/255, (float) 91/255, 1);
-          characterNameObject.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
-          characterDescriptionObject.GetComponent<TMP_Text>().text = GetCharacterDescription(characterName);
+          characterInformation.transform.Find("Name").GetComponent<TMP_Text>().text = "MORI CALLIOPE";
+          characterInformation.transform.Find("Description").GetComponent<TMP_Text>().text = GetCharacterDescription(characterName);
           break;
         case "NinomaeInanis":
           characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().color = new Color((float)126/255, (float)66/255, (float) 195/255, 1);
-          characterNameObject.GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";
-          characterDescriptionObject.GetComponent<TMP_Text>().text = GetCharacterDescription(characterName);
+          characterInformation.transform.Find("Name").GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";
+          characterInformation.transform.Find("Description").GetComponent<TMP_Text>().text = GetCharacterDescription(characterName);
           break;
       }
       characterSplash.transform.Find("Foreground").gameObject.SetActive(true);
@@ -123,8 +119,7 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public void OnIconHoverOut() {
       Sprite splashArt = Resources.Load<Sprite>($"SplashArts/HoshimachiSuisei");
-      characterNameObject.GetComponent<TMP_Text>().text = "";
-      characterDescriptionObject.GetComponent<TMP_Text>().text = "";
+      characterInformation.SetActive(false);
       characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().sprite = splashArt;
       characterSplash.transform.Find("Background").GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 1);
       characterSplash.transform.Find("Foreground").gameObject.SetActive(false);
@@ -135,20 +130,20 @@ public class CharacterSelectManager : MonoBehaviour {
     public void SelectCharacter(String characterName) {
       if (characterName != null) {
         // If no character has been selected, set the 'Play' button to active.
-        isCharacterSelected = true;
+        characterSelected = characterName;
         foreach (GameObject characterIcon in characterIcons) {
           if (characterIcon.name != characterName){
             characterIcon.transform.GetComponent<CharacterSelectIconManager>().Deselect();
           }
         }
       } else {
-        isCharacterSelected = false;
+        characterSelected = null;
       }
       UpdatePlayButton();
     }
 
     private void UpdatePlayButton() {
-      if (isCharacterSelected) {
+      if (characterSelected != null) {
         playButton.transform.Find("Background").GetComponent<Outline>().effectColor = new Color((float)71/255, (float)194/255, 255, 0.5f);
         playButton.transform.Find("Text").GetComponent<TMP_Text>().color = new Color(1f, 1f, 1f);
       } else {
