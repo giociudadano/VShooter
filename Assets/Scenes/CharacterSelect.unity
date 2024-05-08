@@ -4950,8 +4950,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706311278}
   m_HandleRect: {fileID: 1706311277}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.73200005
+  m_Value: 1.0000005
+  m_Size: 0.732
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7139,6 +7139,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016756409}
   m_CullTransparentMesh: 1
+--- !u!1001 &1679939199022867870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.859024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1567733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.006857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677310502468962120, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918126869188636238, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
+      propertyPath: m_Name
+      value: MoriSkillAOEHeal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b44fabc9d8c1e343a8a9376a755b9ef, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7149,3 +7206,4 @@ SceneRoots:
   - {fileID: 324702488}
   - {fileID: 1579172253}
   - {fileID: 326784930}
+  - {fileID: 1679939199022867870}

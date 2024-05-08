@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 779563996447645781}
   - component: {fileID: 5998465686837438072}
   - component: {fileID: 1053120036694058975}
+  - component: {fileID: 6972339389835455557}
   m_Layer: 0
   m_Name: MoriSkillOne
   m_TagString: Untagged
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 1000
   spinSfx: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
+--- !u!114 &6972339389835455557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896502697465948771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b691e358e94131041967e7397fdefb9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaSize: 5
+  healAmount: 10
+  maxHealing: 60
 --- !u!1001 &2616635875797488893
 PrefabInstance:
   m_ObjectHideFlags: 0

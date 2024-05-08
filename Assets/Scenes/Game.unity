@@ -474,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 24383483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3961,8 +3961,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Calliope spins her scythe in a circle dealing <color=#FFA>100</color> damage
-    to all surrounding enemies.
+  m_text: 'Calliope spins her scythe in a circle dealing <color=#FFA>100</color>
+    damage to all surrounding enemies.
+
+
+    For each enemy hit, heal for <color=#AFA>10HP</color>
+    (up to <color=#AFA>60HP</color> total).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7eeeb0e3f4d7bd43a063b1db763babf, type: 2}
   m_sharedMaterial: {fileID: -6635738203684233990, guid: c7eeeb0e3f4d7bd43a063b1db763babf, type: 2}
