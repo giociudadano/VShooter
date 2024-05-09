@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerTilt : MonoBehaviour
 {
-    public float maxTiltAngle = 90f;
-    public float tiltSpeed = 100f;
+    [SerializeField] private float maxTiltAngle = 90f;
+    [SerializeField] private float tiltSpeed = 100f;
     private float currentTilt = 0f;
     private Quaternion baseRotation;
 
