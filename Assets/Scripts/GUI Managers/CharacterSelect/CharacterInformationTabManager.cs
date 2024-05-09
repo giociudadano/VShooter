@@ -20,14 +20,17 @@ public class CharacterInformationTabManager : MonoBehaviour, IPointerDownHandler
             isSelected = true;
             gameObject.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, 1, (float) 138/255);
             tab.SetActive(true);
+            print(gameObject.name);
             transform.parent.gameObject.GetComponent<CharacterInformationManager>().DeselectAllTabs(gameObject.name);
             if (gameObject.name == "PassivesTabButton") {
               transform.parent.gameObject.GetComponent<CharacterInformationManager>().RenderPassives(transform.parent.GetComponent<CharacterSelectManager>().characterSelected);
+            } else if (gameObject.name == "ActivesTabButton") {
+              transform.parent.gameObject.GetComponent<CharacterInformationManager>().RenderActives(transform.parent.GetComponent<CharacterSelectManager>().characterSelected);
             }
         } else {
             isSelected = false;
             gameObject.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = Color.black;
-             tab.SetActive(false);
+            tab.SetActive(false);
         }
     }
 
