@@ -36,7 +36,6 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
         selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, 1, (float) 138/255);
 				characterSelectManager.GetComponent<CharacterSelectManager>().OnIconHoverIn(selectIcon.name);
         characterInformationManager.GetComponent<CharacterInformationManager>().RenderPassives(selectIcon.name);
-        characterInformationManager.GetComponent<CharacterInformationManager>().RenderActives(selectIcon.name);
       }
     }
 
