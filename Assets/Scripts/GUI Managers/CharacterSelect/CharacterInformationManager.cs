@@ -12,12 +12,12 @@ public class CharacterInformationManager : MonoBehaviour
 		[SerializeField] GameObject passivesTab;
 		[SerializeField] GameObject activesTab;
     
-    void Start()
-    {
+    void Start() {
+      // Renders the passive tooltips on startup.
       foreach (GameObject tabButton in tabButtons) {
-            if (tabButton.name == "PassivesTabButton") {
-                tabButton.GetComponent<CharacterInformationTabManager>().SetTabSelected(true);
-            }
+        if (tabButton.name == "PassivesTabButton") {
+          tabButton.GetComponent<CharacterInformationTabManager>().SetTabSelected(true);
+        }
       }
     }
 
@@ -39,9 +39,15 @@ public class CharacterInformationManager : MonoBehaviour
 			}
 		}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void RenderActives(string characterName) {
+			Dictionary<string, dynamic> characterData = characterSelectManager.GetComponent<CharacterData>().GetActiveInfo(characterName);
+			for (int i = 1; i <= 2; i++) {
+				GameObject activesTabRow = activesTab.transform.Find($"Active {i}").gameObject;
+				activesTabRow.transform.Find("Title").GetComponent<TMP_Text>().text = characterData[$"active_{i}"]["title"];
+				activesTabRow.transform.Find("Description").GetComponent<TMP_Text>().text = characterData[$"active_{i}"]["description"];
+        string cooldown = $"{characterData[$"active_{i}"]["cooldown"]}";
+        activesTabRow.transform.Find("Cooldown").GetComponent<TMP_Text>().text = $"{cooldown}s Cooldown";
+				activesTabRow.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Abilities/{characterData[$"active_{i}"]["icon"]}");
+			}
+		}
 }
