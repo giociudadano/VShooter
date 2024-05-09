@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -1389823233852296633}
   - component: {fileID: 8767983279884466347}
   - component: {fileID: -7885742906295366262}
+  - component: {fileID: 6111435671400388164}
   m_Layer: 8
   m_Name: Base_HomingProjectile 1
   m_TagString: EnemyProjectile
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onDestroyParticle: {fileID: 8413875811817139174, guid: 7b4191607aae74c0ab244a8d6e48adbf, type: 3}
+--- !u!114 &6111435671400388164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028593740872172549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51e0c5702abc3b40a3347af2c0a09a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
