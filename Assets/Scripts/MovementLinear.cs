@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementLinear : MonoBehaviour {
@@ -7,7 +8,6 @@ public class MovementLinear : MonoBehaviour {
 
   [SerializeField] private float speed = 8f;
   [SerializeField] private float viewLimitDown = -5f;
-
   [SerializeField] private float viewLimitUp = 50f;
 
   void Start() {
@@ -16,7 +16,6 @@ public class MovementLinear : MonoBehaviour {
 
   void Update() {
     
-    //DeleteObject();
   }
 
   //  We don't use Vecto3.Lerp() here since we don't need fancy swerving/acceration/retargetting
