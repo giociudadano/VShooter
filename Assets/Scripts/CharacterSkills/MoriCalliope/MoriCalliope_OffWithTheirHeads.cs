@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoriSkillTwo : MonoBehaviour
+public class MoriCalliope_OffWithTheirHeads : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 1000f;
     [SerializeField] private float forwardSpeed = 50f;
