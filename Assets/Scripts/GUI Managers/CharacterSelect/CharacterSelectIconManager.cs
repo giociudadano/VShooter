@@ -8,6 +8,8 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
 
     [Header("SELECTION")]
 		[SerializeField] private GameObject characterSelectManager;
+
+    [SerializeField] private GameObject characterInformationManager;
     [SerializeField] private GameObject selectIcon;
     private bool isSelected = false;
 
@@ -33,6 +35,8 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
         sfxManager.PlayOneShot(pointerEnterSfx);
         selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, 1, (float) 138/255);
 				characterSelectManager.GetComponent<CharacterSelectManager>().OnIconHoverIn(selectIcon.name);
+        characterInformationManager.GetComponent<CharacterInformationManager>().RenderPassives(selectIcon.name);
+        characterInformationManager.GetComponent<CharacterInformationManager>().RenderActives(selectIcon.name);
       }
     }
 
@@ -54,6 +58,12 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
         isSelected = false;
         selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = new Color((float) 73/255, 1, 1, (float) 138/255);
         characterSelectManager.GetComponent<CharacterSelectManager>().SelectCharacter(null);
+        Deselect();
       }
+    }
+
+    public void Deselect() {
+      isSelected = false;
+      selectIcon.transform.Find("Background").GetComponent<UnityEngine.UI.Outline>().effectColor = Color.white;
     }
 }
