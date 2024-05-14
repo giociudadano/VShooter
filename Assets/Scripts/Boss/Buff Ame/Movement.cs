@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
     private Vector3 moveSide = Vector3.left;
-    private Vector3 movementAxisZ = Vector3.back;
+    private Vector3 movementAxisZ = Vector3.forward;
     private float limitZ = 19.2f;
     private float limitX = 7f;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
 
     private IEnumerator Forward()
     {
-        while (transform.position.z < limitZ)
+        while (transform.position.z > limitZ)
         {
             transform.Translate(movementAxisZ * Time.deltaTime * speed);
             //  Wait for the next frame before recalculating the position

@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744efc33b94fff84dbde2b061a1a415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1019113029584780768, guid: b49d7c0b1a395384f919a09fd4bdf86e, type: 3}
+  projectile: {fileID: 7028593740872172549, guid: 4bcf92b842622034190d7c1dbd0e29fc, type: 3}
   projectileDamage: 40
   fireRate: 1
   delay: 0
