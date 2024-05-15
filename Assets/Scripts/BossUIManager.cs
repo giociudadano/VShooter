@@ -13,6 +13,6 @@ public class BossUIManager : MonoBehaviour
     void Start()
     {
         BossUI.transform.Find("Boss Name Text").gameObject.GetComponent<TMP_Text>().text = bossName;
-        BossUI.transform.Find("Boss Character Image").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = bossIcon;
+        BossUI.transform.Find("Boss Image").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = bossIcon;
     }
 }

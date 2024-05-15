@@ -13,6 +13,10 @@ public class PlayerWeaponCollision : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealthManager>().Hurt(damage);
         }
+        if(collision.gameObject.CompareTag("Boss"))
+        {
+            collision.gameObject.GetComponent<BossHealthManager>().Hurt(damage);
+        }
         if(collision.gameObject.CompareTag("EnemyProjectile"))
         {
             Destroy(collision.gameObject);

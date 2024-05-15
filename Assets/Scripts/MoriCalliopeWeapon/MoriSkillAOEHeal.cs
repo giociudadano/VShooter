@@ -22,7 +22,7 @@ public class MoriSkillAOEHeal : MonoBehaviour
     private void AOEHealing(float healAmount){
 	  var colliders = Physics.OverlapSphere(player.transform.position, areaSize);
       foreach (var col in colliders){
-          if (col.GetComponent<Collider>().CompareTag("Enemy")){
+          if (col.GetComponent<Collider>().CompareTag("Enemy") || col.GetComponent<Collider>().CompareTag("Boss")){
             counter++;
           };
       };

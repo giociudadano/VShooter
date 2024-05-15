@@ -36,12 +36,12 @@ public class BossSpawnManager : MonoBehaviour
     private void SpawnBoss(){
         float spawnPositionX = UnityEngine.Random.Range(-spawnPositionXRange, spawnPositionXRange);
         Vector3 spawnPosition = new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ);
-        Instantiate(Boss, spawnPosition, Boss.transform.rotation);
+        GameObject currentBoss = Instantiate(Boss, spawnPosition, Boss.transform.rotation);
 
-        Boss.GetComponent<BossHealthManager>().gameManager = gameManager;
-        Boss.GetComponent<BossHealthManager>().healthText = healthText;
-        Boss.GetComponent<BossHealthManager>().healthBar = healthBar;
-        Boss.GetComponent<BossUIManager>().BossUI = BossUI;
+        currentBoss.GetComponent<BossHealthManager>().gameManager = gameManager;
+        currentBoss.GetComponent<BossHealthManager>().healthText = healthText;
+        currentBoss.GetComponent<BossHealthManager>().healthBar = healthBar;
+        currentBoss.GetComponent<BossUIManager>().BossUI = BossUI;
         BossUI.SetActive(true);
     }
 }
