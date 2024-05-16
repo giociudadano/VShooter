@@ -9,6 +9,8 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] private AudioSource music;
     private static MusicPlayer _instance;
 
+    private bool isTestingMusic = false;
+    
     public static MusicPlayer Instance
     {
         get { return _instance; }
@@ -29,13 +31,23 @@ public class MusicPlayer : MonoBehaviour
 
         //  Critical line to ensure that the music doesn't reset (this requires that the audio source isn't a child of a gameobject)
         DontDestroyOnLoad(gameObject);
+
+        //  Preload all audio clips to avoid lag
+        foreach (var clip in tracklist)
+        {
+            if (clip.loadState != AudioDataLoadState.Loaded)
+            {
+                clip.LoadAudioData();
+            }
+        }
     }
 
     //  Start is called before the first frame update
     void Start()
     {   
-        if (!music.isPlaying) {
-            transform.position = cameraReference.transform.position;
+        cameraReference = GameObject.FindGameObjectWithTag("MainCamera");
+        transform.position = cameraReference.transform.position;
+        if (!music.isPlaying && isTestingMusic) {
             PlayRandomTrack();
         }
     }
@@ -49,6 +61,13 @@ public class MusicPlayer : MonoBehaviour
     {
         music.clip = track;
     }
+
+    public void PlayTrack(int trackIndex)
+    {
+        SetTrack(tracklist[trackIndex]);
+        Play();
+    }
+
 
     public void PlayRandomTrack()
     {

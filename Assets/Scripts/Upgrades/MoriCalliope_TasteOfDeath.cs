@@ -24,7 +24,7 @@ public class MoriCalliope_TasteOfDeath : MonoBehaviour {
 	private void CreateExplosion(GameObject source, float explosionDamage, float instantkillChance){
 	  var colliders = Physics.OverlapSphere(source.transform.position, explosionSize);
       foreach (var col in colliders){
-          if (col.GetComponent<Collider>().CompareTag("Enemy")){
+          if (col.GetComponent<Collider>().CompareTag("Enemy") || col.GetComponent<Collider>().CompareTag("Boss")){
             col.GetComponent<EnemyHealthManager>().Hurt(explosionDamage);
 			float instantkillRoll = Random.Range(0f, 1f);
 			if (instantkillRoll < instantkillChance){

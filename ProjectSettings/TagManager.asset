@@ -11,6 +11,11 @@ TagManager:
   - GameManager
   - SfxPlayer
   - MusicPlayer
+  - EnemyProjectile
+  - ParticleManager
+  - Boss
+  - Spawner
+  - BossSpawner
   layers:
   - Default
   - TransparentFX
@@ -19,9 +24,9 @@ TagManager:
   - Water
   - UI
   - a
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyProjectile
+  - AllyProjectile
   - 
   - 
   - 

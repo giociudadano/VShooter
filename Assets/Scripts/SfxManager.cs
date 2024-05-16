@@ -36,6 +36,7 @@ public class SfxManager : MonoBehaviour
     //  Start is called before the first frame update
     void Start()
     {   
+        cameraReference = GameObject.FindGameObjectWithTag("MainCamera");
         transform.position = cameraReference.transform.position;
     }
 
@@ -52,6 +53,11 @@ public class SfxManager : MonoBehaviour
     public void PlayKillSfx()
     {
         oneShot.PlayOneShot(killSfx);
+    }
+
+    public void PlayOneShot(AudioClip sfx)
+    {
+        oneShot.PlayOneShot(sfx);
     }
 
 

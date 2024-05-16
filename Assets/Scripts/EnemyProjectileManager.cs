@@ -9,6 +9,7 @@ public class EnemyProjectileManager : MonoBehaviour
 
   [SerializeField] public float projectileDamage = 20f;
   [SerializeField] private float fireRate = 1f;
+  [SerializeField] private float delay = 0f;
   [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
 
   [SerializeField] private Quaternion shootRotation = Quaternion.Euler(0, 180, 0);
@@ -31,6 +32,7 @@ public class EnemyProjectileManager : MonoBehaviour
 
   //  TODO: Calibrate fireRate and enemy speed so it feels fair
   private IEnumerator FireProjectile(){
+    yield return new WaitForSeconds(delay);
     while (isFiring) {
         Instantiate(projectile, transform.position + shootOffset, transform.rotation);
       yield return new WaitForSeconds(fireRate);
