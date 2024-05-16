@@ -14,6 +14,8 @@ TagManager:
   - EnemyProjectile
   - ParticleManager
   - Boss
+  - Spawner
+  - BossSpawner
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - UI
   - a
   - Enemy
-  - 
-  - 
+  - EnemyProjectile
+  - AllyProjectile
   - 
   - 
   - 

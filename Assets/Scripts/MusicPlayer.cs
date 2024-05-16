@@ -31,6 +31,15 @@ public class MusicPlayer : MonoBehaviour
 
         //  Critical line to ensure that the music doesn't reset (this requires that the audio source isn't a child of a gameobject)
         DontDestroyOnLoad(gameObject);
+
+        //  Preload all audio clips to avoid lag
+        foreach (var clip in tracklist)
+        {
+            if (clip.loadState != AudioDataLoadState.Loaded)
+            {
+                clip.LoadAudioData();
+            }
+        }
     }
 
     //  Start is called before the first frame update

@@ -27,13 +27,27 @@ public class BossSpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject BossUI;
 
+    [Header("Others")]
+
+    [SerializeField] private int bossMusic;
+    private MusicPlayer musicPlayer;
+    private GameObject mookSpawner;
+
     void Start()
     {
+        mookSpawner = GameObject.FindGameObjectWithTag("Spawner");
+        musicPlayer = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayer>();
         Invoke("SpawnBoss", spawnDelay);
     }
 
     // Update is called once per frame
-    private void SpawnBoss(){
+    private void SpawnBoss()
+    {
+        DisableMooks();
+        Debug.Log("Disabled mooks!");
+
+        SetBossMusic();
+
         float spawnPositionX = UnityEngine.Random.Range(-spawnPositionXRange, spawnPositionXRange);
         Vector3 spawnPosition = new Vector3(spawnPositionX, spawnPositionY, spawnPositionZ);
         GameObject currentBoss = Instantiate(Boss, spawnPosition, Boss.transform.rotation);
@@ -43,5 +57,16 @@ public class BossSpawnManager : MonoBehaviour
         currentBoss.GetComponent<BossHealthManager>().healthBar = healthBar;
         currentBoss.GetComponent<BossUIManager>().BossUI = BossUI;
         BossUI.SetActive(true);
+    }
+
+    private void DisableMooks()
+    {
+        
+        mookSpawner.SetActive(false);
+    }
+
+    private void SetBossMusic()
+    {
+        musicPlayer.PlayTrack(bossMusic);
     }
 }

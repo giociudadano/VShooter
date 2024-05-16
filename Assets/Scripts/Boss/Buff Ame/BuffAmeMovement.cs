@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class BuffAmeMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
     private Vector3 moveSide = Vector3.left;
     private Vector3 movementAxisZ = Vector3.forward;
-    private float limitZ = 19.2f;
+    [SerializeField] private float limitZ = 19.2f;
     private float limitX = 7f;
     // Start is called before the first frame update
     void Start()

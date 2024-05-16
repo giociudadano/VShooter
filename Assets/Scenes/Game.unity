@@ -3131,6 +3131,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475528907}
   m_CullTransparentMesh: 1
+--- !u!1 &503528404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503528406}
+  - component: {fileID: 503528405}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: BossSpawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &503528405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503528404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd65cc01118780c47904cbcb55798911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss: {fileID: 1826134014099635275, guid: a61e809a37511864d9e7a0ed4ec5526b, type: 3}
+  spawnPositionXRange: 7
+  spawnPositionY: 1.25
+  spawnPositionZ: 40
+  spawnDelay: 5
+  gameManager: {fileID: 1005037242}
+  healthText: {fileID: 750761641}
+  healthBar: {fileID: 576739601}
+  BossUI: {fileID: 1433721630}
+  bossMusic: 3
+--- !u!4 &503528406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503528404}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8366579, y: 2.0204566, z: 0.122338146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &506205514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,10 +4435,9 @@ GameObject:
   - component: {fileID: 599618614}
   - component: {fileID: 599618615}
   - component: {fileID: 599618616}
-  - component: {fileID: 599618617}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4396,7 +4449,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599618610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c36fd1be8cd62044bae80ac441b05c0, type: 3}
   m_Name: 
@@ -4405,7 +4458,7 @@ MonoBehaviour:
   - {fileID: 2077429283666885925, guid: edb67d08509f0a941adb3f907adf3d03, type: 3}
   spawnPositionXRange: 8.5
   spawnPositionY: 2.53
-  spawnPositionZ: 40
+  spawnPositionZ: 50
   spawnInterval: 4
   firstSpawnDelay: 1.5
 --- !u!114 &599618612
@@ -4415,7 +4468,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599618610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c36fd1be8cd62044bae80ac441b05c0, type: 3}
   m_Name: 
@@ -4449,7 +4502,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599618610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c36fd1be8cd62044bae80ac441b05c0, type: 3}
   m_Name: 
@@ -4468,7 +4521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599618610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c36fd1be8cd62044bae80ac441b05c0, type: 3}
   m_Name: 
@@ -4487,7 +4540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599618610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c36fd1be8cd62044bae80ac441b05c0, type: 3}
   m_Name: 
@@ -4499,27 +4552,6 @@ MonoBehaviour:
   spawnPositionZ: 40
   spawnInterval: 15
   firstSpawnDelay: 5
---- !u!114 &599618617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599618610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd65cc01118780c47904cbcb55798911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Boss: {fileID: 1826134014099635275, guid: a61e809a37511864d9e7a0ed4ec5526b, type: 3}
-  spawnPositionXRange: 7
-  spawnPositionY: 1.25
-  spawnPositionZ: 40
-  spawnDelay: 1
-  gameManager: {fileID: 1005037242}
-  healthText: {fileID: 750761641}
-  healthBar: {fileID: 576739601}
-  BossUI: {fileID: 1433721630}
 --- !u!1 &627562972
 GameObject:
   m_ObjectHideFlags: 0
@@ -14324,5 +14356,6 @@ SceneRoots:
   - {fileID: 565976062}
   - {fileID: 506205516}
   - {fileID: 599618613}
+  - {fileID: 503528406}
   - {fileID: 883648983}
   - {fileID: 929420405}

@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 4367755258790465187}
   - component: {fileID: -5158664642484305925}
   - component: {fileID: 5798357735547842409}
-  m_Layer: 9
-  m_Name: Base_BasicProjectile
-  m_TagString: AllyProjectile
+  - component: {fileID: -5794906514975790761}
+  m_Layer: 8
+  m_Name: BuffAmeProjectile
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019113029584780768}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0.13, y: 1, z: 1.16}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5591e4fef3a1b134aa12ef3efefe9eb0, type: 2}
+  - {fileID: 2100000, guid: e42bcb6a81b7ec8449175546284af1f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDestroyParticle: {fileID: 8413875811817139174, guid: 7b4191607aae74c0ab244a8d6e48adbf, type: 3}
+  onDestroyParticle: {fileID: 1176145624114067509, guid: ec46c8c4a3cbc429382ee48bd9169b45, type: 3}
 --- !u!114 &5798357735547842409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +191,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51e0c5702abc3b40a3347af2c0a09a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5794906514975790761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019113029584780768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66df782125bd5814d9c49900fda67a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

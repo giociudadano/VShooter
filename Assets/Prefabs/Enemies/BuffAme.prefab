@@ -100,6 +100,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8143006010961031043}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8069956836083764462}
   m_SourcePrefab: {fileID: 100100000, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
 --- !u!1 &1826134014099635275 stripped
 GameObject:
@@ -146,13 +149,13 @@ MonoBehaviour:
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageTextBurn: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
-  currentHealth: 300
-  baseHealth: 300
-  maximumHealth: 300
+  currentHealth: 1000
+  baseHealth: 1000
+  maximumHealth: 1000
   XPReward: 15
-  defense: 0
-  baseDefense: 0
-  healthRegen: 0
+  defense: 5
+  baseDefense: 5
+  healthRegen: 1
 --- !u!114 &-9103209905477904639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,15 +178,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826134014099635275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 744efc33b94fff84dbde2b061a1a415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7028593740872172549, guid: 4bcf92b842622034190d7c1dbd0e29fc, type: 3}
-  projectileDamage: 40
-  fireRate: 1
-  delay: 0
+  projectile: {fileID: 1019113029584780768, guid: c6b2977de65a6a148afdfa39325c712b, type: 3}
+  projectileDamage: 50
+  fireRate: 0.5
+  delay: 1
   shootOffset: {x: 0, y: 0, z: 1}
   shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
 --- !u!114 &8143006010961031043
@@ -199,3 +202,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  limitZ: 10
+--- !u!114 &8069956836083764462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826134014099635275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4b2f3476b590459566b0759f2e404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missileInterval: 10
+  missileDelay: 10
+  missile: {fileID: 7028593740872172549, guid: 8b10f058b86285e4d99f8e330f9685b3, type: 3}
+  missileCount: 5
