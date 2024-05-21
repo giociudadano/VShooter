@@ -10,7 +10,7 @@ public class MoriSkillTwo : MonoBehaviour
 
     private SfxManager sfx;
     [SerializeField] AudioClip launchSfx;
-    
+
     // Start is called before the first frame update
 
     void Start()
@@ -19,7 +19,7 @@ public class MoriSkillTwo : MonoBehaviour
         sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
         sfx.PlayOneShot(launchSfx);
     }
-    
+
     void Update()
     {
         SkillTwo();
@@ -35,7 +35,11 @@ public class MoriSkillTwo : MonoBehaviour
     {
         transform.position += Vector3.forward * Time.deltaTime * forwardSpeed;
 
-        if(transform.position.z >= 100)
+        if (transform.position.z >= 70)
+        {
+            forwardSpeed *= -1;
+        }
+        if (transform.position.z <= player.transform.position.z)
         {
             Destroy(gameObject);
         }

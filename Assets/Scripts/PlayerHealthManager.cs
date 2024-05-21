@@ -23,7 +23,7 @@ public class PlayerHealthManager : MonoBehaviour {
     [SerializeField] private float baseDefense = 35;
 
     [Header("Health Regen")]
-    [SerializeField] private float healthRegen = 0f;
+    [SerializeField] public float healthRegen = 0f;
 
     void Start() {
       maximumHealth = baseHealth;
