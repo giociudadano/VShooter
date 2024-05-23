@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 24383492}
   - component: {fileID: 24383493}
   - component: {fileID: 24383495}
+  - component: {fileID: 24383496}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -638,6 +639,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTiltAngle: 90
   tiltSpeed: 150
+--- !u!114 &24383496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24383483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033919098ddee334ea0c951c6dfe6f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &25078940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2217,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd559b5ac8196b048bcfd518876c30b7, type: 3}
+--- !u!1 &366111964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366111966}
+  - component: {fileID: 366111965}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: StageManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &366111965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366111964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3170e3f4b230c4645b937fc1d936d431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &366111966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366111964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.429262, y: 0.32848477, z: 0.7468938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371172678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,12 +3221,12 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: 1.25
   spawnPositionZ: 40
-  spawnDelay: 5
+  spawnDelay: 20
   gameManager: {fileID: 1005037242}
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}
-  bossMusic: 3
+  bossMusic: 4
 --- !u!4 &503528406
 Transform:
   m_ObjectHideFlags: 0
@@ -4130,6 +4187,7 @@ GameObject:
   - component: {fileID: 565976068}
   - component: {fileID: 565976069}
   - component: {fileID: 565976070}
+  - component: {fileID: 565976071}
   m_Layer: 0
   m_Name: UpgradeScriptsManager
   m_TagString: Untagged
@@ -4271,6 +4329,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusAbilityHasteFlat: 0
+--- !u!114 &565976071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565976060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd7420a6d8c1654e8f12d66711a5d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &576739601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6881,7 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f97584c4bf1fa4fb103b57223b23cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackIndex: 0
+  trackIndex: 1
 --- !u!1 &982031883
 GameObject:
   m_ObjectHideFlags: 0
@@ -8018,6 +8088,7 @@ GameObject:
   - component: {fileID: 1220010537}
   - component: {fileID: 1220010536}
   - component: {fileID: 1220010535}
+  - component: {fileID: 1220010539}
   m_Layer: 5
   m_Name: Upgrade UI
   m_TagString: Untagged
@@ -8122,6 +8193,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1220010539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220010534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bfa2d7bdf83bc44a01d20b8ad019f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1235726320
 GameObject:
   m_ObjectHideFlags: 0
@@ -8268,6 +8351,7 @@ GameObject:
   - component: {fileID: 1245185141}
   - component: {fileID: 1245185140}
   - component: {fileID: 1245185139}
+  - component: {fileID: 1245185143}
   m_Layer: 5
   m_Name: Game UI
   m_TagString: Untagged
@@ -8367,6 +8451,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1245185143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245185138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b26450693ced94bbe45521ff6b73fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1262905472
 GameObject:
   m_ObjectHideFlags: 0
@@ -11001,6 +11097,7 @@ GameObject:
   - component: {fileID: 1680164686}
   - component: {fileID: 1680164685}
   - component: {fileID: 1680164684}
+  - component: {fileID: 1680164688}
   m_Layer: 5
   m_Name: Game Over UI
   m_TagString: Untagged
@@ -11092,6 +11189,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1680164688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680164683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7537724b783ee4a40b877170c3e91e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686606060
 GameObject:
   m_ObjectHideFlags: 0
@@ -14216,6 +14325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TakoProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 2499083950624643192, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2251625
@@ -14417,3 +14530,4 @@ SceneRoots:
   - {fileID: 883648983}
   - {fileID: 929420405}
   - {fileID: 1272046132661718905}
+  - {fileID: 366111966}
