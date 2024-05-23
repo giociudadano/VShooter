@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class InaSkillOne : MonoBehaviour
 {
-    private GameObject player;
-
-    private float time;
-
     [SerializeField] AudioClip spinSfx;
     [SerializeField] private float duration = 3f;
+    [SerializeField] private float yOffset = 1.5f;
+    [SerializeField] private float zOffset = 1.5f;
+    private GameObject player;
+    private float time;
 
+    [Header("Bonuses")]
     [SerializeField] private float bonusHealth = 200f;
     [SerializeField] private float bonusDefense = 30f;
     [SerializeField] private float bonusDamage = 15f;
@@ -28,13 +29,12 @@ public class InaSkillOne : MonoBehaviour
 
     void Update()
     {
-        SkillOneCheck();
+        SkillOneDurationManager();
         FollowPlayer();
     }
 
     private void SkillOneBegin()
     {
-        Debug.Log("Ara man");
         time = Time.time;
         player.GetComponent<PlayerHealthManager>().SetBonusHealth(bonusHealth);
         player.GetComponent<PlayerHealthManager>().SetBonusDefense(bonusDefense);
@@ -43,7 +43,7 @@ public class InaSkillOne : MonoBehaviour
         player.GetComponent<PlayerProjectileManager>().SetBonusAttackSpeed(bonusDamageSpeed);
     }
 
-    private void SkillOneCheck()
+    private void SkillOneDurationManager()
     {
         if (Time.time >= time + duration)
         {
@@ -61,8 +61,8 @@ public class InaSkillOne : MonoBehaviour
     {
         Vector3 objectPosition = transform.position;
         objectPosition.x = player.transform.position.x;
-        objectPosition.y = player.transform.position.y + 2f;
-        objectPosition.z = player.transform.position.z + 2f;
+        objectPosition.y = player.transform.position.y + yOffset;
+        objectPosition.z = player.transform.position.z + zOffset;
         transform.position = objectPosition;
 
         Vector3 objectRotation = transform.rotation.eulerAngles;

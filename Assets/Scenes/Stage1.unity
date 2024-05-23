@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillQGUI: {fileID: 4668898699350110297}
   skillEGUI: {fileID: 91549905}
-  go_SkillQ: {fileID: 1583007723088930304, guid: 3810c336a85d3a94d8e895fd2dd1c917, type: 3}
+  go_SkillQ: {fileID: 6485675758815208050, guid: 328879e6180160049808ff244a23084c, type: 3}
   go_SkillE: {fileID: 9169578532192490948, guid: 2797577fefe7e284795263dbe1125f20, type: 3}
   skillQBaseCooldown: 15
   skillEBaseCooldown: 7

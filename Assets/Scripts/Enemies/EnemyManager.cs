@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     private GameObject player;
-    [SerializeField] private float collisionDamage = 30f;
+    [SerializeField] public float collisionDamage = 30f;
 
     private SfxManager sfx;
 
