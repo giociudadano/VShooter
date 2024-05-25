@@ -8,6 +8,7 @@ public class KiaraSkillOne : MonoBehaviour
     [SerializeField] private float shieldHealth = 1f;
     [SerializeField] private float explodeSize = 200000f;
     [SerializeField] private float explodeDamage = 999999f;
+    [SerializeField] private float explodeDamageBoss = 100f;
     [SerializeField] private float duration = 100f;
     [SerializeField] private float yOffset = 1.5f;
     [SerializeField] private float zOffset = 1.5f;
@@ -69,7 +70,7 @@ public class KiaraSkillOne : MonoBehaviour
                 };
                 if (obj.GetComponent<Collider>().CompareTag("Boss"))
                 {
-                    obj.GetComponent<BossHealthManager>().Hurt(explodeDamage);
+                    obj.GetComponent<BossHealthManager>().Hurt(explodeDamageBoss);
                 }
                 if (obj.GetComponent<Collider>().CompareTag("EnemyProjectile"))
                 {

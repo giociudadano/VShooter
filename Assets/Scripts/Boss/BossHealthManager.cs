@@ -12,9 +12,11 @@ public class BossHealthManager : MonoBehaviour
     private UpgradeManager upgradeManager;
     private PlayerXPManager playerXPManager;
     private SfxManager sfx;
+    private BossSpawnManager bossSpawnManager;
 
     [Header("GUI")]
     public GameObject gameManager;
+    public GameObject bossSpawner;
     public TMP_Text healthText;
     public GameObject healText;
     public GameObject healthBar;
@@ -55,6 +57,7 @@ public class BossHealthManager : MonoBehaviour
         upgradeManager = gameManager.GetComponent<UpgradeManager>();
         playerXPManager = player.GetComponent<PlayerXPManager>();
         sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+        bossSpawnManager = bossSpawner.GetComponent<BossSpawnManager>();
     }
 
     private void UpdateHealthbar() {
@@ -130,9 +133,13 @@ public class BossHealthManager : MonoBehaviour
         upgradeManager.ApplyPassive(onKillPassives);
         }
         playerXPManager.GainXP(XPReward);
-        gameObject.GetComponent<BossUIManager>().BossUI.SetActive(false);
         //sfx.PlayKillSfx();
+        
         Destroy(gameObject);
+    }
+
+    void OnDestroy(){
+        bossSpawnManager.BossUI.SetActive(false);
     }
     
     public void ApplyBurn(float burnDamage, float effectDuration) {

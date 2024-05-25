@@ -21,11 +21,11 @@ public class BossSpawnManager : MonoBehaviour
     // Start is called before the first frame update
 
     [Header("Boss UI")]
-    [SerializeField] private GameObject gameManager;
+    private GameObject gameManager;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private GameObject healthBar;
 
-    [SerializeField] private GameObject BossUI;
+    public GameObject BossUI;
 
     [Header("Others")]
 
@@ -38,6 +38,7 @@ public class BossSpawnManager : MonoBehaviour
         mookSpawner = GameObject.FindGameObjectWithTag("Spawner");
         musicPlayer = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayer>();
         Invoke("SpawnBoss", spawnDelay);
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject;
     }
 
     // Update is called once per frame
@@ -56,7 +57,7 @@ public class BossSpawnManager : MonoBehaviour
         currentBoss.GetComponent<BossHealthManager>().healthText = healthText;
         currentBoss.GetComponent<BossHealthManager>().healthBar = healthBar;
         currentBoss.GetComponent<BossUIManager>().BossUI = BossUI;
-        BossUI.SetActive(true);
+        currentBoss.GetComponent<BossHealthManager>().bossSpawner = gameObject;
     }
 
     private void DisableMooks()

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  bossSpawner: {fileID: 0}
   healthText: {fileID: 0}
   healText: {fileID: 2695241091629641371, guid: 41c941265d715684baa89f9b75b994c3, type: 3}
   healthBar: {fileID: 0}
@@ -156,8 +157,8 @@ MonoBehaviour:
   baseHealth: 1000
   maximumHealth: 1000
   XPReward: 15
-  defense: 5
-  baseDefense: 5
+  defense: 15
+  baseDefense: 15
   healthRegen: 1
 --- !u!114 &-9103209905477904639
 MonoBehaviour:

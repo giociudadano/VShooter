@@ -12,6 +12,7 @@ public class BossUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BossUI.SetActive(true);
         BossUI.transform.Find("Boss Name Text").gameObject.GetComponent<TMP_Text>().text = bossName;
         BossUI.transform.Find("Boss Image").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = bossIcon;
     }
