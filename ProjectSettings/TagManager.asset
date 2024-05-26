@@ -13,6 +13,10 @@ TagManager:
   - MusicPlayer
   - EnemyProjectile
   - ParticleManager
+  - Boss
+  - Spawner
+  - BossSpawner
+  - StageManager
   layers:
   - Default
   - TransparentFX
@@ -22,8 +26,8 @@ TagManager:
   - UI
   - a
   - Enemy
-  - 
-  - 
+  - EnemyProjectile
+  - AllyProjectile
   - 
   - 
   - 

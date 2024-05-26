@@ -8,7 +8,7 @@ public class PlayButtonManager : MonoBehaviour, IPointerDownHandler {
     [SerializeField] GameObject characterSelectManager; 
     public void OnPointerDown(PointerEventData eventData) {
       if (characterSelectManager.GetComponent<CharacterSelectManager>().characterSelected != null) {
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        SceneManager.LoadScene("Stage1", LoadSceneMode.Single);
       }
     }
 }
