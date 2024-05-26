@@ -17,7 +17,7 @@ public class BossSpawnManager : MonoBehaviour
     [SerializeField] private float spawnPositionXRange = 7f;
     [SerializeField] private float spawnPositionY = 1.25f;
     [SerializeField] private float spawnPositionZ = 40f;
-    [SerializeField] private float spawnDelay = 10f;
+    [SerializeField] public float spawnDelay = 10f;
     // Start is called before the first frame update
 
     [Header("Boss UI")]

@@ -835,6 +835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1005037242}
+  icon_pauseGame: {fileID: 21300000, guid: 53a8ae54593dfe442bc69ea7412e0887, type: 2}
+  icon_unpauseGame: {fileID: 21300000, guid: 807da543b3169aa4db6aab8fa4c12f78, type: 2}
 --- !u!1 &65262243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,7 +3592,7 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: 1.25
   spawnPositionZ: 40
-  spawnDelay: 5
+  spawnDelay: 20
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}
@@ -8169,8 +8171,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068855590}
+  - component: {fileID: 1068855591}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: BossTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8198,6 +8201,19 @@ RectTransform:
   m_AnchoredPosition: {x: -269, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1068855591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068855589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8623ebdd1b3e31d468ba33568f29d44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossSpawnManager: {fileID: 503528404}
 --- !u!1 &1140961178
 GameObject:
   m_ObjectHideFlags: 0
