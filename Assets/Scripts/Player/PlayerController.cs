@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
   void MovePlayer() {
       // Checks for player input and pushes the player in the player input direction.
-      Vector3 movementVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+      Vector3 movementVector = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
       transform.Translate(movementVector * speed * Time.deltaTime, Space.World);
     }
 

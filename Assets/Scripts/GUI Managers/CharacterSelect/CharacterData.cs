@@ -62,7 +62,7 @@ public class CharacterData : MonoBehaviour {
 						{"title", "Excuse My Rudeness"},
 						{"icon", "Calliope_ExcuseMyRudeness"},
             {"cooldown", 7},
-						{"description", "Calliope spins her scythe in a circle dealing <color=#FFA>100</color> damage to all surrounding enemies. For each enemy hit, heal for <color=#AFA>10HP</color> (up to <color=#AFA>60HP</color> total)."}
+						{"description", "Calliope spins her scythe in a circle dealing <color=#FFA>60</color> damage to all surrounding enemies. For each enemy hit, heal for <color=#AFA>10HP</color> (up to <color=#AFA>60HP</color> total)."}
           }},
           {"active_2", new Dictionary<string, dynamic> () {
 						{"title", "Off With Their Heads"},
