@@ -12,6 +12,8 @@ public class MoriCalliope_OffWithTheirHeads : MonoBehaviour
     [SerializeField] private float forwardSpeed = 50f;
     private GameObject player;
 
+    private PlayerHealthManager playerHealthManager;
+
     private SfxManager sfx;
     [SerializeField] AudioClip launchSfx;
 
@@ -21,8 +23,11 @@ public class MoriCalliope_OffWithTheirHeads : MonoBehaviour
     {
         debouncedColliders = new HashSet<Collider>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealthManager = player.GetComponent<PlayerHealthManager>();
         sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
         sfx.PlayOneShot(launchSfx);
+
+        SacrificeHealth();
     }
 
     void Update()
@@ -77,5 +82,11 @@ public class MoriCalliope_OffWithTheirHeads : MonoBehaviour
     {
         Debug.Log("Debounced collider!");
         debouncedColliders.Add(collider);
+    }
+
+    //  Sacrifice 20% of maximum health by default
+    private void SacrificeHealth(float healthPercentage = 0.20f)
+    {
+        playerHealthManager.TrueHurt(playerHealthManager.maximumHealth * healthPercentage);
     }
 }
