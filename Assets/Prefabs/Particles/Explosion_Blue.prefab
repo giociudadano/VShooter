@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6746143380799691653}
   - component: {fileID: 15085447402717889}
   - component: {fileID: 7373606239211564965}
-  - component: {fileID: 1806806189549321145}
   m_Layer: 0
   m_Name: Explosion_Blue
   m_TagString: Untagged
@@ -4838,15 +4837,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1806806189549321145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603594204106460700}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62687fb045497b5499c8f690d3a4247a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
