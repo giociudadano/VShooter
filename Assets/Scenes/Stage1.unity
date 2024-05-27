@@ -598,8 +598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillQGUI: {fileID: 4668898699350110297}
   skillEGUI: {fileID: 91549905}
-  go_SkillQ: {fileID: 6485675758815208050, guid: 328879e6180160049808ff244a23084c, type: 3}
-  go_SkillE: {fileID: 9169578532192490948, guid: 2797577fefe7e284795263dbe1125f20, type: 3}
+  go_SkillQ: {fileID: 1583007723088930304, guid: 3810c336a85d3a94d8e895fd2dd1c917, type: 3}
+  go_SkillE: {fileID: 3896502697465948771, guid: 4b893fdb5f0322847a423b5940659fa3, type: 3}
   skillQBaseCooldown: 15
   skillEBaseCooldown: 7
   player: {fileID: 0}
@@ -3222,7 +3222,6 @@ MonoBehaviour:
   spawnPositionY: 1.25
   spawnPositionZ: 40
   spawnDelay: 5
-  gameManager: {fileID: 1005037242}
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}
@@ -14414,67 +14413,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 1}
---- !u!1001 &1272046132661718905
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2499083950624643192, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_Name
-      value: TakoProjectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499083950624643192, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.2251625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.5865006
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7848104385598228088, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8f0dfd13bff132449b908da35dd69ba6, type: 3}
 --- !u!1 &4294647598049387109
 GameObject:
   m_ObjectHideFlags: 0
@@ -14631,5 +14569,4 @@ SceneRoots:
   - {fileID: 503528406}
   - {fileID: 883648983}
   - {fileID: 929420405}
-  - {fileID: 1272046132661718905}
   - {fileID: 366111966}
