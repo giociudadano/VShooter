@@ -3,18 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
+
     // Static instance of GameManager
     public static GameManager Instance { get; private set; }
 
     public bool isGameOver = false;
-
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private GameObject gameManager;
+		[SerializeField] private GameObject gameManager;
+
+		[Header("Cheats")]
     [SerializeField] private bool isCheats = false;
-    [SerializeField] private GameObject player;
+		[SerializeField] private GameObject player;
+		[SerializeField] private GameObject bossSpawnManager;
+
+
 
     private void Awake()
     {
@@ -51,10 +55,19 @@ public class GameManager : MonoBehaviour
 
     void GetKeyDownCheats()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+				// SHIFT + L: Level up player
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.L))
         {
-            player.GetComponent<PlayerXPManager>().LevelUp();
+          player.GetComponent<PlayerXPManager>().LevelUp();
         }
+				
+				// SHIFT + B: Spawn boss
+				if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
+        {
+					bossSpawnManager.GetComponent<BossSpawnManager>().CancelInvoke("SpawnBoss");
+          bossSpawnManager.GetComponent<BossSpawnManager>().SpawnBoss();
+        }
+				
     }
 
     public void GameOver()

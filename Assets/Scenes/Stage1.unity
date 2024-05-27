@@ -7896,6 +7896,7 @@ MonoBehaviour:
   gameManager: {fileID: 1005037242}
   isCheats: 0
   player: {fileID: 24383483}
+  bossSpawnManager: {fileID: 503528404}
 --- !u!4 &1005037244
 Transform:
   m_ObjectHideFlags: 0
@@ -10668,7 +10669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1433721631
 RectTransform:
   m_ObjectHideFlags: 0
