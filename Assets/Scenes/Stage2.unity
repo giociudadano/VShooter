@@ -3222,7 +3222,6 @@ MonoBehaviour:
   spawnPositionY: 1.25
   spawnPositionZ: 40
   spawnDelay: 5
-  gameManager: {fileID: 1005037242}
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}
@@ -12725,7 +12724,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1914443106}
         m_TargetAssemblyTypeName: RestartGame, Assembly-CSharp
-        m_MethodName: ReloadScene
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -73,6 +73,24 @@ public class PlayerHealthManager : MonoBehaviour {
       hurtPopup.transform.Find("HurtText").GetComponent<TMP_Text>().text = $"-{netDamage:0}HP";
       UpdateHealthbar();
     }
+
+    public void TrueHurt(float trueDamage)
+    {
+      /*
+          Endpoint for dealing true, unmitigated damage to player.
+      */
+      
+      float newHealth = currentHealth - trueDamage;
+      //  Clamp minimum health to 1
+      if(newHealth <= 0){
+        currentHealth = 1;
+      } else {
+        currentHealth = newHealth;
+      }
+      GameObject hurtPopup = Instantiate(hurtText, new Vector3(gameObject.transform.position.x - 2f, 1.5f, gameObject.transform.position.z), Quaternion.identity);
+      hurtPopup.transform.Find("HurtText").GetComponent<TMP_Text>().text = $"-{trueDamage:0}HP";
+      UpdateHealthbar();
+    }
     
     public void Heal(float healAmount) {
       currentHealth += healAmount;
