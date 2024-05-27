@@ -100,7 +100,7 @@ MonoBehaviour:
   areaSize: 5
   healAmount: 10
   maxHealing: 60
-  spinSfx: {fileID: 0}
+  spinSfx: {fileID: 8300000, guid: 113ee460fadc340e4957a7404a9fbb27, type: 3}
 --- !u!1001 &2616635875797488893
 PrefabInstance:
   m_ObjectHideFlags: 0
