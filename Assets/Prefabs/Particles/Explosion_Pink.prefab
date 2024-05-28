@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1970750379811126911}
   - component: {fileID: 5112437202714306363}
   - component: {fileID: 2347168567541074527}
-  - component: {fileID: 6905581764155072067}
   m_Layer: 0
   m_Name: Explosion_Pink
   m_TagString: Untagged
@@ -44,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4838,15 +4837,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6905581764155072067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8413875811817139174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62687fb045497b5499c8f690d3a4247a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

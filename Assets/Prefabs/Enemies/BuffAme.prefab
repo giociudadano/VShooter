@@ -103,6 +103,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8069956836083764462}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4058669049380491403}
   m_SourcePrefab: {fileID: 100100000, guid: 8f9d8ec53f96fbf42bb46228ee438b43, type: 3}
 --- !u!1 &1826134014099635275 stripped
 GameObject:
@@ -143,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  bossSpawner: {fileID: 0}
   healthText: {fileID: 0}
   healText: {fileID: 2695241091629641371, guid: 41c941265d715684baa89f9b75b994c3, type: 3}
   healthBar: {fileID: 0}
@@ -153,8 +157,8 @@ MonoBehaviour:
   baseHealth: 1000
   maximumHealth: 1000
   XPReward: 15
-  defense: 5
-  baseDefense: 5
+  defense: 15
+  baseDefense: 15
   healthRegen: 1
 --- !u!114 &-9103209905477904639
 MonoBehaviour:
@@ -219,3 +223,17 @@ MonoBehaviour:
   missileDelay: 10
   missile: {fileID: 7028593740872172549, guid: 8b10f058b86285e4d99f8e330f9685b3, type: 3}
   missileCount: 5
+  missileLaunchDelay: 0.1
+  missileSpawnOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-4058669049380491403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826134014099635275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb29db2805306274f935020a490ad3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
