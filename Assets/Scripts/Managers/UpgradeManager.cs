@@ -24,6 +24,10 @@ public class UpgradeManager : MonoBehaviour {
 	[SerializeField] public float bonusCritDamage;
 	[SerializeField] public float bonusAttackSpeed;
 	[SerializeField] public float bonusAbilityHasteFlat;
+
+	private float MAXIMUM_PASSIVE_LEVEL = 3;
+	private string characterName;
+	private List<string> characterUpgrades;
 	
 	public Dictionary<string, dynamic> upgrades = new Dictionary<string, dynamic>() {
 		{"MORICALLIOPE_SOULHARVESTER", new Dictionary<string, dynamic>() {
@@ -97,6 +101,81 @@ public class UpgradeManager : MonoBehaviour {
 					{"format", "0:0.0%"},
 					{"level", new Dictionary<string, float> () {
 						{"1", 0.08f},{"2", 0.12f},{"3", 0.15f}
+					}}
+				}},
+			}}
+		}},
+		{"INA_DARKAURA", new Dictionary<string, dynamic>() {
+			{"title", "Dark Aura"},
+			{"description", "If an enemy is within {UNIT_RANGE} units of you, deal {AURA_DAMAGE} damage per second and slow the target by {SLOW_PERCENT}."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_DarkAura"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"UNIT_RANGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 150f},{"2", 200f},{"3", 250f}
+					}}
+				}},
+				{"AURA_DAMAGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 6f},{"2", 9f},{"3", 12f}
+					}}
+				}},
+				{"SLOW_PERCENT", new Dictionary<string	, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0.0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.2f},{"2", 0.3f},{"3", 0.4f}
+					}}
+				}},
+			}}
+		}},
+		{"INA_VIOLETBLOOM", new Dictionary<string, dynamic>() {
+			{"title", "Violet Bloom"},
+			{"description", "Attacks apply a stack of {HEX_EFFECT} for 1.5 seconds, stacking up to 6 times. At max stacks, consume all {HEX_EFFECT} stacks to deal {HEX_DAMAGE} of the target's maximum health and {STUN_EFFECT} the target for 1.5 seconds (6s cooldown)."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_VioletBloom"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"HEX_EFFECT", new Dictionary<string, dynamic> () {
+					{"color", "#DAF"},
+					{"text", "Hex"}
+				}},
+				{"HEX_DAMAGE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0.0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.06f},{"2", 0.08f},{"3", 0.10f}
+					}}
+				}},
+				{"STUN_EFFECT", new Dictionary<string	, dynamic> () {
+					{"color", "#FDA"},
+					{"text", "Stun"},
+				}},
+			}}
+		}},
+		{"INA_THEANCIENTONE", new Dictionary<string, dynamic>() {
+			{"title", "The Ancient One"},
+			{"description", "Every {RATE} seconds, create a zone that has a {PERCECNT_CHANCE} chance to convert non-boss enemies to {TAKODACHI_EFFECT}. {TAKODACHI_EFFECT} have a set amount of health and will seek out and fight random enemies."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_TheAncientOne"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"TAKODACHI_EFFECT", new Dictionary<string, dynamic> () {
+					{"color", "#DAF"},
+					{"text", "Takodachis"}
+				}},
+				{"PERCECNT_CHANCE", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"format", "0:0.0%"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.40f},{"2", 0.60f},{"3", 0.80f}
+					}}
+				}},
+				{"RATE", new Dictionary<string	, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 10f},{"2", 9f},{"3", 8f}
 					}}
 				}},
 			}}
@@ -218,8 +297,24 @@ public class UpgradeManager : MonoBehaviour {
 		
 	}
 
-	public void GetCharacterUpgrades(List<string> characterUpgrades){
-		upgradesAvailable.AddRange(characterUpgrades);
+	public void GetCharacterUpgrades(string selectedCharacter){
+		switch(selectedCharacter){
+			case "MoriCalliope":
+				List<string> characterUpgrades_Mori = new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"};
+				upgradesAvailable.AddRange(characterUpgrades_Mori);
+				characterName = selectedCharacter;
+				characterUpgrades = characterUpgrades_Mori;
+				break;
+			case "NinomaeInanis":
+				List<string> characterUpgrades_Ina = new List<string>(){"INA_DARKAURA", "INA_VIOLETBLOOM", "INA_THEANCIENTONE"};
+				upgradesAvailable.AddRange(characterUpgrades_Ina);
+				characterName = selectedCharacter;
+				characterUpgrades = characterUpgrades_Ina;
+				break;
+			default:
+				throw new ArgumentException("Character could not be found", selectedCharacter);
+		}
+		
 	}
 
 	private void GetGenericUpgrades() {
@@ -313,6 +408,13 @@ public class UpgradeManager : MonoBehaviour {
 	public void GetUpgrade(String name) {
 		if (upgradesActive.ContainsKey(name)) {
 			upgradesActive[name]["level"] += 1;
+
+			if (characterUpgrades.Contains(name)) {
+				if(upgradesActive[name]["level"] == MAXIMUM_PASSIVE_LEVEL){
+					upgradesAvailable.Remove(name);
+				};
+			}
+
 		} else {
 			upgradesActive.Add(name, new Dictionary<string, dynamic> () {
 				{"level", 1}

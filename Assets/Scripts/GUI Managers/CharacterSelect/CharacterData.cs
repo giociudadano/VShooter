@@ -79,11 +79,13 @@ public class CharacterData : MonoBehaviour {
           {"active_1", new Dictionary<string, dynamic> () {
 						{"title", "Dark Aura"},
 						{"icon", "Ina_DarkAura"},
+            {"cooldown", 7},
 						{"description", "If an enemy is within <color=#AFA>150/200/250</color> units of you, deal <color=#AFA>6/9/12</color> damage per second and slow the target by <color=#AFA>20/30/40%</color>."}
           }},
           {"active_2", new Dictionary<string, dynamic> () {
 						{"title", "Violet Bloom"},
 						{"icon", "Ina_VioletBloom"},
+            {"cooldown", 15},
 						{"description", "Attacks apply a stack of <color=#DAF>Hex</color> for 1.5 seconds, stacking up to 6 times. At max stacks, consume all <color=#DAF>Hex</color> stacks to deal <color=#AFA>6/8/10%</color> of the target's maximum health and <color=#FDA>stun</color> the target for 1.5 seconds (6s cooldown)."}
           }},
         };  
