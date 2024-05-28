@@ -7,6 +7,9 @@ using UnityEngine;
 public class CharacterData : MonoBehaviour {
   [SerializeField] public string selectedCharacter;
 
+  // NOTE: INDEXING IS HARD CODED
+  public GameObject[] skillPrefabs;
+
   void Start() {
     DontDestroyOnLoad(this);
   }
@@ -88,5 +91,22 @@ public class CharacterData : MonoBehaviour {
         throw new ArgumentException("Character could not be found", character);
   	}
   }
+
+  public Dictionary<string, GameObject> GetSkillPrefab(string character){
+    switch (character){
+      case "MoriCalliope":
+        return new Dictionary<string, GameObject> {
+          {"skill1", skillPrefabs[0]},
+          {"skill2", skillPrefabs[1]},
+        };
+      case "NinomaeInanis":
+        return new Dictionary<string, GameObject> {
+          {"skill1", skillPrefabs[2]},
+          {"skill2", skillPrefabs[3]},
+        };
+      default:
+        throw new ArgumentException("Character could not be found", character);
+    }
+  } 
 }
 
