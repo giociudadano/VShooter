@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RestartGame : MonoBehaviour {
 
-  private static List<GameObject> persistentObjects = new List<GameObject>();
+  //private static List<GameObject> persistentObjects = new List<GameObject>();
     void Start() {
         
     }
@@ -22,6 +22,7 @@ public class RestartGame : MonoBehaviour {
         Destroy(root);
       }
     }
+
     public void ReloadScene()
     {
       Time.timeScale = 1;
@@ -33,6 +34,5 @@ public class RestartGame : MonoBehaviour {
       Time.timeScale = 1;
       DestroyPersistentObjects();
       SceneManager.LoadScene("CharacterSelect");
-
     }
 }

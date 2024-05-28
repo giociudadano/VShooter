@@ -58,14 +58,21 @@ public class MusicPlayer : MonoBehaviour
     }
 
     public void SetTrack(AudioClip track)
+    {   
+        music.clip = track;     
+    }
+
+    public AudioClip GetCurrentTrack()
     {
-        music.clip = track;
+        return music.clip;
     }
 
     public void PlayTrack(int trackIndex)
-    {
-        SetTrack(tracklist[trackIndex]);
-        Play();
+    {   
+        if (GetCurrentTrack() != tracklist[trackIndex]) {
+            SetTrack(tracklist[trackIndex]);
+            Play();
+        }
     }
 
 

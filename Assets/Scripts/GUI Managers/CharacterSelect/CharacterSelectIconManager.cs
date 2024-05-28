@@ -17,7 +17,6 @@ public class CharacterSelectIconManager : MonoBehaviour, IPointerEnterHandler, I
      private SfxManager sfxManager;
      [SerializeField] private AudioClip pointerEnterSfx;
      [SerializeField] private AudioClip pointerSelectSfx;
-
      [SerializeField] private AudioClip pointerExitSfx;
 
 
