@@ -14,23 +14,29 @@ public class PlayerSkillManager : MonoBehaviour{
   [SerializeField] private GameObject go_SkillE;
 
   [Header ("Skill Set Cooldown")]
-  [SerializeField] private float skillQBaseCooldown = 15f;
-  [SerializeField] private float skillEBaseCooldown = 7f;
+  [SerializeField] private float skillQBaseCooldown = 99f;
+  [SerializeField] private float skillEBaseCooldown = 99f;
 
   private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
   private bool skillQOnCooldown = false;
   private bool skillEOnCooldown = false;
-
-  [Header ("Objects")]
-  [SerializeField] private GameObject player;
+  [Header ("Character Data")]
+  private CharacterData characterData = FindObjectOfType<CharacterData>();
+  public string selectedCharacter;
 
   [SerializeField] private float bonusAbilityHasteFlat;
 
-    // Start is called before the first frame update
+  // Start is called before the first frame update
   void Start() {
-    skillQGUI.transform.Find("Skill Tooltip/Cooldown").GetComponent<TMP_Text>().text = $"{String.Format("{0:0.##}",skillQBaseCooldown)}s Cooldown";
-    skillEGUI.transform.Find("Skill Tooltip/Cooldown").GetComponent<TMP_Text>().text = $"{String.Format("{0:0.##}",skillEBaseCooldown)}s Cooldown";
-    player = GameObject.FindGameObjectWithTag("Player");
+		if (characterData != null) {
+			selectedCharacter = characterData.selectedCharacter;
+		} else {
+			selectedCharacter = "MoriCalliope";
+		}
+
+    Dictionary<string, dynamic> activeInfo = characterData.GetComponent<CharacterData>().GetActiveInfo(selectedCharacter);
+    skillEBaseCooldown = activeInfo["active_1"]["cooldown"];
+    skillQBaseCooldown = activeInfo["active_2"]["cooldown"];
   }
 
   // Update is called once per frame
@@ -44,7 +50,7 @@ public class PlayerSkillManager : MonoBehaviour{
   }
 
   private IEnumerator CastSkillQ() {
-        Instantiate(go_SkillQ,player.transform.position + shootOffset,player.transform.rotation);
+        Instantiate(go_SkillQ, transform.position + shootOffset, transform.rotation);
 				skillQOnCooldown = true;
         float skillQCooldown = skillQBaseCooldown * (1 - CalculateCooldownReduction(bonusAbilityHasteFlat));
 				skillQGUI.transform.Find("Skill Icon Mask/Skill Cooldown Time").gameObject.SetActive(true);
@@ -59,7 +65,7 @@ public class PlayerSkillManager : MonoBehaviour{
   }
 
 	private IEnumerator CastSkillE() {
-        Instantiate(go_SkillE,player.transform.position + shootOffset,player.transform.rotation);
+        Instantiate(go_SkillE, transform.position + shootOffset, transform.rotation);
 				skillEOnCooldown = true;
         float skillECooldown = skillEBaseCooldown * (1 - CalculateCooldownReduction(bonusAbilityHasteFlat));
 				skillEGUI.transform.Find("Skill Icon Mask/Skill Cooldown Time").gameObject.SetActive(true);

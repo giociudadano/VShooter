@@ -40,9 +40,7 @@ public class BossSpawnManager : MonoBehaviour
         Invoke("SpawnBoss", spawnDelay);
         gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject;
     }
-
-    // Update is called once per frame
-    private void SpawnBoss()
+    public void SpawnBoss()
     {
         DisableMooks();
         Debug.Log("Disabled mooks!");
