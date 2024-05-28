@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  duration: 3
+  duration: 8
   player: {fileID: 0}
 --- !u!54 &2408729355912976580
 Rigidbody:

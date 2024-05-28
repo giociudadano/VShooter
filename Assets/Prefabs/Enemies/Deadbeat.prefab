@@ -662,8 +662,8 @@ GameObject:
   - component: {fileID: 592844347238965375}
   - component: {fileID: 1925377021127799645}
   - component: {fileID: 4773895401239875004}
-  m_Layer: 7
   - component: {fileID: 9208049628674303728}
+  m_Layer: 7
   m_Name: Deadbeat
   m_TagString: Enemy
   m_Icon: {fileID: 0}

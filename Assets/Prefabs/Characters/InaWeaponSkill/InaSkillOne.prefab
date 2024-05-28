@@ -132,10 +132,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSfx: {fileID: 0}
   duration: 6
+  yOffset: 1.5
+  zOffset: 1.5
   bonusHealth: 200
   bonusDefense: 30
   bonusDamage: 30
-  bonusDamageSpeed: 10
+  bonusDamageSpeed: 5
   healthRegen: 20
 --- !u!1001 &6178276176811837424
 PrefabInstance:
