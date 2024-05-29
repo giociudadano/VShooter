@@ -341,19 +341,27 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	private void RenderUpgrade(int slotIndex, string name, Dictionary<string, dynamic> upgrade) {
-		GameObject upgradeNameUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Name").gameObject;
+		GameObject upgradeUI = this.upgradeUI.transform.Find("_UpgradeUI").gameObject;
+
+		GameObject upgradeCard = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString()).gameObject;
+		GameObject upgradeNameUI = upgradeCard.transform.Find("Name").gameObject;
 		upgradeNameUI.GetComponent<TMP_Text>().text = name;
-		GameObject upgradeTitleUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Title").gameObject;
+
+		GameObject upgradeTitleUI = upgradeCard.transform.Find("Upgrade Title").gameObject;
 		upgradeTitleUI.GetComponent<TMP_Text>().text = $"{upgrade["title"]} <color=#FFA>LV {GetCurrentUpgradeLevel(name)+1}</color>";
-		GameObject upgradeDescriptionUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Description").gameObject;
+
+		GameObject upgradeDescriptionUI = upgradeCard.transform.Find("Upgrade Description").gameObject;
 		upgradeDescriptionUI.GetComponent<TMP_Text>().text = ParseAbilityDescription(name, $"{upgrade["description"]}", upgrade["parameters"], 1);
-		GameObject upgradeTypeUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Type").gameObject;
+
+		GameObject upgradeTypeUI = upgradeCard.transform.Find("Upgrade Type").gameObject;
 		upgradeTypeUI.GetComponent<TMP_Text>().text = ParseAbilityType(upgrade["type"]);
+
 		if (upgrade.ContainsKey("icon")){
-			GameObject upgradeImageUI = upgradeUI.transform.Find("Upgrade Card " + slotIndex.ToString() + "/Upgrade Image").gameObject;
+			GameObject upgradeImageUI = upgradeCard.transform.Find("Upgrade Image").gameObject;
 			upgradeImageUI.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Abilities/{upgrade["icon"]}");
 		}
 	}
+
 
 	public string ParseAbilityType(string type) {
 		switch (type) {
@@ -503,6 +511,8 @@ public class UpgradeManager : MonoBehaviour {
 		/*
 			Recalculates player stats. Called when obtaining an upgrade which would change player stats.
 		*/
+
+		GameObject upgradeUI = this.upgradeUI.transform.Find("_UpgradeUI").gameObject;
 
 		// Bonus Attack% Calculation
 		float bonusAttackPercent = 0f;
