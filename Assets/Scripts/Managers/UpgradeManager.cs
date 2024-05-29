@@ -139,6 +139,26 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 			}}
 		}},
+		{"INA_SPELLCASTER", new Dictionary<string, dynamic>() {
+			{"title", "Spellcaster"},
+			{"description", "Gain <color=#AFA>25/50/75</color> ability haste. Additionally, gain <color=#AFA>20/40/60%</color> more ability haste from all sources."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_Spellcaster"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"ABILITYHASTE_FLAT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 25f},{"2", 50f},{"3", 75f}
+					}}
+				}},
+				{"ABILITYHASTE_PERCENT", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f}
+					}}
+				}},
+			}}
+		}},
 		{"GENERIC_IRONSWORD", new Dictionary<string, dynamic>() {
 			{"title", "Iron Sword"},
 			{"description", "Increase attack by {ATTACK_PERCENT}."},
@@ -265,7 +285,7 @@ public class UpgradeManager : MonoBehaviour {
 				characterUpgrades = characterUpgrades_Mori;
 				break;
 			case "NinomaeInanis":
-				List<string> characterUpgrades_Ina = new List<string>(){"INA_BLESSINGSOFTHEGODS", "INA_DARKAURA"};
+				List<string> characterUpgrades_Ina = new List<string>(){"INA_BLESSINGSOFTHEGODS", "INA_DARKAURA", "INA_SPELLCASTER"};
 				upgradesAvailable.AddRange(characterUpgrades_Ina);
 				characterName = selectedCharacter;
 				characterUpgrades = characterUpgrades_Ina;
@@ -386,7 +406,7 @@ public class UpgradeManager : MonoBehaviour {
 				{"level", 1}
 			});
 		}
-		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment" || name == "INA_BLESSINGSOFTHEGODS" || name == "INA_DARKAURA"){
+		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment" || name == "INA_BLESSINGSOFTHEGODS" || name == "INA_DARKAURA" || name == "INA_SPELLCASTER"){
 			ApplyPassive(name, null);
 		}
 		RenderUpgradesListUI();
@@ -418,6 +438,7 @@ public class UpgradeManager : MonoBehaviour {
 			return;
 		}
 		string level = upgradesActive[passiveName]["level"].ToString();
+		float bonusAbilityHasteFlat = 0f;
 		switch (passiveName) {
 			case "MORICALLIOPE_SOULHARVESTER":
 				float chance = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_CHANCE"]["level"][level];
@@ -444,6 +465,11 @@ public class UpgradeManager : MonoBehaviour {
 				float damageTick = upgrades["INA_DARKAURA"]["parameters"]["DAMAGE_TICK"]["level"][level];
 				upgradeScripts.GetComponent<NinomaeInanis_DarkAura>().ApplyPassive(auraSize, damageTick);
 				break;
+			case "INA_SPELLCASTER":
+				bonusAbilityHasteFlat = upgrades["INA_SPELLCASTER"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
+				float bonusAbilityHastePercent = upgrades["INA_SPELLCASTER"]["parameters"]["ABILITYHASTE_PERCENT"]["level"][level];
+				upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().ApplyPassive(bonusAbilityHasteFlat, bonusAbilityHastePercent);
+				break;
 			case "GENERIC_IRONSWORD":
 				float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_IronSword>().ApplyPassive(bonusAttackPercent);
@@ -467,7 +493,7 @@ public class UpgradeManager : MonoBehaviour {
 				upgradeScripts.GetComponent<Generic_CivilizationFeather>().ApplyPassive(bonusAttackSpeed);
 				break;
 			case "GENERIC_TOPAZSTAFF":
-				float bonusAbilityHasteFlat = upgrades["GENERIC_TOPAZSTAFF"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
+				bonusAbilityHasteFlat = upgrades["GENERIC_TOPAZSTAFF"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_TopazStaff>().ApplyPassive(bonusAbilityHasteFlat);
 				break;
 		}
@@ -534,7 +560,13 @@ public class UpgradeManager : MonoBehaviour {
 		// Bonus Ability Haste Calculation
 		float bonusAbilityHasteFlat = 0f;
 		bonusAbilityHasteFlat += upgradeScripts.GetComponent<Generic_TopazStaff>().bonusAbilityHasteFlat;
+		bonusAbilityHasteFlat += upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().bonusAbilityHasteFlat;
 		this.bonusAbilityHasteFlat = bonusAbilityHasteFlat;
+
+		float bonusAbilityHastePercent = 0f;
+		bonusAbilityHastePercent += upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().bonusAbilityHastePercent;
+		bonusAbilityHasteFlat *= (1 + bonusAbilityHastePercent);
+
 		player.GetComponent<PlayerSkillManager>().SetBonusAbilityHaste(bonusAbilityHasteFlat);
 		string abilityHasteText = $"{bonusAbilityHasteFlat} | {String.Format("{0:0.00%}", bonusAbilityHasteFlat / (bonusAbilityHasteFlat + 100))}";
 		upgradeUI.transform.Find("Ability Haste/Value").GetComponent<TMP_Text>().text = abilityHasteText;

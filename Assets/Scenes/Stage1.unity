@@ -9433,6 +9433,7 @@ GameObject:
   - component: {fileID: 565976070}
   - component: {fileID: 565976071}
   - component: {fileID: 565976073}
+  - component: {fileID: 565976074}
   m_Layer: 0
   m_Name: UpgradeScriptsManager
   m_TagString: Untagged
@@ -9615,6 +9616,20 @@ MonoBehaviour:
   auraSize: 0
   damageTick: 0
   player: {fileID: 24383483}
+--- !u!114 &565976074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565976060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1e39e8cede67940adeab4397bd9f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusAbilityHasteFlat: 0
+  bonusAbilityHastePercent: 0
 --- !u!1001 &574684089
 PrefabInstance:
   m_ObjectHideFlags: 0

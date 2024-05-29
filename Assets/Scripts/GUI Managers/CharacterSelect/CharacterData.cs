@@ -46,9 +46,9 @@ public class CharacterData : MonoBehaviour {
 						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."}
           }},
           {"passive_3", new Dictionary<string, dynamic> () {
-						{"title", "Placeholder 3"},
-						{"icon", "Ina_DarkAura"},
-						{"description", "Placeholder 3 Description"}
+						{"title", "Spellcaster"},
+						{"icon", "Ina_Spellcaster"},
+						{"description", "Gain <color=#AFA>25/50/75</color> ability haste. Additionally, gain <color=#AFA>20/40/60%</color> more ability haste from all sources."}
           }},
         };  
       default:
