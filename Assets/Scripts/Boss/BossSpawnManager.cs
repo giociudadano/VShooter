@@ -21,20 +21,19 @@ public class BossSpawnManager : MonoBehaviour
     public GameObject BossUI;
 
     [Header("Others")]
-
     [SerializeField] private int bossMusic;
     private MusicPlayer musicPlayer;
-    private GameObject mookSpawner;
+    private GameObject[] mookSpawners;
 
     void Start()
     {
-        mookSpawner = GameObject.FindGameObjectWithTag("Spawner");
+        mookSpawners = GameObject.FindGameObjectsWithTag("Spawner");
         musicPlayer = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayer>();
         Invoke("SpawnBoss", spawnDelay);
         gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject;
     }
     public void SpawnBoss()
-    {
+    {   
         DisableMooks();
         Debug.Log("Disabled mooks!");
 
@@ -53,8 +52,9 @@ public class BossSpawnManager : MonoBehaviour
 
     private void DisableMooks()
     {
-        
-        mookSpawner.SetActive(false);
+        foreach (GameObject mookSpawner in mookSpawners) {
+            mookSpawner.SetActive(false);
+        }
     }
 
     private void SetBossMusic()
