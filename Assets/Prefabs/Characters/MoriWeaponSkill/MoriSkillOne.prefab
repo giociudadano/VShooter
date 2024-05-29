@@ -98,7 +98,7 @@ MonoBehaviour:
   rotateSpeed: 1000
   damage: 60
   areaSize: 5
-  healAmount: 50
+  healAmount: 20
   maxHealing: 60
   spinSfx: {fileID: 8300000, guid: 113ee460fadc340e4957a7404a9fbb27, type: 3}
 --- !u!1001 &2616635875797488893

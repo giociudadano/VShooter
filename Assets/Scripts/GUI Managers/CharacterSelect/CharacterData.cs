@@ -34,21 +34,21 @@ public class CharacterData : MonoBehaviour {
           }},
         };
       case "NinomaeInanis":
-        return new Dictionary<string, dynamic>() {   
+        return new Dictionary<string, dynamic>() {
           {"passive_1", new Dictionary<string, dynamic> () {
 						{"title", "Dark Aura"},
 						{"icon", "Ina_DarkAura"},
-						{"description", "If an enemy is within <color=#AFA>150/200/250</color> units of you, deal <color=#AFA>6/9/12</color> damage per second and slow the target by <color=#AFA>20/30/40%</color>."}
+						{"description", "Enemies with <color=#AFA>150/200/250</color> units of you take <color=#AFA>6/9/12</color> damage per second."}
           }},
           {"passive_2", new Dictionary<string, dynamic> () {
-						{"title", "Violet Bloom"},
-						{"icon", "Ina_VioletBloom"},
-						{"description", "Attacks apply a stack of <color=#DAF>Hex</color> for 1.5 seconds, stacking up to 6 times. At max stacks, consume all <color=#DAF>Hex</color> stacks to deal <color=#AFA>6/8/10%</color> of the target's maximum health and <color=#FDA>stun</color> the target for 1.5 seconds (6s cooldown)."}
+						{"title", "Blessings of the Gods"},
+						{"icon", "Ina_BlessingsOfTheGods"},
+						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at Ina's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to Ina on expiry."}
           }},
           {"passive_3", new Dictionary<string, dynamic> () {
-						{"title", "The Ancient One"},
-						{"icon", "Ina_TheAncientOne"},
-						{"description", "Every <color=#AFA>10/9/8</color> seconds, create a zone that has a <color=#AFA>40/60/80%</color> chance to convert non-boss enemies to <color=#DAF>Takodachis</color>. <color=#DAF>Takodachis</color> have a set amount of health and will seek out and fight random enemies."}
+						{"title", "Spellcaster"},
+						{"icon", "Ina_Spellcaster"},
+						{"description", "Gain <color=#AFA>25/50/75</color> ability haste. Additionally, gain <color=#AFA>20/40/60%</color> more ability haste from all sources."}
           }},
         };  
       default:
@@ -64,28 +64,28 @@ public class CharacterData : MonoBehaviour {
 						{"title", "Excuse My Rudeness"},
 						{"icon", "Calliope_ExcuseMyRudeness"},
             {"cooldown", 7},
-						{"description", "Calliope spins her scythe in a circle dealing <color=#FFA>60</color> damage to all surrounding enemies. For each enemy hit, heal for <color=#AFA>10HP</color> (up to <color=#AFA>60HP</color> total)."}
+						{"description", "Calliope spins her scythe in a circle dealing <color=#FFA>60</color> damage to all surrounding enemies. For each enemy hit, heal for <color=#AFA>20HP</color> (up to <color=#AFA>60HP</color> total)."}
           }},
           {"active_2", new Dictionary<string, dynamic> () {
 						{"title", "Off With Their Heads"},
 						{"icon", "Calliope_OffWithTheirHeads"},
             {"cooldown", 15},
-						{"description", "Calliope consumes <color=#AFA>20%</color> of her own Maximum HP and throws her scythe forward, dealing <color=#FFA>100</color> damage to all enemies hit."}
+						{"description", "Calliope consumes <color=#AFA>5%</color> of her own Maximum HP and throws her scythe forward, dealing <color=#FFA>100</color> damage to all enemies hit."}
           }},
         };
       case "NinomaeInanis":
         return new Dictionary<string, dynamic>() {   
           {"active_1", new Dictionary<string, dynamic> () {
-						{"title", "Dark Aura"},
-						{"icon", "Ina_DarkAura"},
-            {"cooldown", 7},
-						{"description", "If an enemy is within <color=#AFA>150/200/250</color> units of you, deal <color=#AFA>6/9/12</color> damage per second and slow the target by <color=#AFA>20/30/40%</color>."}
+						{"title", "Summon: Takodachi"},
+						{"icon", "Ina_SummonTakodachi"},
+            {"cooldown", 10},
+						{"description", "Summons a <color=#DAF>Takodachi</color> at Ina's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to Ina on expiry."}
           }},
           {"active_2", new Dictionary<string, dynamic> () {
-						{"title", "Violet Bloom"},
-						{"icon", "Ina_VioletBloom"},
-            {"cooldown", 15},
-						{"description", "Attacks apply a stack of <color=#DAF>Hex</color> for 1.5 seconds, stacking up to 6 times. At max stacks, consume all <color=#DAF>Hex</color> stacks to deal <color=#AFA>6/8/10%</color> of the target's maximum health and <color=#FDA>stun</color> the target for 1.5 seconds (6s cooldown)."}
+						{"title", "The Ancient One"},
+						{"icon", "Ina_TheAncientOne"},
+            {"cooldown", 20},
+						{"description", "All summoned <color=#DAF>Takodachis</color> gain <color=#FCA>Frenzy</color> for 5 seconds. <color=#FCA>Frenzied</color> summons gain <color=#FFA>500% Attack Speed</color> but spray bullets wildly."}
           }},
         };  
       default:
