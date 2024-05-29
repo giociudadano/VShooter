@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     // Static instance of GameManager
     public static GameManager Instance { get; private set; }
@@ -11,12 +12,12 @@ public class GameManager : MonoBehaviour {
     public bool isGameOver = false;
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] private GameObject upgradeUI;
-		[SerializeField] private GameObject gameManager;
+    [SerializeField] private GameObject gameManager;
 
-		[Header("Cheats")]
+    [Header("Cheats")]
     [SerializeField] private bool isCheats = false;
-		[SerializeField] private GameObject player;
-		[SerializeField] private GameObject bossSpawnManager;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject bossSpawnManager;
 
 
 
@@ -55,35 +56,36 @@ public class GameManager : MonoBehaviour {
 
     void GetKeyDownCheats()
     {
-				// SHIFT + L: Level up player
+        // SHIFT + L: Level up player
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.L))
         {
-          player.GetComponent<PlayerXPManager>().LevelUp();
+            player.GetComponent<PlayerXPManager>().LevelUp();
         }
-				
-				// SHIFT + B: Spawn boss
-				if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
+
+        // SHIFT + B: Spawn boss
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
         {
-					bossSpawnManager.GetComponent<BossSpawnManager>().CancelInvoke("SpawnBoss");
-          bossSpawnManager.GetComponent<BossSpawnManager>().SpawnBoss();
+            bossSpawnManager.GetComponent<BossSpawnManager>().CancelInvoke("SpawnBoss");
+            bossSpawnManager.GetComponent<BossSpawnManager>().SpawnBoss();
         }
-				
+
     }
 
     public void GameOver()
-    {   
+    {
         GameObject _gameOverUI = gameOverUI.transform.Find("_GameOverUI").gameObject;
-        if (_gameOverUI != null) {
+        if (_gameOverUI != null)
+        {
             Debug.Log("Not null!");
             isGameOver = true;
             _gameOverUI.SetActive(true);
             Time.timeScale = 0;
-           
-        } 
+
+        }
     }
 
     public void ShowUpgradeUI(bool value)
-    {   
+    {
         GameObject upgradeUI = this.upgradeUI.transform.Find("_UpgradeUI").gameObject;
         if (value)
         {
@@ -103,11 +105,13 @@ public class GameManager : MonoBehaviour {
         isCheats = value;
     }
 
-    public void PauseGame() {
+    public void PauseGame()
+    {
         Time.timeScale = 0;
     }
 
-    public void UnpauseGame() {
+    public void UnpauseGame()
+    {
         Time.timeScale = 1;
     }
 }
