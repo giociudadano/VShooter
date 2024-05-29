@@ -1525,7 +1525,7 @@ MonoBehaviour:
   speed: 30
   projectile: {fileID: 1019113029584780768, guid: f53c36c8cfe89ba4d8d879d75feb6831, type: 3}
   shootOffset: {x: 0, y: 0, z: 1}
-  duration: 7
+  duration: 10
   projectileDamage: 20
   attackSpeed: 1
 --- !u!1 &7669876520615947959

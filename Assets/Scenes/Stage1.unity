@@ -6719,7 +6719,7 @@ MonoBehaviour:
   - {fileID: 7480895652822211567, guid: a3084fb417d6ab64d8441df66461ac38, type: 3}
   spawnPositionXRange: 6
   spawnPositionY: 1
-  spawnPositionZ: 70
+  spawnPositionZ: 50
   spawnInterval: 25
   firstSpawnDelay: 10
 --- !u!114 &599618615

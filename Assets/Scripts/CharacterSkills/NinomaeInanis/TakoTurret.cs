@@ -13,7 +13,7 @@ public class TakoTurret : MonoBehaviour
     [Header("Firing")]
     [SerializeField] private GameObject projectile;
     [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
-    [SerializeField] private float duration = 7f;
+    [SerializeField] private float duration = 12f;
     [SerializeField] public float projectileDamage = 20f;
     [SerializeField] private float attackSpeed = 1f;
 
@@ -39,7 +39,7 @@ public class TakoTurret : MonoBehaviour
         if (isRotating) {
             Rotate();
             CheckRotation();
-        }   
+        }
     }
 
     private IEnumerator DestroyTurret()
@@ -76,7 +76,6 @@ public class TakoTurret : MonoBehaviour
             yield return new WaitForSeconds(1f / attackSpeed);
         }
     }
-
     public void Frenzy(float bonusAttackSpeedMult = 5.0f)
     {
         attackSpeed *= bonusAttackSpeedMult;
