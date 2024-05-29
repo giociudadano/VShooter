@@ -554,8 +554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d65b74726e1ec458cd3f5139d18d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewLimitDown: -5
-  viewLimitUp: 50
+  viewLimitDown: -20
+  viewLimitUp: 70
   movementSpeed: 10
   launchSpeed: 50
   launchDelay: 2

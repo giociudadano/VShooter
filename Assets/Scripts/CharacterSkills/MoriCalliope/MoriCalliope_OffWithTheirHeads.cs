@@ -84,8 +84,8 @@ public class MoriCalliope_OffWithTheirHeads : MonoBehaviour
         debouncedColliders.Add(collider);
     }
 
-    //  Sacrifice 20% of maximum health by default
-    private void SacrificeHealth(float healthPercentage = 0.20f)
+    //  Sacrifice 5% of maximum health by default
+    private void SacrificeHealth(float healthPercentage = 0.05f)
     {
         playerHealthManager.TrueHurt(playerHealthManager.maximumHealth * healthPercentage);
     }

@@ -21,13 +21,14 @@ public class PlayerSkillManager : MonoBehaviour{
   private bool skillQOnCooldown = false;
   private bool skillEOnCooldown = false;
   [Header ("Character Data")]
-  private CharacterData characterData = FindObjectOfType<CharacterData>();
+  private CharacterData characterData;
   public string selectedCharacter;
 
   [SerializeField] private float bonusAbilityHasteFlat;
 
   // Start is called before the first frame update
   void Start() {
+    characterData = FindObjectOfType<CharacterData>();
 		if (characterData != null) {
 			selectedCharacter = characterData.selectedCharacter;
 		} else {
@@ -37,6 +38,10 @@ public class PlayerSkillManager : MonoBehaviour{
     Dictionary<string, dynamic> activeInfo = characterData.GetComponent<CharacterData>().GetActiveInfo(selectedCharacter);
     skillEBaseCooldown = activeInfo["active_1"]["cooldown"];
     skillQBaseCooldown = activeInfo["active_2"]["cooldown"];
+
+    Dictionary<string, GameObject> skillPrefab = characterData.GetComponent<CharacterData>().GetSkillPrefab(selectedCharacter);
+    go_SkillQ = skillPrefab["skill1"];
+    go_SkillE = skillPrefab["skill2"];
   }
 
   // Update is called once per frame

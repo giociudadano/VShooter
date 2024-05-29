@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  viewLimitDown: -5
+  viewLimitDown: -20
   viewLimitUp: 75
   player: {fileID: 0}
 --- !u!114 &-1389823233852296633

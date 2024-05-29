@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class _GameUISingleton : MonoBehaviour
 {
@@ -21,5 +22,10 @@ public class _GameUISingleton : MonoBehaviour
 
         // Make sure this object is not destroyed when loading a new scene
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetProperty(string propertyName, TextMeshProUGUI value)
+    {
+        this.GetType().GetProperty(propertyName).SetValue(this, value);
     }
 }

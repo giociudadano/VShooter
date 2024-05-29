@@ -172,4 +172,14 @@ public class BossHealthManager : MonoBehaviour
     };
   }
 
+  public void Heal(float healAmount)
+  {
+    currentHealth += healAmount;
+    if (currentHealth > maximumHealth)
+    {
+      currentHealth = maximumHealth;
+    }
+    healthBar.transform.localScale = new Vector3(currentHealth / maximumHealth, 1f, 1f);
+  }
+
 }

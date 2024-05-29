@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4483,6 +4483,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 
+  skillPrefabs:
+  - {fileID: 3896502697465948771, guid: 4b893fdb5f0322847a423b5940659fa3, type: 3}
+  - {fileID: 1583007723088930304, guid: 3810c336a85d3a94d8e895fd2dd1c917, type: 3}
+  - {fileID: 9169578532192490948, guid: 2797577fefe7e284795263dbe1125f20, type: 3}
+  - {fileID: 3164157461700218874, guid: ecb4a6f4cce77c740b1dc14b5cbc4a29, type: 3}
 --- !u!1 &1435908528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,8 +5236,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706311278}
   m_HandleRect: {fileID: 1706311277}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.732
+  m_Value: 1.0000002
+  m_Size: 0.73199993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6463,7 +6468,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1327193954}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
