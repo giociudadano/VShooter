@@ -14,12 +14,14 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
     
     [Header("Heal Properties")]
     [SerializeField] private float areaSize = 15.0f;
-    [SerializeField] private float healAmount = 50.0f;
+    [SerializeField] private float healAmount = 20.0f;
     [SerializeField] private float maxHealing = 60.0f;
 
     [Header("Spell Properties")]
 
     private GameObject player;
+
+    private float currentHealing = 0f;  //  Ren's Notes: Current healing check fails if healAmount not an exact divisor of maxHealing (won't fix)
     
     private SfxManager sfx;
     [SerializeField] AudioClip spinSfx;
@@ -41,12 +43,12 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
         if(collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyHealthManager>().Hurt(damage);
-            player.GetComponent<PlayerHealthManager>().Heal(healAmount);
+            Heal();
         }
         if(collision.gameObject.CompareTag("Boss"))
         {
             collision.gameObject.GetComponent<BossHealthManager>().Hurt(damage);
-            player.GetComponent<PlayerHealthManager>().Heal(healAmount);
+            Heal();
         }
         if(collision.gameObject.CompareTag("EnemyProjectile"))
         {
@@ -71,6 +73,14 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
         // if(Mathf.Abs(transform.rotation.eulerAngles.y)>= rotateDegrees) {
         //     Destroy(gameObject);
         // }
+    }
+
+    private void Heal()
+    {
+        if (currentHealing < maxHealing) {
+            player.GetComponent<PlayerHealthManager>().Heal(healAmount);
+            currentHealing += healAmount;
+        }
     }
 
     private void FollowPlayer() {
