@@ -3,36 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementLinear : MonoBehaviour {
-  // Manages objects moving up and down the screen.
+  // Manages objects moving in the x-z plane.
 
   [SerializeField] private float speed = 8f;
   [SerializeField] private float viewLimitDown = -5f;
-
   [SerializeField] private float viewLimitUp = 50f;
+  private Vector3 direction;
 
   void Start() {
+      //  Normalize the direction vector to ensure consistent speed
+      direction = transform.forward.normalized;
       StartCoroutine(MoveObject());
   }
 
-  void Update() {
-    
-    //DeleteObject();
-  }
-
-  //  We don't use Vecto3.Lerp() here since we don't need fancy swerving/acceration/retargetting
   private IEnumerator MoveObject() {
-    while(true) {
-      transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    while (true) {
+      //  Move the object along the direction vector
+      transform.Translate(direction * Time.deltaTime * speed, Space.World);
+
       if (transform.position.z < viewLimitDown || transform.position.z > viewLimitUp) {
         Destroy(gameObject);
       }
+
       yield return new WaitForEndOfFrame();
     }
   }
-
-  // void DeleteObject() {
-  //   if (transform.position.z < viewLimitDown || transform.position.z > viewLimitUp){
-  //       Destroy(gameObject);
-  //   }
-  // }
 }

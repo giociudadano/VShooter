@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovementFastForward : MonoBehaviour
 {
-    [SerializeField] private float viewLimitDown = -5f;
-    [SerializeField] private float viewLimitUp = 50f;
+    [SerializeField] private float viewLimitDown = -20f;
+    [SerializeField] private float viewLimitUp = 70f;
     [SerializeField] private float movementSpeed = 3f;
     [SerializeField] private float launchSpeed = 55f;
     [SerializeField] private float launchDelay = 1f;

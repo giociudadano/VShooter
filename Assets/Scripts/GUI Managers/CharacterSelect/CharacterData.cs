@@ -98,8 +98,8 @@ public class CharacterData : MonoBehaviour {
     switch (character){
       case "MoriCalliope":
         return new Dictionary<string, GameObject> {
-          {"skill1", skillPrefabs[0]},
-          {"skill2", skillPrefabs[1]},
+          {"skill1", skillPrefabs[1]},
+          {"skill2", skillPrefabs[0]},
         };
       case "NinomaeInanis":
         return new Dictionary<string, GameObject> {

@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  viewLimitDown: -5
-  viewLimitUp: 50
+  viewLimitDown: -20
+  viewLimitUp: 70
 --- !u!114 &4367755258790465187
 MonoBehaviour:
   m_ObjectHideFlags: 0
