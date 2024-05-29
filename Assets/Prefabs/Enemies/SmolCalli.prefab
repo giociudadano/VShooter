@@ -594,7 +594,7 @@ MonoBehaviour:
   projectile: {fileID: 7028593740872172549, guid: 4bcf92b842622034190d7c1dbd0e29fc, type: 3}
   projectileDamage: 75
   fireRate: 5
-  delay: 3
+  delay: 5
   shootOffset: {x: 0, y: 0, z: -2}
   shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
 --- !u!114 &8335221982312700308
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  duration: 8
+  duration: 5
   player: {fileID: 0}
 --- !u!54 &2408729355912976580
 Rigidbody:
