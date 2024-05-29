@@ -9,14 +9,9 @@ public class PlayerProjectileManager : MonoBehaviour
   [SerializeField] public float projectileDamage = 20f;
   [SerializeField] private float attackSpeed = 1.5f;
   [SerializeField] private Vector3 shootOffset = new Vector3(0f, 0f, 1f);
-
   [SerializeField] private float shootingStartDelay = 1.5f;
 
-  //  Ren's notes: Experimenting with bullet-based powerups here
-  //[SerializeField] private int bulletCount = 3;
-
   private SfxManager sfx;
-
   private bool isFiring = false;
 
   void Start(){
@@ -27,7 +22,6 @@ public class PlayerProjectileManager : MonoBehaviour
   
   }
 
-  //  TODO: Calibrate fireRate and enemy speed so it feels fair
   private IEnumerator FireProjectile(){
     yield return new WaitForSeconds(shootingStartDelay);
     while (isFiring) {

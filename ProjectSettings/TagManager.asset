@@ -17,6 +17,7 @@ TagManager:
   - Spawner
   - BossSpawner
   - StageManager
+  - InaTakoTurret
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - AllyProjectile
-  - 
+  - PostProcessing
   - 
   - 
   - 

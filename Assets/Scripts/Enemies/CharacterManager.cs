@@ -29,6 +29,7 @@ public class CharacterManager : MonoBehaviour {
 						selectedCharacter = "MoriCalliope";
 				}
 				InitGUI();
+				GetUpgrades();
 		}
 		void Update()
 		{
@@ -56,18 +57,21 @@ public class CharacterManager : MonoBehaviour {
 				skillE.transform.Find("Skill Tooltip/Title").GetComponent<TMP_Text>().text = activeInfo["active_1"]["title"];
 				skillE.transform.Find("Skill Tooltip/Description").GetComponent<TMP_Text>().text = activeInfo["active_1"]["description"];
 				skillE.transform.Find("Skill Tooltip/Cooldown").GetComponent<TMP_Text>().text = $"{String.Format("{0:0.##}", activeInfo["active_1"]["cooldown"])}s Cooldown";
+		}
 
-
-				// Loads player upgrades
-				switch (selectedCharacter) {
-						case "MoriCalliope":
-								characterNameGUI.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
-								List<string> characterUpgrades = new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"};
-								gameObject.GetComponent<UpgradeManager>().GetCharacterUpgrades(characterUpgrades);
-								break;
-						case "NinomaeInanis":
-								characterNameGUI.GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";
-								break;
-				}
+		public void GetUpgrades(){
+			// Loads player upgrades
+			switch (selectedCharacter) {
+					case "MoriCalliope":
+							characterNameGUI.GetComponent<TMP_Text>().text = "MORI CALLIOPE";
+							// List<string> characterUpgrades = new List<string>(){"MORICALLIOPE_TASTEOFDEATH", "MORICALLIOPE_ENDOFALIFE", "MORICALLIOPE_SOULHARVESTER"};
+							gameObject.GetComponent<UpgradeManager>().GetCharacterUpgrades("MoriCalliope");
+							break;
+					case "NinomaeInanis":
+							characterNameGUI.GetComponent<TMP_Text>().text = "NINOMAE INA'NIS";
+							// List<string> characterUpgradesIna = new List<string>(){"INA_DARKAURA", "INA_VIOLETBLOOM", "INA_THEANCIENTONE"};
+							gameObject.GetComponent<UpgradeManager>().GetCharacterUpgrades("NinomaeInanis");
+							break;
+			}
 		}
 }
