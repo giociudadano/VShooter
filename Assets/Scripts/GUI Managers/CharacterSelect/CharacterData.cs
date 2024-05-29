@@ -36,9 +36,9 @@ public class CharacterData : MonoBehaviour {
       case "NinomaeInanis":
         return new Dictionary<string, dynamic>() {   
           {"passive_1", new Dictionary<string, dynamic> () {
-						{"title", "Placeholder 1"},
-						{"icon", "Ina_DarkAura"},
-						{"description", "Placeholder 1 Description"}
+						{"title", "Blessings of the Gods"},
+						{"icon", "Ina_BlessingsOfTheGods"},
+						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds."}
           }},
           {"passive_2", new Dictionary<string, dynamic> () {
 						{"title", "Placeholder 2"},
