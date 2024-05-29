@@ -19287,7 +19287,7 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: -0.2204566
   spawnPositionZ: 40
-  spawnInterval: 15
+  spawnInterval: 10
   firstSpawnDelay: 5
 --- !u!114 &1786887351
 MonoBehaviour:
@@ -19306,7 +19306,7 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: -0.2204566
   spawnPositionZ: 40
-  spawnInterval: 60
+  spawnInterval: 90
   firstSpawnDelay: 1
 --- !u!114 &1786887352
 MonoBehaviour:
@@ -19325,8 +19325,8 @@ MonoBehaviour:
   spawnPositionXRange: 6
   spawnPositionY: 1
   spawnPositionZ: 30
-  spawnInterval: 25
-  firstSpawnDelay: 10
+  spawnInterval: 30
+  firstSpawnDelay: 15
 --- !u!114 &1786887353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19344,8 +19344,8 @@ MonoBehaviour:
   spawnPositionXRange: 8.5
   spawnPositionY: 2
   spawnPositionZ: 50
-  spawnInterval: 4
-  firstSpawnDelay: 1.5
+  spawnInterval: 10
+  firstSpawnDelay: 3
 --- !u!114 &1786887354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19363,7 +19363,7 @@ MonoBehaviour:
   spawnPositionXRange: 8.5
   spawnPositionY: -0.2204566
   spawnPositionZ: 40
-  spawnInterval: 10
+  spawnInterval: 5
   firstSpawnDelay: 1
 --- !u!4 &1786887355
 Transform:
