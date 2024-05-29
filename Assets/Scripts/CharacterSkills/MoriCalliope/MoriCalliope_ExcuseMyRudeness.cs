@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
     [Header("Projectile Properties")]
     [SerializeField] private float rotateSpeed = 500f;
+    private float uptime = 0.5f; // Duration before the scythe is destroyed
     private float rotateDegrees = 350f;
     private float counter = 0;
     [SerializeField] private float damage = 40f;
@@ -13,7 +14,7 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
     
     [Header("Heal Properties")]
     [SerializeField] private float areaSize = 15.0f;
-    [SerializeField] private float healAmount = 10.0f;
+    [SerializeField] private float healAmount = 50.0f;
     [SerializeField] private float maxHealing = 60.0f;
 
     [Header("Spell Properties")]
@@ -24,17 +25,15 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
     [SerializeField] AudioClip spinSfx;
 
     // Start is called before the first frame update
-
     void Start()
     {
         sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         sfx.PlayOneShot(spinSfx);
-        AOEHealing(healAmount);
+        StartCoroutine(CastSkill());
     }
     
     void Update() {
-        CastSkill();
         FollowPlayer();
     }
 
@@ -42,6 +41,7 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
         if(collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyHealthManager>().Hurt(damage);
+            player.GetComponent<PlayerHealthManager>().Heal(healAmount);
         }
         if(collision.gameObject.CompareTag("EnemyProjectile"))
         {
@@ -49,17 +49,30 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
         }
     }
 
-    private void CastSkill() {
-        transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
-        if(Mathf.Abs(transform.rotation.eulerAngles.y)>= rotateDegrees) {
-            Destroy(gameObject);
+    private IEnumerator CastSkill() {
+        float elapsedTime = 0f;
+        while (elapsedTime < uptime)
+        {
+            transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
         }
+
+        //  Destroy the object after the specified uptime
+        Destroy(gameObject);
+        
+        // if(Mathf.Abs(transform.rotation.eulerAngles.y)>= rotateDegrees) {
+        //     Destroy(gameObject);
+        // }
     }
 
     private void FollowPlayer() {
         transform.position = player.transform.position;
     }
 
+    [Obsolete("Transferred healing determination to `OnCollisionEnter`.")]
     private void AOEHealing(float healAmount){
 	  var colliders = Physics.OverlapSphere(player.transform.position, areaSize);
       foreach (var col in colliders){
