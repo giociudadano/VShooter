@@ -18,7 +18,7 @@ public class TakoTurret : MonoBehaviour
     [SerializeField] private float attackSpeed = 1f;
 
     [Header("Turret Heal")]
-    private float healAmount = 50f;
+    [SerializeField] private float healAmount = 20f;
 
     private SfxManager sfx;
     private PlayerHealthManager playerHealthManager;
