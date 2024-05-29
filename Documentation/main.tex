@@ -31,7 +31,7 @@
 
   	\section{Gameplay}
 
-	VShooter's gameplay is intuitive. Players select from a pool of VTubers at the start of the game. With their VTuber of choice, players shoot at enemies on a stage. Enemies behave in a variety of ways. They may rush at the player. They may also shoot at the player or exhibit other behaviors. Enemies become progressively more challenging as the player progresses through stages. To offset the increase in difficulty, the player's VTuber maintains an experience bar and gains levels. Experience is gained when an enemy is detroyed. Levels are gained after sufficient experience. Upon gaining a level, the player may select an upgrade for their VTuber, conferring additional properties to the VTuber. VTuber upgrades carry over across stages, but reset upon defeat. Each stage features a boss that the player has to defeat to progress to the next stage.
+	VShooter's gameplay is intuitive. Players select from a pool of VTubers at the start of the game. With their VTuber of choice, players shoot at enemies on a stage. Enemies behave in a variety of ways. They may rush at the player. They may also shoot at the player or exhibit other behaviors. Enemies become progressively more challenging as the player progresses through stages. To offset the increase in difficulty, the player's VTuber maintains an experience bar and gains levels. Experience is gained when an enemy is detroyed. Levels are gained after sufficient experience. Upon gaining a level, the player may select an upgrade for their VTuber, conferring additional properties to the VTuber. VTuber upgrades carry over across stages, but reset upon defeat. Each stage features a boss that the player has to defeat to progress to the next stage. However, if the player loses, they are taken back to the VTuber selection screen to pick a VTuber once again.
 
 	\section{Controls}
 
@@ -61,7 +61,7 @@
   	
   	\subsection{Stats} \label{Player Stats}
   	
-  	All VTubers have a defined set of base stats. For more information on the base stats of each VTuber, please refer to section \ref{VTubers}.
+  	All VTubers begin with the same set of base stats. For VTuber-specific information, please refer to section \ref{VTubers}.
   	
   	\subsubsection{Primary Stats}
 
@@ -123,6 +123,10 @@
 			\textit{\textbf{Heart Gem}} & Increases Base Health by 50/100/150/200/250. IncreasesBase Health Regeneration by 2/4/6/8/10HP per second. \\
 			\textit{\textbf{Iron Armor}} & Increases Defense by 30/60/90/120/150. \\
 			\textit{\textbf{Eternal Flame}} & Increases CRIT Rate by 6/12/18/24/30\%. Increases CRIT Damage by 20/40/60/80/100\%. \\
+			\textit{\textbf{Civilization Feather}} & Increases Attack Speed by 15/30/45/60/75%.
+			\\
+			\textit{\textbf{Topaz Staff}} & Increases Ability Haste by 15/30/45/60/75.
+			\\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -158,8 +162,8 @@
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
-			\textit{\textbf{Q: Off With Their Heads}} & Mori Calliope hurls her scythe forward. Enemies caught in the scythe's path take 100 damage. (16s Cooldown)\\
-			\textit{\textbf{E: Excuse My Rudeness}} & Mori Calliope whirls her scythe. Enemies in a small radius around her take 100 damage. (6s Cooldown) \\
+			\textit{\textbf{Q: Off With Their Heads}} & Mori Calliope hurls her scythe forward. Enemies caught in the scythe's path take high damage. (16s Cooldown)\\
+			\textit{\textbf{E: Excuse My Rudeness}} & Mori Calliope whirls her scythe. Enemies in a small radius around her take medium damage. (6s Cooldown) \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -170,6 +174,7 @@
 
 	\textbf{Passives}
 	
+	%	TODO: Update these once final passive skills are in
 	\begin{center}
 		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
 			\hline
@@ -186,14 +191,13 @@
 		\textbf{Actives}
 	\end{center}
 	
-	% TODO: Change to Ina skills
 	\begin{center}
 		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
 			\textit{\textbf{Q: AO-chan!}} & Ninomae Ina'nis summons AO-chan. The book empowers all summoned Tako turrets on the field upon casting. Takos summoned after the book is summoned do not get empowered. (15s Cooldown)\\
-			\textit{\textbf{E: WAH!}} & Ninomae Ina'nis summons a Tako turret. The turret fires large peas that damage enemies on contact. When a turret expires, she heals for 50HP. (6s Cooldown) \\
+			\textit{\textbf{E: WAH!}} & Ninomae Ina'nis summons a short-lived Tako turret. The turret fires large peas rapidly that damage enemies on contact. When a turret expires, she heals for a small amount of health. (6s Cooldown) \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -267,6 +271,32 @@
 	\end{figure}
 
 	\textbf{Description.} The boss of the first stage. Upon spawning, Buff Ame zips toward the center of the stage. Once Buff Ame has occupied its position, it moves horizontally back and forth. Buff Ame shoots projectiles that travel straight down the stage. On impact, these projectiles deal sizable damage. They move fast, too. Buff Ame's special attack spawns a number of missiles that home in toward the player's VTuber. Each missile deals a small amount of damage. Buff Ame has a respectable amount of health for a first boss, and requires from the player a certain mastery over the mechanics of the game and their chosen VTuber to triumph.
+
+	\subsubsection{Halloween Bae}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.2\textwidth]{images/halloween_bae1.png}
+		\caption{Halloween Bae}
+		\label{fig:halloweenbae}
+	\end{figure}
+
+	\textbf{Description.} The boss of the second stage. Halloween Bae zips erratically around the stage. It fires projectiles in a straight line continuously. Periodically, it spawns projectiles that home in toward the player.
+
+	\subsubsection{Halloween Sana}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.2\textwidth]{images/halloween_sana1.png}
+		\caption{Halloween Sana}
+		\label{fig:halloweensana}
+	\end{figure}
+
+	\textbf{Description.} The boss of the third stage. Upon spawning, Halloween Sana moves toward a position away from the player. Once in position, she begins moving side to side. Periodically, she approaches the player while still moving side to side. After a brief period, she moves back to her original position. This pattern continues until she is defeated.
+
+	\section{Appendix}
+
+	The VShooter code repository is available at: \href{https://github.com/giociudadano/VShooter.git}{GitHub}. An asset tracker can be found at \href{https://docs.google.com/spreadsheets/d/1iixa0Slci229xnzVG4J9bXTK8P0FVPwnDIEXkRsuH7s/edit?usp=sharing}{Google Sheets}.
 
 	\end{multicols}
 \end{document}
