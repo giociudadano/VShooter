@@ -1482,10 +1482,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3805849439951112951}
   - component: {fileID: 8449222201265770770}
-  - component: {fileID: 1301973515687334293}
   m_Layer: 0
   m_Name: Tako
-  m_TagString: Untagged
+  m_TagString: InaTakoTurret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1500,7 +1499,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7680435, y: 0.04, z: -0.7459128}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3860276637951893777}
@@ -1521,25 +1520,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5baafbf3434a9469f96f63eccb32c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  duration: 7
---- !u!114 &1301973515687334293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639015505928602620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619b351ecfc149448a0e8165c257c404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 1019113029584780768, guid: 5e8312df72d3d5540bfe8eaf8efdeba7, type: 3}
-  projectileDamage: 5
-  attackSpeed: 3
+  leftAngleLimit: 315
+  rightAngleLimit: 45
+  speed: 30
+  projectile: {fileID: 1019113029584780768, guid: f53c36c8cfe89ba4d8d879d75feb6831, type: 3}
   shootOffset: {x: 0, y: 0, z: 1}
-  shootingStartDelay: 1.5
+  duration: 7
+  projectileDamage: 20
+  attackSpeed: 1
 --- !u!1 &7669876520615947959
 GameObject:
   m_ObjectHideFlags: 0

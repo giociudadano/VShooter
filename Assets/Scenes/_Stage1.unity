@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619b351ecfc149448a0e8165c257c404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1019113029584780768, guid: b49d7c0b1a395384f919a09fd4bdf86e, type: 3}
+  projectile: {fileID: 1019113029584780768, guid: 5e8312df72d3d5540bfe8eaf8efdeba7, type: 3}
   projectileDamage: 20
   attackSpeed: 1.5
   shootOffset: {x: 0, y: 0, z: 1}

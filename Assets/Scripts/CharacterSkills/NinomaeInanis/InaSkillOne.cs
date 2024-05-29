@@ -1,60 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class InaSkillOne : MonoBehaviour
 {
-    [SerializeField] AudioClip spinSfx;
-    [SerializeField] private float duration = 3f;
+    [SerializeField] AudioClip summonSfx;
+    [SerializeField] private float duration = 5f;
     [SerializeField] private float yOffset = 1.5f;
     [SerializeField] private float zOffset = 1.5f;
+
+    private SfxManager sfx;
     private GameObject player;
-    private float time;
-
-    [Header("Bonuses")]
-    [SerializeField] private float bonusHealth = 200f;
-    [SerializeField] private float bonusDefense = 30f;
-    [SerializeField] private float bonusDamage = 15f;
-    [SerializeField] private float bonusDamageSpeed = 5f;
-    [SerializeField] private float healthRegen = 20f;
-
+    private GameObject[] summonedTakos;
 
     // Start is called before the first frame update
-
     void Start()
-    {
+    {   
+        sfx = GameObject.FindGameObjectWithTag("SfxPlayer").GetComponent<SfxManager>();
+        sfx.PlayOneShot(summonSfx);
         player = GameObject.FindGameObjectWithTag("Player");
-        SkillOneBegin();
+        StartCoroutine(DestroyBook());
+        BuffTakos();
+    }
+
+    //  Generic method to destroy the turret after a duration amount of time
+    private IEnumerator DestroyBook()
+    {   
+        float uptime = 0f;
+        while (uptime <= duration) {
+            uptime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        };
+        Destroy(gameObject);
+    }
+
+    private void BuffTakos()
+    {
+        summonedTakos = GameObject.FindGameObjectsWithTag("InaTakoTurret");
+        foreach (GameObject summonedTako in summonedTakos) {
+            summonedTako.GetComponent<TakoTurret>().Frenzy();
+        }
     }
 
     void Update()
     {
-        SkillOneDurationManager();
         FollowPlayer();
-    }
-
-    private void SkillOneBegin()
-    {
-        time = Time.time;
-        player.GetComponent<PlayerHealthManager>().SetBonusHealth(bonusHealth);
-        player.GetComponent<PlayerHealthManager>().SetBonusDefense(bonusDefense);
-        player.GetComponent<PlayerHealthManager>().healthRegen = healthRegen;
-        player.GetComponent<PlayerProjectileManager>().projectileDamage += bonusDamage;
-        player.GetComponent<PlayerProjectileManager>().SetBonusAttackSpeed(bonusDamageSpeed);
-    }
-
-    private void SkillOneDurationManager()
-    {
-        if (Time.time >= time + duration)
-        {
-            player.GetComponent<PlayerHealthManager>().SetBonusHealth(0);
-            player.GetComponent<PlayerHealthManager>().SetBonusDefense(0);
-            player.GetComponent<PlayerHealthManager>().healthRegen = 0f;
-            player.GetComponent<PlayerProjectileManager>().projectileDamage -= bonusDamage;
-            player.GetComponent<PlayerProjectileManager>().SetBonusAttackSpeed(0);
-
-            Destroy(gameObject);
-        }
     }
 
     private void FollowPlayer()
@@ -69,6 +61,5 @@ public class InaSkillOne : MonoBehaviour
         objectRotation.x = 90f;
         objectRotation.y = 180f;
         transform.rotation = Quaternion.Euler(objectRotation);
-   
     }
 }

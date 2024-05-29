@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -5158664642484305925}
   - component: {fileID: -2542566494285846504}
   m_Layer: 9
-  m_Name: BasicProjectile
+  m_Name: InaProjectile
   m_TagString: AllyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db4be874bc29472499de832eb240983c, type: 2}
+  - {fileID: 2100000, guid: 293249cf05b4e5a459ce5073e3ff42df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b86d601aa521e479362aac0af08dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamage: 20
+  projectileDamage: 30
 --- !u!114 &-5158664642484305925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989227ac97107149bdc6114f8beb62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDestroyParticle: {fileID: 8413875811817139174, guid: 7b4191607aae74c0ab244a8d6e48adbf, type: 3}
+  onDestroyParticle: {fileID: 4222606600419231085, guid: ef43e5aef41c142fb85a7658a397dc75, type: 3}
 --- !u!114 &-2542566494285846504
 MonoBehaviour:
   m_ObjectHideFlags: 0
