@@ -9432,6 +9432,7 @@ GameObject:
   - component: {fileID: 565976069}
   - component: {fileID: 565976070}
   - component: {fileID: 565976071}
+  - component: {fileID: 565976073}
   m_Layer: 0
   m_Name: UpgradeScriptsManager
   m_TagString: Untagged
@@ -9599,6 +9600,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonRate: 0
   tako: {fileID: 7639015505928602620, guid: a4c2a1e67e7083040a6ccdd93166c958, type: 3}
+--- !u!114 &565976073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565976060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9722a250a124241a102a8e4ab6a26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  auraSize: 0
+  damageTick: 0
+  player: {fileID: 24383483}
 --- !u!1001 &574684089
 PrefabInstance:
   m_ObjectHideFlags: 0

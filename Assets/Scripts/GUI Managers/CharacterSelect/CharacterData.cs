@@ -34,16 +34,16 @@ public class CharacterData : MonoBehaviour {
           }},
         };
       case "NinomaeInanis":
-        return new Dictionary<string, dynamic>() {   
+        return new Dictionary<string, dynamic>() {
           {"passive_1", new Dictionary<string, dynamic> () {
-						{"title", "Blessings of the Gods"},
-						{"icon", "Ina_BlessingsOfTheGods"},
-						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds."}
+						{"title", "Dark Aura"},
+						{"icon", "Ina_DarkAura"},
+						{"description", "Enemies with <color=#AFA>150/200/250</color> units of you take <color=#AFA>6/9/12</color> damage per second."}
           }},
           {"passive_2", new Dictionary<string, dynamic> () {
-						{"title", "Placeholder 2"},
-						{"icon", "Ina_DarkAura"},
-						{"description", "Placeholder 2 Description"}
+						{"title", "Blessings of the Gods"},
+						{"icon", "Ina_BlessingsOfTheGods"},
+						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."}
           }},
           {"passive_3", new Dictionary<string, dynamic> () {
 						{"title", "Placeholder 3"},

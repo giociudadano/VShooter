@@ -107,7 +107,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"INA_BLESSINGSOFTHEGODS", new Dictionary<string, dynamic>() {
 			{"title", "Blessings of the Gods"},
-			{"description", "Every {SUMMON_RATE} seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds."},
+			{"description", "Every {SUMMON_RATE} seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."},
 			{"type", "Character Passive"},
 			{"icon", "Ina_BlessingsOfTheGods"},
 			{"parameters", new Dictionary<string, dynamic> () {
@@ -115,6 +115,26 @@ public class UpgradeManager : MonoBehaviour {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
 						{"1", 14f},{"2", 12f},{"3", 10f}
+					}}
+				}},
+			}}
+		}},
+		{"INA_DARKAURA", new Dictionary<string, dynamic>() {
+			{"title", "Dark Aura"},
+			{"description", "Enemies with {AURA_SIZE} units of you take {DAMAGE_TICK} damage per second."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_DarkAura"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"AURA_SIZE", new Dictionary<string	, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 150f},{"2", 200f},{"3", 250f}
+					}}
+				}},
+				{"DAMAGE_TICK", new Dictionary<string, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 6f},{"2", 9f},{"3", 12f}
 					}}
 				}},
 			}}
@@ -245,7 +265,7 @@ public class UpgradeManager : MonoBehaviour {
 				characterUpgrades = characterUpgrades_Mori;
 				break;
 			case "NinomaeInanis":
-				List<string> characterUpgrades_Ina = new List<string>(){"INA_BLESSINGSOFTHEGODS"};
+				List<string> characterUpgrades_Ina = new List<string>(){"INA_BLESSINGSOFTHEGODS", "INA_DARKAURA"};
 				upgradesAvailable.AddRange(characterUpgrades_Ina);
 				characterName = selectedCharacter;
 				characterUpgrades = characterUpgrades_Ina;
@@ -366,7 +386,7 @@ public class UpgradeManager : MonoBehaviour {
 				{"level", 1}
 			});
 		}
-		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment" || name == "INA_BLESSINGSOFTHEGODS"){
+		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment" || name == "INA_BLESSINGSOFTHEGODS" || name == "INA_DARKAURA"){
 			ApplyPassive(name, null);
 		}
 		RenderUpgradesListUI();
@@ -418,6 +438,11 @@ public class UpgradeManager : MonoBehaviour {
 			case "INA_BLESSINGSOFTHEGODS":
 				float summonRate = upgrades["INA_BLESSINGSOFTHEGODS"]["parameters"]["SUMMON_RATE"]["level"][level];
 				upgradeScripts.GetComponent<NinomaeInanis_BlessingsOfTheGods>().ApplyPassive(summonRate);
+				break;
+			case "INA_DARKAURA":
+				float auraSize = upgrades["INA_DARKAURA"]["parameters"]["AURA_SIZE"]["level"][level];
+				float damageTick = upgrades["INA_DARKAURA"]["parameters"]["DAMAGE_TICK"]["level"][level];
+				upgradeScripts.GetComponent<NinomaeInanis_DarkAura>().ApplyPassive(auraSize, damageTick);
 				break;
 			case "GENERIC_IRONSWORD":
 				float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
