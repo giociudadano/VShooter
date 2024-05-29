@@ -5036,7 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd65cc01118780c47904cbcb55798911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss: {fileID: 1826134014099635275, guid: a61e809a37511864d9e7a0ed4ec5526b, type: 3}
+  Boss: {fileID: 8970943732438773371, guid: 4ce6ff343cbd5c84583a381fcf7258bf, type: 3}
   spawnPositionXRange: 7
   spawnPositionY: 0
   spawnPositionZ: 40
@@ -19323,7 +19323,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 7480895652822211567, guid: a3084fb417d6ab64d8441df66461ac38, type: 3}
   spawnPositionXRange: 6
-  spawnPositionY: 1
+  spawnPositionY: -0.2204566
   spawnPositionZ: 30
   spawnInterval: 30
   firstSpawnDelay: 15

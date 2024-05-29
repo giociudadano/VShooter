@@ -72,10 +72,14 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {   
-        GameObject gameOverUI = this.gameOverUI.transform.Find("_GameOverUI").gameObject;
-        isGameOver = true;
-        Time.timeScale = 0;
-        gameOverUI.SetActive(true);
+        GameObject _gameOverUI = gameOverUI.transform.Find("_GameOverUI").gameObject;
+        if (_gameOverUI != null) {
+            Debug.Log("Not null!");
+            isGameOver = true;
+            _gameOverUI.SetActive(true);
+            Time.timeScale = 0;
+           
+        } 
     }
 
     public void ShowUpgradeUI(bool value)
