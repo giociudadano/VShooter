@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.32097128, g: 0.21131825, b: 0.40435025, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5313,7 +5313,7 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: 0
   spawnPositionZ: 40
-  spawnDelay: 120
+  spawnDelay: 240
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}

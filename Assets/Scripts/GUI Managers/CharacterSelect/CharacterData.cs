@@ -43,7 +43,7 @@ public class CharacterData : MonoBehaviour {
           {"passive_2", new Dictionary<string, dynamic> () {
 						{"title", "Blessings of the Gods"},
 						{"icon", "Ina_BlessingsOfTheGods"},
-						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."}
+						{"description", "Every <color=#AFA>14/12/10</color> seconds, summon a <color=#DAF>Takodachi</color> at Ina's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to Ina on expiry."}
           }},
           {"passive_3", new Dictionary<string, dynamic> () {
 						{"title", "Spellcaster"},
@@ -70,7 +70,7 @@ public class CharacterData : MonoBehaviour {
 						{"title", "Off With Their Heads"},
 						{"icon", "Calliope_OffWithTheirHeads"},
             {"cooldown", 15},
-						{"description", "Calliope consumes <color=#AFA>20%</color> of her own Maximum HP and throws her scythe forward, dealing <color=#FFA>100</color> damage to all enemies hit."}
+						{"description", "Calliope consumes <color=#AFA>5%</color> of her own Maximum HP and throws her scythe forward, dealing <color=#FFA>100</color> damage to all enemies hit."}
           }},
         };
       case "NinomaeInanis":
@@ -79,13 +79,13 @@ public class CharacterData : MonoBehaviour {
 						{"title", "Summon: Takodachi"},
 						{"icon", "Ina_SummonTakodachi"},
             {"cooldown", 10},
-						{"description", "Summons a <color=#DAF>Takodachi</color> at the target location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."}
+						{"description", "Summons a <color=#DAF>Takodachi</color> at Ina's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to Ina on expiry."}
           }},
           {"active_2", new Dictionary<string, dynamic> () {
 						{"title", "The Ancient One"},
 						{"icon", "Ina_TheAncientOne"},
             {"cooldown", 20},
-						{"description", "All summoned <color=#DAF>Takodachis</color> gain <color=#FCA>Frenzy</color> for 5 seconds. <color=#FCA>Frenzied</color> summons gain <color=#FFA>500% Attack Speed</color> but shoot in a spray direction."}
+						{"description", "All summoned <color=#DAF>Takodachis</color> gain <color=#FCA>Frenzy</color> for 5 seconds. <color=#FCA>Frenzied</color> summons gain <color=#FFA>500% Attack Speed</color> but spray bullets wildly."}
           }},
         };  
       default:

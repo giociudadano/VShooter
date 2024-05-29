@@ -107,7 +107,7 @@ public class UpgradeManager : MonoBehaviour {
 		}},
 		{"INA_BLESSINGSOFTHEGODS", new Dictionary<string, dynamic>() {
 			{"title", "Blessings of the Gods"},
-			{"description", "Every {SUMMON_RATE} seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."},
+			{"description", "Every {SUMMON_RATE} seconds, summon a <color=#DAF>Takodachi</color> at Ina's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to Ina on expiry."},
 			{"type", "Character Passive"},
 			{"icon", "Ina_BlessingsOfTheGods"},
 			{"parameters", new Dictionary<string, dynamic> () {
