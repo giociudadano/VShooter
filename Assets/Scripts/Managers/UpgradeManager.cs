@@ -105,77 +105,56 @@ public class UpgradeManager : MonoBehaviour {
 				}},
 			}}
 		}},
+		{"INA_BLESSINGSOFTHEGODS", new Dictionary<string, dynamic>() {
+			{"title", "Blessings of the Gods"},
+			{"description", "Every {SUMMON_RATE} seconds, summon a <color=#DAF>Takodachi</color> at the player's location for 12 seconds. <color=#DAF>Takodachis</color> deal <color=#FFA>30</color> damage to all enemies hit and restores <color=#AFA>20HP</color> to the player on expiry."},
+			{"type", "Character Passive"},
+			{"icon", "Ina_BlessingsOfTheGods"},
+			{"parameters", new Dictionary<string, dynamic> () {
+				{"SUMMON_RATE", new Dictionary<string	, dynamic> () {
+					{"color", "#AFA"},
+					{"level", new Dictionary<string, float> () {
+						{"1", 14f},{"2", 12f},{"3", 10f}
+					}}
+				}},
+			}}
+		}},
 		{"INA_DARKAURA", new Dictionary<string, dynamic>() {
 			{"title", "Dark Aura"},
-			{"description", "If an enemy is within {UNIT_RANGE} units of you, deal {AURA_DAMAGE} damage per second and slow the target by {SLOW_PERCENT}."},
+			{"description", "Enemies with {AURA_SIZE} units of you take {DAMAGE_TICK} damage per second."},
 			{"type", "Character Passive"},
 			{"icon", "Ina_DarkAura"},
 			{"parameters", new Dictionary<string, dynamic> () {
-				{"UNIT_RANGE", new Dictionary<string, dynamic> () {
+				{"AURA_SIZE", new Dictionary<string	, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
 						{"1", 150f},{"2", 200f},{"3", 250f}
 					}}
 				}},
-				{"AURA_DAMAGE", new Dictionary<string, dynamic> () {
+				{"DAMAGE_TICK", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
 						{"1", 6f},{"2", 9f},{"3", 12f}
 					}}
 				}},
-				{"SLOW_PERCENT", new Dictionary<string	, dynamic> () {
-					{"color", "#AFA"},
-					{"format", "0:0.0%"},
-					{"level", new Dictionary<string, float> () {
-						{"1", 0.2f},{"2", 0.3f},{"3", 0.4f}
-					}}
-				}},
 			}}
 		}},
-		{"INA_VIOLETBLOOM", new Dictionary<string, dynamic>() {
-			{"title", "Violet Bloom"},
-			{"description", "Attacks apply a stack of {HEX_EFFECT} for 1.5 seconds, stacking up to 6 times. At max stacks, consume all {HEX_EFFECT} stacks to deal {HEX_DAMAGE} of the target's maximum health and {STUN_EFFECT} the target for 1.5 seconds (6s cooldown)."},
+		{"INA_SPELLCASTER", new Dictionary<string, dynamic>() {
+			{"title", "Spellcaster"},
+			{"description", "Gain <color=#AFA>25/50/75</color> ability haste. Additionally, gain <color=#AFA>20/40/60%</color> more ability haste from all sources."},
 			{"type", "Character Passive"},
-			{"icon", "Ina_VioletBloom"},
+			{"icon", "Ina_Spellcaster"},
 			{"parameters", new Dictionary<string, dynamic> () {
-				{"HEX_EFFECT", new Dictionary<string, dynamic> () {
-					{"color", "#DAF"},
-					{"text", "Hex"}
-				}},
-				{"HEX_DAMAGE", new Dictionary<string, dynamic> () {
+				{"ABILITYHASTE_FLAT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
-					{"format", "0:0.0%"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 0.06f},{"2", 0.08f},{"3", 0.10f}
+						{"1", 25f},{"2", 50f},{"3", 75f}
 					}}
 				}},
-				{"STUN_EFFECT", new Dictionary<string	, dynamic> () {
-					{"color", "#FDA"},
-					{"text", "Stun"},
-				}},
-			}}
-		}},
-		{"INA_THEANCIENTONE", new Dictionary<string, dynamic>() {
-			{"title", "The Ancient One"},
-			{"description", "Every {RATE} seconds, create a zone that has a {PERCECNT_CHANCE} chance to convert non-boss enemies to {TAKODACHI_EFFECT}. {TAKODACHI_EFFECT} have a set amount of health and will seek out and fight random enemies."},
-			{"type", "Character Passive"},
-			{"icon", "Ina_TheAncientOne"},
-			{"parameters", new Dictionary<string, dynamic> () {
-				{"TAKODACHI_EFFECT", new Dictionary<string, dynamic> () {
-					{"color", "#DAF"},
-					{"text", "Takodachis"}
-				}},
-				{"PERCECNT_CHANCE", new Dictionary<string, dynamic> () {
-					{"color", "#AFA"},
-					{"format", "0:0.0%"},
-					{"level", new Dictionary<string, float> () {
-						{"1", 0.40f},{"2", 0.60f},{"3", 0.80f}
-					}}
-				}},
-				{"RATE", new Dictionary<string	, dynamic> () {
+				{"ABILITYHASTE_PERCENT", new Dictionary<string, dynamic> () {
 					{"color", "#AFA"},
 					{"level", new Dictionary<string, float> () {
-						{"1", 10f},{"2", 9f},{"3", 8f}
+						{"1", 0.2f},{"2", 0.4f},{"3", 0.6f}
 					}}
 				}},
 			}}
@@ -306,7 +285,7 @@ public class UpgradeManager : MonoBehaviour {
 				characterUpgrades = characterUpgrades_Mori;
 				break;
 			case "NinomaeInanis":
-				List<string> characterUpgrades_Ina = new List<string>(){"INA_DARKAURA", "INA_VIOLETBLOOM", "INA_THEANCIENTONE"};
+				List<string> characterUpgrades_Ina = new List<string>(){"INA_BLESSINGSOFTHEGODS", "INA_DARKAURA", "INA_SPELLCASTER"};
 				upgradesAvailable.AddRange(characterUpgrades_Ina);
 				characterName = selectedCharacter;
 				characterUpgrades = characterUpgrades_Ina;
@@ -422,13 +401,12 @@ public class UpgradeManager : MonoBehaviour {
 					upgradesAvailable.Remove(name);
 				};
 			}
-
 		} else {
 			upgradesActive.Add(name, new Dictionary<string, dynamic> () {
 				{"level", 1}
 			});
 		}
-		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment"){
+		if (upgrades[name]["type"] == "Common Equipment" || upgrades[name]["type"] == "Uncommon Equipment" || name == "INA_BLESSINGSOFTHEGODS" || name == "INA_DARKAURA" || name == "INA_SPELLCASTER"){
 			ApplyPassive(name, null);
 		}
 		RenderUpgradesListUI();
@@ -460,6 +438,7 @@ public class UpgradeManager : MonoBehaviour {
 			return;
 		}
 		string level = upgradesActive[passiveName]["level"].ToString();
+		float bonusAbilityHasteFlat = 0f;
 		switch (passiveName) {
 			case "MORICALLIOPE_SOULHARVESTER":
 				float chance = upgrades["MORICALLIOPE_SOULHARVESTER"]["parameters"]["HEAL_CHANCE"]["level"][level];
@@ -476,6 +455,20 @@ public class UpgradeManager : MonoBehaviour {
 				float burnDamage = upgrades["MORICALLIOPE_ENDOFALIFE"]["parameters"]["BURN_DAMAGE"]["level"][level];
 				float executeThreshold = upgrades["MORICALLIOPE_ENDOFALIFE"]["parameters"]["EXECUTE_THRESHOLD"]["level"][level];
 				upgradeScripts.GetComponent<MoriCalliope_EndOfALife>().ApplyPassive(parameters["source"], burnDamage, executeThreshold);
+				break;
+			case "INA_BLESSINGSOFTHEGODS":
+				float summonRate = upgrades["INA_BLESSINGSOFTHEGODS"]["parameters"]["SUMMON_RATE"]["level"][level];
+				upgradeScripts.GetComponent<NinomaeInanis_BlessingsOfTheGods>().ApplyPassive(summonRate);
+				break;
+			case "INA_DARKAURA":
+				float auraSize = upgrades["INA_DARKAURA"]["parameters"]["AURA_SIZE"]["level"][level];
+				float damageTick = upgrades["INA_DARKAURA"]["parameters"]["DAMAGE_TICK"]["level"][level];
+				upgradeScripts.GetComponent<NinomaeInanis_DarkAura>().ApplyPassive(auraSize, damageTick);
+				break;
+			case "INA_SPELLCASTER":
+				bonusAbilityHasteFlat = upgrades["INA_SPELLCASTER"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
+				float bonusAbilityHastePercent = upgrades["INA_SPELLCASTER"]["parameters"]["ABILITYHASTE_PERCENT"]["level"][level];
+				upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().ApplyPassive(bonusAbilityHasteFlat, bonusAbilityHastePercent);
 				break;
 			case "GENERIC_IRONSWORD":
 				float bonusAttackPercent = upgrades["GENERIC_IRONSWORD"]["parameters"]["ATTACK_PERCENT"]["level"][level];
@@ -500,7 +493,7 @@ public class UpgradeManager : MonoBehaviour {
 				upgradeScripts.GetComponent<Generic_CivilizationFeather>().ApplyPassive(bonusAttackSpeed);
 				break;
 			case "GENERIC_TOPAZSTAFF":
-				float bonusAbilityHasteFlat = upgrades["GENERIC_TOPAZSTAFF"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
+				bonusAbilityHasteFlat = upgrades["GENERIC_TOPAZSTAFF"]["parameters"]["ABILITYHASTE_FLAT"]["level"][level];
 				upgradeScripts.GetComponent<Generic_TopazStaff>().ApplyPassive(bonusAbilityHasteFlat);
 				break;
 		}
@@ -567,7 +560,13 @@ public class UpgradeManager : MonoBehaviour {
 		// Bonus Ability Haste Calculation
 		float bonusAbilityHasteFlat = 0f;
 		bonusAbilityHasteFlat += upgradeScripts.GetComponent<Generic_TopazStaff>().bonusAbilityHasteFlat;
+		bonusAbilityHasteFlat += upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().bonusAbilityHasteFlat;
 		this.bonusAbilityHasteFlat = bonusAbilityHasteFlat;
+
+		float bonusAbilityHastePercent = 0f;
+		bonusAbilityHastePercent += upgradeScripts.GetComponent<NinomaeInanis_Spellcaster>().bonusAbilityHastePercent;
+		bonusAbilityHasteFlat *= (1 + bonusAbilityHastePercent);
+
 		player.GetComponent<PlayerSkillManager>().SetBonusAbilityHaste(bonusAbilityHasteFlat);
 		string abilityHasteText = $"{bonusAbilityHasteFlat} | {String.Format("{0:0.00%}", bonusAbilityHasteFlat / (bonusAbilityHasteFlat + 100))}";
 		upgradeUI.transform.Find("Ability Haste/Value").GetComponent<TMP_Text>().text = abilityHasteText;
