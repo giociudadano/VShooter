@@ -43,6 +43,11 @@ public class MoriCalliope_ExcuseMyRudeness_Projectile : MonoBehaviour {
             collision.gameObject.GetComponent<EnemyHealthManager>().Hurt(damage);
             player.GetComponent<PlayerHealthManager>().Heal(healAmount);
         }
+        if(collision.gameObject.CompareTag("Boss"))
+        {
+            collision.gameObject.GetComponent<BossHealthManager>().Hurt(damage);
+            player.GetComponent<PlayerHealthManager>().Heal(healAmount);
+        }
         if(collision.gameObject.CompareTag("EnemyProjectile"))
         {
             Destroy(collision.gameObject);

@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20946229001da66468bd9c717f4787c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.77
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20946229001da66468bd9c717f4787c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20946229001da66468bd9c717f4787c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.27535
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20946229001da66468bd9c717f4787c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -111,16 +111,13 @@ PrefabInstance:
       addedObject: {fileID: 7662137839520786218}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7459440177039632377}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8548794765634997250}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8225505268564032100}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7191746160180179936}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376321623612377007}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20946229001da66468bd9c717f4787c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 706224100345502594}
   m_SourcePrefab: {fileID: 100100000, guid: 20946229001da66468bd9c717f4787c8, type: 3}
 --- !u!1 &8970943732438773371 stripped
 GameObject:
@@ -168,9 +165,9 @@ MonoBehaviour:
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageTextBurn: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
-  currentHealth: 1000
-  baseHealth: 1000
-  maximumHealth: 1000
+  currentHealth: 3000
+  baseHealth: 3000
+  maximumHealth: 3000
   XPReward: 15
   defense: 15
   baseDefense: 15
@@ -190,56 +187,6 @@ MonoBehaviour:
   BossUI: {fileID: 0}
   bossName: HALLOWEEN SANA
   bossIcon: {fileID: 21300000, guid: e710564a46000df4f835339223245215, type: 3}
---- !u!114 &7459440177039632377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970943732438773371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744efc33b94fff84dbde2b061a1a415c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 1019113029584780768, guid: c6b2977de65a6a148afdfa39325c712b, type: 3}
-  projectileDamage: 50
-  fireRate: 0.5
-  delay: 1
-  shootOffset: {x: 0, y: 0, z: 1}
-  shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
---- !u!114 &8548794765634997250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970943732438773371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e31fd2a29231bf40a70d2e5e305c348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  limitZ: 10
---- !u!114 &8225505268564032100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970943732438773371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b4b2f3476b590459566b0759f2e404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missileInterval: 10
-  missileDelay: 10
-  missile: {fileID: 7028593740872172549, guid: 8b10f058b86285e4d99f8e330f9685b3, type: 3}
-  missileCount: 5
-  missileLaunchDelay: 0.1
-  missileSpawnOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &7191746160180179936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,3 +199,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29db2805306274f935020a490ad3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &376321623612377007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970943732438773371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb15d188c5836b41b7771663be04e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  farZ: 20
+  closeZ: 3
+  movementInterval: 5
+  movementSpeed: 10
+--- !u!114 &706224100345502594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970943732438773371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744efc33b94fff84dbde2b061a1a415c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1019113029584780768, guid: 105d869639cbdb34d8577294f451fa8d, type: 3}
+  projectileDamage: 50
+  fireRate: 0.5
+  delay: 1
+  shootOffset: {x: 0, y: 0, z: 1}
+  shootRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

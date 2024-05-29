@@ -5313,7 +5313,7 @@ MonoBehaviour:
   spawnPositionXRange: 7
   spawnPositionY: 0
   spawnPositionZ: 40
-  spawnDelay: 120
+  spawnDelay: 1
   healthText: {fileID: 750761641}
   healthBar: {fileID: 576739601}
   BossUI: {fileID: 1433721630}

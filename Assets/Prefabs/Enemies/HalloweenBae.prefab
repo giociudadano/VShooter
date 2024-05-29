@@ -97,7 +97,7 @@ PrefabInstance:
       addedObject: {fileID: 5636142868360376401}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c8e0f7388986d143aca937ef081d61a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6205199344506150654}
+      addedObject: {fileID: -3136705837399756123}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c8e0f7388986d143aca937ef081d61a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1392588475444705236}
@@ -148,9 +148,9 @@ MonoBehaviour:
   damageText: {fileID: 2695241091629641371, guid: 1dfcdad5f240ecf4b8bbb4c3508b247a, type: 3}
   damageTextBurn: {fileID: 2695241091629641371, guid: f55d78a6354c9ee4fa0d3d35866e5722, type: 3}
   damageTextCritical: {fileID: 2695241091629641371, guid: 4895a2d6381bc974eb5f24c9681f3606, type: 3}
-  currentHealth: 1000
-  baseHealth: 1000
-  maximumHealth: 1000
+  currentHealth: 1
+  baseHealth: 1
+  maximumHealth: 1
   XPReward: 15
   defense: 15
   baseDefense: 15
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744efc33b94fff84dbde2b061a1a415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1019113029584780768, guid: c6b2977de65a6a148afdfa39325c712b, type: 3}
+  projectile: {fileID: 1019113029584780768, guid: 620b1ca320f739046be546492575bac2, type: 3}
   projectileDamage: 50
   fireRate: 0.5
   delay: 1
@@ -200,13 +200,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b4b2f3476b590459566b0759f2e404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileInterval: 10
+  missileInterval: 5
   missileDelay: 10
-  missile: {fileID: 7028593740872172549, guid: 8b10f058b86285e4d99f8e330f9685b3, type: 3}
-  missileCount: 5
+  missile: {fileID: 7028593740872172549, guid: 7a3f201095d8bda408c72a60b6d0485c, type: 3}
+  missileCount: 3
   missileLaunchDelay: 0.1
   missileSpawnOffset: {x: 0, y: 0, z: 0}
---- !u!114 &6205199344506150654
+--- !u!114 &-3136705837399756123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,11 +215,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3244599552770883250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e31fd2a29231bf40a70d2e5e305c348, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cda357e47ecaee4d8f8aca8bef7f623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  limitZ: 10
+  speed: 7
+  player: {fileID: 0}
 --- !u!114 &1392588475444705236
 MonoBehaviour:
   m_ObjectHideFlags: 0
