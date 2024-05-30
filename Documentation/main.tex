@@ -31,7 +31,7 @@
 
   	\section{Gameplay}
 
-	VShooter's gameplay is intuitive. Players select from a pool of VTubers at the start of the game. With their VTuber of choice, players shoot at enemies on a stage. Enemies behave in a variety of ways. They may rush at the player. They may also shoot at the player or exhibit other behaviors. Enemies become progressively more challenging as the player progresses through stages. To offset the increase in difficulty, the player's VTuber maintains an experience bar and gains levels. Experience is gained when an enemy is detroyed. Levels are gained after sufficient experience. Upon gaining a level, the player may select an upgrade for their VTuber, conferring additional properties to the VTuber. VTuber upgrades carry over across stages, but reset upon defeat. Each stage features a boss that the player has to defeat to progress to the next stage. However, if the player loses, they are taken back to the VTuber selection screen to pick a VTuber once again.
+	VShooter's gameplay is intuitive. Players select from a pool of VTubers at the start of the game. With their VTuber of choice, players shoot at enemies on a stage. Enemies behave in a variety of ways. They may rush at the player. They may also shoot at the player or exhibit other behaviors. Enemies become progressively more challenging as the player progresses through stages. To offset the increase in difficulty, the player's VTuber maintains an experience bar and gains levels. Experience is gained when an enemy is detroyed. Levels are gained after sufficient experience. Upon gaining a level, the player may select an upgrade for their VTuber, conferring additional properties to the VTuber. VTuber upgrades carry over across stages, but reset upon defeat. Each stage features a boss that the player has to defeat to progress to the next stage. However, if the player loses, they are taken back to the VTuber selection screen to pick a VTuber and start all over.
 
 	\section{Controls}
 
@@ -53,7 +53,7 @@
 		\item Right Mouse Click: Rotate their Vtuber to the right around the y-axis.
 	\end{itemize}
 
-	Through these controls, the player must overcome hordes of various enemies.
+	The player's VTuber fires bullets periodically without input (automatic firing). Through these controls, the player must overcome hordes of various enemies.
 
 	\section{VTuber Selection}
 
@@ -66,11 +66,11 @@
   	\subsubsection{Primary Stats}
 
   	\begin{itemize}
-  	\item \textbf{Health.} The lose condition of the player controlling the VTuber. Health is lost upon collision with enemies or enemy projectiles, or scripted in-game events. If the VTuber's health drops to 0, they lose the game. Lost health may be regained via several types of upgrades (e.g. \textit{lifesteal}, \textit{health regen}, etc.). A VTuber's maximum health may also be increased through upgrades.
+  	\item \textbf{Health.} HP. The lose condition of the player controlling the VTuber. Health is lost upon collision with enemies or enemy projectiles, or scripted in-game events. If the VTuber's health drops to 0, they lose the game. Lost health may be regained via several types of upgrades (e.g. \textit{lifesteal}, \textit{health regen}, etc.). A VTuber's maximum health may also be increased through upgrades.
 
-  	\item \textbf{Experience.} Defeating an enemy grants experience according to its type. For specifics, please refer to section \ref{Enemies}. 
+  	\item \textbf{Experience.} EXP. Defeating an enemy grants experience according to its type. For specifics, please refer to section \ref{Enemies}. 
   	
-  	\item \textbf{Level.} If the VTuber gains a set amount of experience, they gain a level. The experience required for gaining a level is calculated using the following formula:
+  	\item \textbf{Level.} LVL. If the VTuber gains a set amount of experience, they gain a level. The experience required for gaining a level is calculated using the following formula:
   	
   	\[E(L) = 2.5L^2 + 32.5L + 40\]
   	
@@ -78,9 +78,9 @@
   	
   	Each additional level requires more experience to be gained. Gaining a level allows the player to select an upgrade from a randomly selected pool. For more information on upgrades, please refer to section \ref{Upgrades}.
   	
-  	\item \textbf{Attack.} Increases the damage dealt by the VTuber's projectiles. Attack may be increased through upgrades.
+  	\item \textbf{Attack.} ATK. Increases the damage dealt by the VTuber's projectiles. Attack may be increased through upgrades.
 
-  	\item\textbf{Defense.} Reduces the total damage received by the VTuber. Additional defense may be gained through upgrades. Defense has reduced effectiveness at higher values. The total damage reduced by defense is calculated using the following formula:
+  	\item\textbf{Defense.} DEF. Reduces the total damage received by the VTuber. Additional defense may be gained through upgrades. Defense has reduced effectiveness at higher values. The total damage reduced by defense is calculated using the following formula:
   	
   	\[P_1(x) = P_0(x) \times \frac{100}{100+D}\]
   	
@@ -144,10 +144,12 @@
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
+
 			\textit{\textbf{Soul Harvester}} & Defeating an enemy has a 30/40/50\% chance to restore 20/30/40HP. \\
+
 			\textit{\textbf{Taste of Death}} & Defeating an enemy has a 15/20/25\% chance to create an explosion, dealing 60/80/100 damage. Non-boss enemies caught in the explosion have a 8/10/12\% chance of being immediately destroyed. \\
 		
-			\textit{\textbf{End of A Life}}  & Attacks apply [Burn] that deals 15/25/35 damage over 3 seconds. While under the effects of [Burn], targets that fall below 8/12/15\% of their maximum health are immediately destroyed. \\
+			\textit{\textbf{End of A Life}}  & Attacks apply [Burn] that deals 15/25/35 damage over 3 seconds. While under the effects of [Burn], targets that fall below 8/12/15\% of their maximum HP are immediately destroyed. \\
 			\hline
 			
 		\end{tabular}
@@ -162,30 +164,32 @@
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
-			\textit{\textbf{Q: Off With Their Heads}} & Mori Calliope hurls her scythe forward. Enemies caught in the scythe's path take high damage. (16s Cooldown)\\
-			\textit{\textbf{E: Excuse My Rudeness}} & Mori Calliope whirls her scythe. Enemies in a small radius around her take medium damage. (6s Cooldown) \\
+
+			\textit{\textbf{Q: Off With Their Heads}} & Mori Calliope hurls her scythe forward, consuming 5\% of her HP. The scythe rebounds once it reaches the end of the stage. Enemies caught in the scythe's path take 100 damage, but enemies can only be damaged by the scythe once. (16s Cooldown)\\
+
+			\textit{\textbf{E: Excuse My Rudeness}} & Mori Calliope whirls her scythe. Enemies hit in a small radius around her take 60 damage. For each enemy hit, she heals for 20 HP. This healing is capped at 60 HP. (6s Cooldown) \\
+
 			\hline
 		\end{tabular}
 	\end{center}
 
 	\subsubsection{Ninomae Ina'nis}
   	
-  	\textbf{Description.} Ninomae Ina'nis is a priestess and worshipper to an ancient tentacle god. As a summoner, she specializes in \textit{summoning} allies and \textit{controlling} enemies.
+  	\textbf{Description.} Ninomae Ina'nis is a priestess and worshipper of an ancient tentacle god. As a summoner, she specializes in \textit{summoning} allies and \textit{controlling} enemies.
 
 	\textbf{Passives}
 	
-	%	TODO: Update these once final passive skills are in
 	\begin{center}
 		\begin{tabular}{|p{2.7cm}|p{5.5cm}|}
-			\hline
-			\textbf{Name} & \textbf{Description} \\
-			\hline
-			\textit{\textbf{Dark Aura}} & Defeating an enemy has a 30/40/50\% chance to restore 20/30/40HP. \\
-			\textit{\textbf{Violet Bloom}} & Defeating an enemy has a 15/20/25\% chance to create an explosion, dealing 60/80/100 damage. Non-boss enemies caught in the explosion have a 8/10/12\% chance of being immediately destroyed. \\
-			\textit{\textbf{The Ancient One}}  & Attacks apply [Burn] that deals 15/25/35 damage over 3 seconds. While under the effects of [Burn], targets that fall below 8/12/15\% of their maximum health are immediately destroyed. \\
-			\hline	
+		\hline
+		\textbf{Name} & \textbf{Description} \\
+		\hline
+		\textit{\textbf{Dark Aura}} & Enemies within 150/200/250 units of Ina take 6/9/12 damage per second. \\
+		\textit{\textbf{Blessings of the Gods}} & Every 14/12/10 seconds, summon a Tako turret at Ina's location for 12 seconds. Tako turrets deal 30 damage to all enemies hit and restore 20 HP to Ina on expiry. \\
+		\textit{\textbf{Spellcaster}} & Gain 25/50/75 ability haste. Additionally, gain 20/40/60\% more ability haste from all sources. \\
+		\hline
 		\end{tabular}
-	\end{center}
+		\end{center}
 	
 	\begin{center}
 		\textbf{Actives}
@@ -196,8 +200,8 @@
 			\hline
 			\textbf{Name} & \textbf{Description} \\
 			\hline
-			\textit{\textbf{Q: AO-chan!}} & Ninomae Ina'nis summons AO-chan. The book empowers all summoned Tako turrets on the field upon casting. Takos summoned after the book is summoned do not get empowered. (15s Cooldown)\\
-			\textit{\textbf{E: WAH!}} & Ninomae Ina'nis summons a short-lived Tako turret. The turret fires large peas rapidly that damage enemies on contact. When a turret expires, she heals for a small amount of health. (6s Cooldown) \\
+			\textit{\textbf{Q: AO-chan!}} & Ninomae Ina'nis summons AO-chan. The book empowers all summoned Tako turrets on the field with [Frenzy] upon casting. Frenzied Takos gain 500\% attack speed but spray bullets wildly. Takos summoned after the book has been summoned do not get empowered. (15s Cooldown)\\
+			\textit{\textbf{E: WAH!}} & Ninomae Ina'nis summons a Tako turret that lasts for 12 seconds. The turret fires large peas rapidly that damage enemies on contact. When a turret expires, she heals for 20 HP. (6s Cooldown) \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -237,7 +241,7 @@
 		\label{fig:takodachi}
 	\end{figure}
 
-	\textbf{Description.} A slow, bulky enemy characterized by high health. These enemies move in a straight line. They don't go after the player's VTuber, but they deal high damage on collision. Otherwise, they disappear once they move past the edge of the screen.
+	\textbf{Description.} A slow, bulky enemy characterized by high HP. These enemies move in a straight line. They don't go after the player's VTuber, but they deal high damage on collision. Otherwise, they disappear once they move past the edge of the screen.
 
 	\subsubsection{Guy RyS}
 
@@ -270,7 +274,7 @@
 		\label{fig:buffame}
 	\end{figure}
 
-	\textbf{Description.} The boss of the first stage. Upon spawning, Buff Ame zips toward the center of the stage. Once Buff Ame has occupied its position, it moves horizontally back and forth. Buff Ame shoots projectiles that travel straight down the stage. On impact, these projectiles deal sizable damage. They move fast, too. Buff Ame's special attack spawns a number of missiles that home in toward the player's VTuber. Each missile deals a small amount of damage. Buff Ame has a respectable amount of health for a first boss, and requires from the player a certain mastery over the mechanics of the game and their chosen VTuber to triumph.
+	\textbf{Description.} The boss of the first stage. Upon spawning, Buff Ame zips toward the center of the stage. Once Buff Ame has occupied its position, it moves horizontally back and forth. Buff Ame shoots projectiles that travel straight down the stage. On impact, these projectiles deal sizable damage. They move fast, too. Buff Ame's special attack spawns a number of missiles that home in toward the player's VTuber. Each missile deals a small amount of damage. Buff Ame has a respectable amount of HP for a first boss, and requires from the player a certain mastery over the mechanics of the game and their chosen VTuber to triumph.
 
 	\subsubsection{Halloween Bae}
 
