@@ -12,4 +12,12 @@ public class BasicProjectile : MonoBehaviour {
     void Update() {
         
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Building"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
