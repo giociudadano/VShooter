@@ -9,7 +9,7 @@ Build and upgrade your perfect character in this rogue-like arcade shooter featu
 ## **Development Screenshots**
 
 <p align=center>
- <a href="https://i.imgur.com/iGu6clo.png"><img src="https://i.imgur.com/iGu6clo.png" height=250"></a>&nbsp;<a href="https://i.imgur.com/2jBTM8q.png"><img src="https://i.imgur.com/2jBTM8q.png" height=250"></a>
+ <a href="https://i.imgur.com/iGu6clo.png"><img src="https://i.imgur.com/iGu6clo.png"></a>&nbsp;<a href="https://i.imgur.com/2jBTM8q.png"><img src="https://i.imgur.com/2jBTM8q.png"></a>
 </p>
 
 <p align=center><sup>(Click to enlarge image)</sup></p>
