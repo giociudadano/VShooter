@@ -4,7 +4,7 @@
 
 <i>Can you survive? Battle and fight a swarm of enemies to save HoloWorld!</i> ✨
 
-Build and upgrade your perfect character in this rogue-like arcade shooter featuring different virtual youtubers and content creators. [^note] **VShooter** features three stages, all with different bosses, enemies, and environments, custom upgrades such as attack speed, crit chance, and ability cooldown reduction, and custom characters with their own unique passive and active abilities. This personal project was done with a team of passionate game developers from the University of the Philippines Visayas written in C# and Unity as a partial requirement for passing the Game Development elective course of the academe.
+Build and upgrade your perfect character in this rogue-like arcade shooter featuring different virtual youtubers and content creators. [^note] **VShooter** features three stages, all with different bosses, enemies, and environments, custom upgrades such as attack speed, crit chance, and ability cooldown reduction, and custom characters with their own unique passive and active abilities. This personal project was done with a team of passionate game developers from the University of the Philippines Visayas, written in C# and Unity as a partial requirement for passing the Game Development elective course of the academe.
 
 ## **Development Screenshots**
 
@@ -27,12 +27,12 @@ Download the preferred version in the releases section of this repository. Extra
 
 **Credits**
 
-The sprite resources and models provided are all licensed under CC-0 (Public Domain) which allows the use of these resources for game distribution, provided that such assets are not redistributed or reuploaded from the original source. The links for these sprites and models were provided under the documentation branch of this repository.
+The sprite resources and models provided are all licensed under CC-0 (Public Domain) which allows the use of these resources for game distribution, provided that such assets are not redistributed or reuploaded from the original source. The sources for these sprites and models are provided under the documentation branch of this repository.
 
 **Copyright**
 
 ![](https://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-This project is licensed under CC-0, making it technically Public Domain, allowing you and anyone else to freely copy and use it without restrictions. If you plan on using this project, please feel free to credit me in your work. Thank you!
+This project is licensed under CC-0, making it technically Public Domain, allowing you and anyone else to freely copy and use it without restrictions. If you plan on using this project, please feel free to credit us in your work. Thank you!
 
-[^note]: The illustrations and virtual characters included in the game are property of [HoloLive](https://hololive.hololivepro.com/en), a subsidiary of [Cover Corp, Inc.](https://cover-corp.com/en/company). Permission was hereby granted to the author to use the characters, provided that it follows company guidelines for derivative works. For more information regarding secondary creation, please check the following [link](https://hololivepro.com/en/terms/).
+[^note]: The illustrations and virtual characters included in the game are property of [HoloLive](https://hololive.hololivepro.com/en), a subsidiary of [Cover Corp, Inc.](https://cover-corp.com/en/company). Permission was hereby granted to the authors to use the characters, provided that it follows company guidelines for derivative works. For more information regarding secondary creation, please check the following [link](https://hololivepro.com/en/terms/).
